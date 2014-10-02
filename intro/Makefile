@@ -10,13 +10,13 @@ CFLAGS_LIBS = `pkg-config --cflags $(STD_LIBS)`
 LDLIBS = `pkg-config --libs $(STD_LIBS)`
 CFLAGS = $(CFLAGS_STD) $(CFLAGS_EXTRA) $(CFLAGS_LIB)
 OBJECTS = $(SOURCES:%.c=%.o)
-CC_FULL = $(CC) $(CFLAGS) -I$(SRC_DIR) -I$(LIB_DIR) $(CFLAGS_LIBS)
+CC_FULL = $(CC) $(CFLAGS) $(CFLAGS_LIBS)
 
 bin: $(OBJECTS)
 
 %.o: %.c
 	@echo '* Compiling $<'
-	$(CC_FULL) -o $@ $(CFLAGS) $< $(LDLIBS)
+	$(CC_FULL) -o $@ $<  $(LDLIBS)
 
 clean:
 	@echo "Cleaning..."
