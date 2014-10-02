@@ -31,7 +31,7 @@
    \brief Prints the fibonacci sequence up to a certain value \c limit
    \param limit
 */
-uint64_t fibo(uint64_t x) {
+uint32_t fibo(uint32_t x) {
         if (x <= 2)
                 return 1;
         else
@@ -39,9 +39,9 @@ uint64_t fibo(uint64_t x) {
 }
 
 
-void main(int argc, char **argv) {
-        uint64_t limit = atoi(argv[1]);
-        for (uint64_t n = 1; n <= limit; n++)
-                printf("%" PRIu64 " ", fibo(n));
+int main(int argc, char **argv) {
+        uint32_t limit = atoi(argv[1]);
+        for (uint32_t n = 1; n <= limit; n++)
+                printf("%" PRIu32 " ", fibo(n));
         printf("\n");
 }

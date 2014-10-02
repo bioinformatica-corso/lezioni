@@ -35,18 +35,18 @@
 
    The invariant is that \c prev, \c prev2 are respectively \c fibo(x-1) and \c fibo(x-2)
 */
-void fibo(uint64_t x) {
+void fibo(uint32_t x) {
         if (x <= 1)
                 printf("1\n");
         else if (x <= 2)
                 printf("1 1\n");
         else {
-                uint64_t prev = 1;
-                uint64_t prev2 = 1;
+                uint32_t prev = 1;
+                uint32_t prev2 = 1;
                 printf("1 1 ");
-                for (uint64_t n = 3; n <= x; n++) {
-                        uint64_t current = prev + prev2;
-                        printf("%" PRIu64 " ", current);
+                for (uint32_t n = 3; n <= x; n++) {
+                        uint32_t current = prev + prev2;
+                        printf("%" PRIu32 " ", current);
                         prev2 = prev;
                         prev = current;
                 }
@@ -54,6 +54,6 @@ void fibo(uint64_t x) {
 }
 
 int main(int argc, char **argv) {
-        uint64_t limit = atoi(argv[1]);
+        uint32_t limit = atoi(argv[1]);
         fibo(limit);
 }

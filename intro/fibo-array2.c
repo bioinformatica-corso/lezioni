@@ -32,19 +32,19 @@
 #include "fibo-array2.h"
 
 int main(int argc, char **argv) {
-        uint64_t limit = atoi(argv[1]);
-        uint64_t results[limit];
+        uint32_t limit = atoi(argv[1]);
+        uint32_t results[limit];
         fibo_array(results, limit);
-        for (uint64_t n = 0; n < limit; n++)
-                printf("%" PRIu64 ": %" PRIu64 "\n", n + 1, results[n]);
+        for (uint32_t n = 0; n < limit; n++)
+                printf("%" PRIu32 ": %" PRIu32 "\n", n + 1, results[n]);
 }
 
 /**
    \brief actual function
 */
-void fibo_array(uint64_t* results, uint64_t limit) {
+void fibo_array(uint32_t* results, uint32_t limit) {
         if (limit >= 1) results[0] = 1;
         if (limit >= 2) results[1] = 1;
-        for (uint64_t n = 2; n < limit; n++)
+        for (uint32_t n = 2; n < limit; n++)
                 results[n] = results[n - 1] + results[n - 2];
 }

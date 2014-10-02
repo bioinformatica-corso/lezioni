@@ -17,7 +17,7 @@
   If not, see <http://www.gnu.org/licenses/>.
 */
 
-uint64_t fibo(uint64_t limit);
+uint32_t fibo(uint32_t limit);
 
 
-void fibo_array(uint64_t* results, uint64_t limit);
+void fibo_array(uint32_t* results, uint32_t limit);

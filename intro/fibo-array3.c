@@ -39,34 +39,34 @@
    The last element of \c results is a sentinel with value \c 0.
 */
 int main(int argc, char **argv) {
-        uint64_t limit = atoi(argv[1]);
-        uint64_t* results = fibo_array(limit);
-        for (uint64_t n = 0; results[n] > 0; n++)
-                printf("%" PRIu64 ": %" PRIu64 "\n", n + 1, results[n]);
+        uint32_t limit = atoi(argv[1]);
+        uint32_t* results = fibo_array(limit);
+        for (uint32_t n = 0; results[n] > 0; n++)
+                printf("%" PRIu32 ": %" PRIu32 "\n", n + 1, results[n]);
         free(results);
 }
 
 /**
    \brief actual function
 */
-uint64_t* fibo_array(uint64_t limit) {
+uint32_t* fibo_array(uint32_t limit) {
         GSList* list = NULL;
-        uint64_t prev = 1;
-        uint64_t prev2 = 1;
-        uint64_t actual = 0;
+        uint32_t prev = 1;
+        uint32_t prev2 = 1;
+        uint32_t actual = 0;
         if (limit >= 1)
                 list = g_slist_append(list, GINT_TO_POINTER(1));
         if (limit >= 2)
                 list = g_slist_append(list, GINT_TO_POINTER(1));
-        for (uint64_t n = 2; actual <= limit; n++) {
+        for (uint32_t n = 2; actual <= limit; n++) {
                 actual = prev + prev2;
                 list = g_slist_append(list, GINT_TO_POINTER(actual));
                 prev2 = prev;
                 prev = actual;
         }
-        uint64_t size = g_slist_length(list);
-        uint64_t* results = malloc((size + 1) * sizeof(uint64_t));
-        uint64_t i = 0;
+        uint32_t size = g_slist_length(list);
+        uint32_t* results = malloc((size + 1) * sizeof(uint32_t));
+        uint32_t i = 0;
         for (GSList* p = list; p != NULL; p = g_slist_next(p), i++) {
                 results[i] = GPOINTER_TO_INT(p->data);
         }

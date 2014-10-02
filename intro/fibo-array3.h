@@ -20,4 +20,4 @@
 #include <inttypes.h>
 
 
-uint64_t* fibo_array(uint64_t limit);
+uint32_t* fibo_array(uint32_t limit);
