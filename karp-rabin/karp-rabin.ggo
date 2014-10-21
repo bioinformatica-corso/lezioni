@@ -6,7 +6,7 @@ args "--unamed-opts"
 # Options
 option  "text"		t "Text file"			string	typestr="filename"
 option  "pattern"	p "Pattern"			string  typestr="pattern"
-option 	"rounds" 	r "Number of rounds to eliminate false positive" 	int
+option 	"rounds" 	r "Number of rounds to eliminate false positive" 	int optional default="1"
 details="\n
 The text file is in FASTA format.\n
 ---------------------------\n"

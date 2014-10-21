@@ -1,8 +1,8 @@
 # Makefile for Constrained Persistent Perfect Phylogeny
 P = karp-rabin
 
-CFLAGS_STD = -g -Wall -DDEBUG -O0 -march=native -Wno-deprecated -Wno-parentheses -Wno-format
-STD_LIBS = zlib
+CFLAGS_STD = -g -Wall -DDEBUG -O3 -march=native -Wno-deprecated -Wno-parentheses -Wno-format
+STD_LIBS = zlib gsl
 
 LIBS 	= cmdline.o
 CFLAGS_EXTRA =  -m64 -std=c11 -Wall -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes
@@ -13,7 +13,7 @@ CFLAGS = $(CFLAGS_STD) $(CFLAGS_EXTRA) $(CFLAGS_LIB)
 
 CC_FULL = $(CC) $(CFLAGS) -I$(SRC_DIR) -I$(LIB_DIR) $(CFLAGS_LIBS)
 
-bin: $(P)
+bin: $(P) $(LIBS)
 
 $(P): $(P).c $(P).h $(LIBS)
 # $(P): $(OBJECTS)
@@ -32,10 +32,10 @@ $(P): $(P).c $(P).h $(LIBS)
 
 clean:
 	@echo "Cleaning..."
-	rm -rf *.o *.d $(P) cmdline.*
+	rm -rf *.o *.d $(P) cmdline.* tests/output/*
 
-test: t/text1.fa run-tests.sh $(P)
-	run-tests.sh
+test: run-tests.sh $(P)
+	./run-tests.sh
 
 .PHONY: clean
 
