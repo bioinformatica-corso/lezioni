@@ -16,7 +16,7 @@
   License along with this file
   If not, see <http://www.gnu.org/licenses/>.
 */
-
+fghfg
 #include "karp-rabin.h"
 KSEQ_INIT(gzFile, gzread)
 
