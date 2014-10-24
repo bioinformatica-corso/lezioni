@@ -92,7 +92,6 @@ int main(int argc, char **argv) {
         uint32_t m = strlen(pattern);
         /* occ[] stores if a position is an occurrence */
         hash_t *occ = hash_new();
-        /* uint32_t* occ = calloc(n, sizeof(*occ)); */
         assert(occ != NULL);
 
         /* Initialize random number generator */
@@ -109,8 +108,9 @@ int main(int argc, char **argv) {
                         text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
                 {
                             if (pattern_h == text_h){
-                                    /* The hash key */
+                                    /* Cretae hash key for pos */
                                     char *key = calloc(32, sizeof(char));
+                                    assert(key != NULL);
                                     if (snprintf(key, 32, "%d", (int)pos - m) < 0)
 										exit(-1);
                                     /* Update/add occurence */
@@ -120,23 +120,22 @@ int main(int argc, char **argv) {
                                         uint32_t count = 1;
                                         hash_set(occ, key, &count);
                                     }
-                                    
-                                    /* occ[pos - m]++; */
                             }
                 }
         }
         
+        
+        /* Iteration over the "occ" hash*/
         hash_each(occ, {
                 char* x = strndupa(text + atoi(key), m);
                 if ( *(uint32_t *) val >= num_rounds)
 					printf("Occurrence %s at position %d\n", x, atoi(key));
         })
+
+
+		/* Free memory */
+        hash_each_key(occ, {
+			free((char *)key);
+		})
         hash_free(occ);
-        
-        /*for (uint32_t pos = 0; pos < n; pos++)
-                if (occ[pos] >= num_rounds) {
-                        char* x = strndupa(text + pos, m);
-                        printf("Occurrence %s at position %d\n", x, pos);
-                }
-        free(occ);*/
 }
