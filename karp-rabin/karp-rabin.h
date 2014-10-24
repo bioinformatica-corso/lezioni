@@ -27,5 +27,6 @@
 #include "miller-rabin/sprp32.h"
 #include "cmdline.h"
 #include "klib/kseq.h"
+#include "hash/hash.h"
 #include <zlib.h>
 #include <gsl/gsl_rng.h>

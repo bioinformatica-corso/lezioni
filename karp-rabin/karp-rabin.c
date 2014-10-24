@@ -91,7 +91,8 @@ int main(int argc, char **argv) {
         uint32_t n = strlen(text);
         uint32_t m = strlen(pattern);
         /* occ[] stores if a position is an occurrence */
-        uint32_t* occ = calloc(n, sizeof(*occ));
+        hash_t *occ = hash_new();
+        /* uint32_t* occ = calloc(n, sizeof(*occ)); */
         assert(occ != NULL);
 
         /* Initialize random number generator */
@@ -105,14 +106,37 @@ int main(int argc, char **argv) {
                 uint32_t pattern_h = init_h(pattern, m, mod);
                 uint32_t pos = m;
                 for (uint32_t text_h = init_h(text, m, mod); pos < n;
-                     text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
-                        if (pattern_h == text_h)
-                                occ[pos - m]++;
+                        text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
+                {
+                            if (pattern_h == text_h){
+                                    /* The hash key */
+                                    char *key = calloc(32, sizeof(char));
+                                    if (snprintf(key, 32, "%d", (int)pos - m) < 0)
+										exit(-1);
+                                    /* Update/add occurence */
+                                    if (hash_has(occ, key) == 1)
+										(*(uint32_t *)hash_get(occ, key))++;
+                                    else {
+                                        uint32_t count = 1;
+                                        hash_set(occ, key, &count);
+                                    }
+                                    
+                                    /* occ[pos - m]++; */
+                            }
+                }
         }
-        for (uint32_t pos = 0; pos < n; pos++)
+        
+        hash_each(occ, {
+                char* x = strndupa(text + atoi(key), m);
+                if ( *(uint32_t *) val >= num_rounds)
+					printf("Occurrence %s at position %d\n", x, atoi(key));
+        })
+        hash_free(occ);
+        
+        /*for (uint32_t pos = 0; pos < n; pos++)
                 if (occ[pos] >= num_rounds) {
                         char* x = strndupa(text + pos, m);
                         printf("Occurrence %s at position %d\n", x, pos);
                 }
-        free(occ);
+        free(occ);*/
 }

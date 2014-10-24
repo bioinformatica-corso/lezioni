@@ -4,7 +4,7 @@ P = karp-rabin
 CFLAGS_STD = -g -Wall -DDEBUG -O3 -march=native -Wno-deprecated -Wno-parentheses -Wno-format
 STD_LIBS = zlib gsl
 
-LIBS 	= cmdline.o
+LIBS 	= cmdline.o hash/hash.o
 CFLAGS_EXTRA =  -m64 -std=c11 -Wall -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes
 CFLAGS_LIBS = `pkg-config --cflags $(STD_LIBS)`
 CFLAGS_TEST =  -DTEST_EVERYTHING  `pkg-config --cflags $(DEBUG_LIBS)`
