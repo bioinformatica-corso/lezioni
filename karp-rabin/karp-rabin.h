@@ -17,15 +17,14 @@
   If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <assert.h>
-#include <string.h>
 #include "miller-rabin/sprp32.h"
 #include "cmdline.h"
 #include "klib/kseq.h"
 #include <zlib.h>
 #include <gsl/gsl_rng.h>
+#include "hash.h"

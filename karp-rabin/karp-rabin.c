@@ -90,9 +90,8 @@ int main(int argc, char **argv) {
         char* text = read_text(args_info.text_arg);
         uint32_t n = strlen(text);
         uint32_t m = strlen(pattern);
-        /* occ[] stores if a position is an occurrence */
-        uint32_t* occ = calloc(n, sizeof(*occ));
-        assert(occ != NULL);
+        /* hash is an hash table, declared and initialized as defined in UThash docs */
+        struct occurrence* hash = NULL;
 
         /* Initialize random number generator */
         gsl_rng *rng = gsl_rng_alloc(gsl_rng_mt19937);
@@ -107,12 +106,9 @@ int main(int argc, char **argv) {
                 for (uint32_t text_h = init_h(text, m, mod); pos < n;
                      text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
                         if (pattern_h == text_h)
-                                occ[pos - m]++;
+                                /* Insert the element in the hash */
+                                insert(&hash, pos-m);
         }
-        for (uint32_t pos = 0; pos < n; pos++)
-                if (occ[pos] >= num_rounds) {
-                        char* x = strndupa(text + pos, m);
-                        printf("Occurrence %s at position %d\n", x, pos);
-                }
-        free(occ);
+        /* Iterates on the keys of the hash */
+        visit(&hash, num_rounds, m, text);
 }
