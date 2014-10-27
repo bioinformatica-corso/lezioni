@@ -22,27 +22,6 @@ KSEQ_INIT(gzFile, gzread)
 
 static uint32_t corrections[4];
 
-struct occurrence{
-	uint32_t pos;
-	uint32_t count;
-	UT_hash_handle hh;
-};
-
-void insert(struct occurrence** occ, uint32_t pos){
-	struct occurrence* o;
-	HASH_FIND_INT(*occ, &pos, o);
-	if(o == NULL){
-		o = (struct occurrence*) malloc (sizeof(struct occurrence));
-		o->pos = pos;
-		o->count = 1;
-		HASH_ADD_INT(*occ, pos, o);
-	}else{
-		HASH_DEL(*occ, o);
-		o->count++;
-		HASH_ADD_INT(*occ, pos, o);
-	}
-}
-
 static bool primep(const uint32_t n) {
         const uint32_t bases32[] = {2, 7, 61};
         return efficient_mr32(bases32, 3, n);
@@ -111,10 +90,8 @@ int main(int argc, char **argv) {
         char* text = read_text(args_info.text_arg);
         uint32_t n = strlen(text);
         uint32_t m = strlen(pattern);
-        /* occ[] stores if a position is an occurrence */
+        /* hash is an hash table, declared and initialized as defined in UThash docs */
         struct occurrence* hash = NULL;
-        /*uint32_t* occ = calloc(n, sizeof(*occ));
-        assert(occ != NULL);*/
 
         /* Initialize random number generator */
         gsl_rng *rng = gsl_rng_alloc(gsl_rng_mt19937);
@@ -129,17 +106,9 @@ int main(int argc, char **argv) {
                 for (uint32_t text_h = init_h(text, m, mod); pos < n;
                      text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
                         if (pattern_h == text_h)
-                                //occ[pos - m]++;
+                                /* Insert the element in the hash */
                                 insert(&hash, pos-m);
         }
-        for (uint32_t pos = 0; pos < n; pos++){
-        	struct occurrence* o;
-        	HASH_FIND_INT(hash, &pos, o);
-                //if (occ[pos] >= num_rounds) {
-                if(o != NULL && o->count == num_rounds){
-                        char* x = strndupa(text + pos, m);
-                        printf("Occurrence %s at position %d\n", x, pos);
-                }
-        }
-        //free(occ);
+        /* Iterates on the keys of the hash */
+        visit(&hash, num_rounds, m, text);
 }
