@@ -7,7 +7,7 @@ for t in ${dir}/input/*
 do
     p=$(cat "$t")
     i=$(basename "$t")
-    ./karp-rabin --text "$dir"/chrI.fa.gz --pattern="$p" --rounds=5 | grep -oP "\d+" > "${dir}/output/$i".1
-    ./karp-rabin --text "$dir"/chr1.fa.gz --pattern="$p" --rounds=5 | grep -oP "\d+" > "${dir}/output/$i".2
+    ./karp-rabin --text "$dir"/chrI.fa.gz --pattern="$p" --rounds=1 | grep -oP "\d+" > "${dir}/output/$i".1
+    ./karp-rabin --text "$dir"/chr1.fa.gz --pattern="$p" --rounds=1 | grep -oP "\d+" > "${dir}/output/$i".2
 done
 diff -uaw --strip-trailing-cr --ignore-all-space "${dir}/output/" "${dir}/ok/"
