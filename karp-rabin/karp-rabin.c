@@ -164,7 +164,7 @@ int main(int argc, char **argv) {
         
     for (uint32_t pos = 0; pos < n; pos++) {
            
-		if (get_ >= num_rounds) {
+		if (get_element_occ(occ, pos) >= num_rounds) {
 				
 			char* x = strndupa(text + pos, m);
 			printf("Occurrence %s at position %d\n", x, pos);
