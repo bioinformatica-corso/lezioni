@@ -28,30 +28,25 @@ struct match {
     UT_hash_handle hh;
 };
 
-void add_occ(struct match* occ, uint32_t count) {
+void add_occ(struct match** occ, uint32_t pos) {
     struct match *s;
-    HASH_FIND_INT(occ, &occ_id, s);
+    HASH_FIND_INT(*occ, &pos, s);
     if (s == NULL) {
-      s = calloc(sizeof(struct match));
+      s = malloc(sizeof(struct match));
       s->id = pos;
       s->count = 1;
       HASH_ADD_INT(*occ, id, s );
     } else {
-      unint_32t new_count = s->count;
+      uint32_t new_count = s->count;
       ++new_count;
-      o = calloc(sizeof(struct match));
+      struct match *o = malloc(sizeof(struct match));
       o->id = pos;
       o->count = new_count;
-      HASH_REPLACE_INT(*occ, id, o );
+      HASH_REPLACE_INT(*occ, id, o, s);
+      free(s);
+      // I should free the deleted object memory
     }
 }
-
-struct match *find_occ(uint32_t occ_id) {
-    struct match *s;
-    HASH_FIND_INT( occ, &occ_id, s );
-    return s;
-}
-
 
 KSEQ_INIT(gzFile, gzread)
 
@@ -127,7 +122,7 @@ int main(int argc, char **argv) {
         uint32_t m = strlen(pattern);
         /* occ[] stores if a position is an occurrence */
 	/* uint32_t* occ = calloc(n, sizeof(*occ)); */
-	struct match *occ = NULL;
+				struct match* occ = NULL;
 
         /* Initialize random number generator */
         gsl_rng *rng = gsl_rng_alloc(gsl_rng_mt19937);
@@ -143,7 +138,7 @@ int main(int argc, char **argv) {
                      text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
 		  if (pattern_h == text_h) {
 		    uint32_t tmp = pos-m;
-		    add_occ(*occ, tmp);
+		    add_occ(&occ, tmp);
 		  }
 			  // occ[pos - m]++;
         }
@@ -151,7 +146,7 @@ int main(int argc, char **argv) {
 	  
                 if (s->count >= num_rounds) {
                         char* x = strndupa(text + s->id, m);
-                        printf("Occurrence %s at position %d\n", x, pos);
+                        printf("Occurrence %s at position %d\n", x, s->id);
                 }
         //I don't care about freeing memory, right now
 }
