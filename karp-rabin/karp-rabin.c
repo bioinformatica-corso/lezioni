@@ -15,9 +15,44 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this file
   If not, see <http://www.gnu.org/licenses/>.
+  
 */
 
 #include "karp-rabin.h"
+#include "uthash.h"
+
+/* A struct as defined in uthash user guide, this should represent the key/value mapping in the hash */
+struct match {
+    uint32_t id;            
+    uint32_t count;
+    UT_hash_handle hh;
+};
+
+void add_occ(struct match* occ, uint32_t count) {
+    struct match *s;
+    HASH_FIND_INT(occ, &occ_id, s);
+    if (s == NULL) {
+      s = calloc(sizeof(struct match));
+      s->id = pos;
+      s->count = 1;
+      HASH_ADD_INT(*occ, id, s );
+    } else {
+      unint_32t new_count = s->count;
+      ++new_count;
+      o = calloc(sizeof(struct match));
+      o->id = pos;
+      o->count = new_count;
+      HASH_REPLACE_INT(*occ, id, o );
+    }
+}
+
+struct match *find_occ(uint32_t occ_id) {
+    struct match *s;
+    HASH_FIND_INT( occ, &occ_id, s );
+    return s;
+}
+
+
 KSEQ_INIT(gzFile, gzread)
 
 static uint32_t corrections[4];
@@ -91,8 +126,8 @@ int main(int argc, char **argv) {
         uint32_t n = strlen(text);
         uint32_t m = strlen(pattern);
         /* occ[] stores if a position is an occurrence */
-        uint32_t* occ = calloc(n, sizeof(*occ));
-        assert(occ != NULL);
+	/* uint32_t* occ = calloc(n, sizeof(*occ)); */
+	struct match *occ = NULL;
 
         /* Initialize random number generator */
         gsl_rng *rng = gsl_rng_alloc(gsl_rng_mt19937);
@@ -106,13 +141,17 @@ int main(int argc, char **argv) {
                 uint32_t pos = m;
                 for (uint32_t text_h = init_h(text, m, mod); pos < n;
                      text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
-                        if (pattern_h == text_h)
-                                occ[pos - m]++;
+		  if (pattern_h == text_h) {
+		    uint32_t tmp = pos-m;
+		    add_occ(*occ, tmp);
+		  }
+			  // occ[pos - m]++;
         }
-        for (uint32_t pos = 0; pos < n; pos++)
-                if (occ[pos] >= num_rounds) {
-                        char* x = strndupa(text + pos, m);
+        for (struct match *s = occ; s != NULL; s=s->hh.next)
+	  
+                if (s->count >= num_rounds) {
+                        char* x = strndupa(text + s->id, m);
                         printf("Occurrence %s at position %d\n", x, pos);
                 }
-        free(occ);
+        //I don't care about freeing memory, right now
 }
