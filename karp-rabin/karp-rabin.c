@@ -84,13 +84,16 @@ static char* read_text(char* filename) {
 }
 
 int main(int argc, char **argv) {
+	
         static struct gengetopt_args_info args_info;
         assert(cmdline_parser(argc, argv, &args_info) == 0);
         char* pattern = args_info.pattern_orig;
         char* text = read_text(args_info.text_arg);
         uint32_t n = strlen(text);
         uint32_t m = strlen(pattern);
-        /* occ[] stores if a position is an occurrence */
+        
+        /* occ stores the position of an occurrence */
+        
         uint32_t* occ = calloc(n, sizeof(*occ));
         assert(occ != NULL);
 
