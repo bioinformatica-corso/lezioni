@@ -103,11 +103,11 @@ int main(int argc, char **argv) {
                         for (size_t c = 0; c < 4; c++)
                                 corrections[c] = (j == 0) ? c : (corrections[c] << 2) % mod;
                 uint32_t pattern_h = init_h(pattern, m, mod);
-                uint32_t pos = m;
+                uint32_t pos = m - 1;
                 for (uint32_t text_h = init_h(text, m, mod); pos < n;
                      text_h = next_h(text_h, text[pos - m], text[pos], mod), pos++)
                         if (pattern_h == text_h)
-                                occ[pos - m]++;
+                                occ[pos - m + 1]++;
         }
         for (uint32_t pos = 0; pos < n; pos++)
                 if (occ[pos] >= num_rounds) {
