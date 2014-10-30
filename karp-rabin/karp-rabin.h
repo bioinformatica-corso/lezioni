@@ -29,3 +29,4 @@
 #include "klib/kseq.h"
 #include <zlib.h>
 #include <gsl/gsl_rng.h>
+#include "list/list.h"
