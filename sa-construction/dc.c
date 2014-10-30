@@ -141,6 +141,7 @@ static void suffix_array(unsigned int* s, unsigned int* SA, unsigned int n, unsi
         /* the sorting is obtained by a radix sort pass on the first character */
         for (unsigned int i=0, j=0; i < n02; i++)
                 if (SA12[i] < n0)
+                /* Notice that we take only suffixes with % 3 == 1 */
                         s0[j++] = 3*SA12[i];
         pass1(s0, SA0, s, n0, alphabet_size);
 
