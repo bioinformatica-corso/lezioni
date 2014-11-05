@@ -532,19 +532,25 @@ sais_int_bwt(const int *T, int *U, int *A, int n, int k) {
         return pidx;
 }
 
-static unsigned int lcp2(const unsigned char *text, const unsigned int i1, const unsigned int i2,
-                         int length) {
-        unsigned int lcp = 0;
-        unsigned int max_lcp = length + 1 - ((i1 > i2) ? i1 : i2);
-        for (;lcp <= max_lcp && *(text + i1 + lcp) == *(text + i2 + lcp); lcp++) {}
-        return lcp;
-}
-
 
 int
 sais_lcp(const unsigned char *T, int *SA, unsigned int *lcp, int n) {
-        lcp[0] = -1;
-        for (unsigned int i = 1; i < (unsigned int) n; i++)
-                lcp[i] = lcp2(T, SA[i-1], SA[i], n);
-        return 1;
+        lcp[0] = 0;
+        unsigned int* inv_sa = malloc(n * sizeof(*inv_sa));
+        for (unsigned int i = 0; i < (unsigned int) n; i++)
+                inv_sa[SA[i]] = i;
+
+        for (unsigned int i = 0; i < (unsigned int) n; i++)
+                lcp[i] = 0;
+        int l = 0;
+        for (unsigned int i = 0; i < (unsigned int) n; i++)
+                if (inv_sa[i] >= 1) {
+                        int j = SA[inv_sa[i] - 1];
+                        while (T[i+l] == T[j+l])
+                                l++;
+                        lcp[inv_sa[i]] = l;
+                        l = (l-1 > 0) ? l-1 : 0;
+                }
+        free(inv_sa);
+        return 0;
 }

@@ -2,7 +2,7 @@
 
 # options
 CC						= gcc
-CFLAGS				= -std=c11 -m64 -O3 -fomit-frame-pointer
+CFLAGS				= -std=c11 -m64 -O3 -fomit-frame-pointer -g
 CPPFLAGS			= -Wall -DNDEBUG
 LDFLAGS				=
 LDLIBS				=
