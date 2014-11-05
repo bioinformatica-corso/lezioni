@@ -1,7 +1,7 @@
 # Makefile for Constrained Persistent Perfect Phylogeny
 P = sa-matching
 
-CFLAGS_STD = -g -Wall -O3 -march=native -Wno-deprecated -Wno-parentheses -Wno-format
+CFLAGS_STD = -g -Wall -O0 -march=native -Wno-deprecated -Wno-parentheses -Wno-format
 STD_LIBS = zlib
 
 LIBS 	= cmdline.o sais-lite-2.4.1/sais.o
