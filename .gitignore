@@ -24,3 +24,7 @@
 
 # Note
 note/
+/sa-matching/sais-lite-2.4.1/suftest
+/sa-matching/cmdline.c
+/sa-matching/cmdline.h
+/sa-matching/sa-matching
