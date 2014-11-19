@@ -54,9 +54,15 @@ rmq(uint64_t* a, size_t size, uint64_t lb, uint64_t ub) {
                 }
 #endif
         }
-        size_t width = lrint(log2(ub - lb + 1) - 0.5);
+        size_t logwidth = floor(log2(ub - lb + 1));
+        size_t width = 1 << logwidth;
 #ifdef DEBUG
-        printf("Query (%6d, %6d). [%6d-%6d] [%6d-%6d]\n", lb, ub, lb, width, ub - width + 1, width);
+        printf("Logwidth=%6d\n", logwidth);
+        printf("Width=%6d\n", width);
+        printf("Query (%6d, %6d). [%6d-%6d] [%6d-%6d]\n", lb, ub, lb, lb + width - 1, ub - width + 1, ub);
+        printf("[%6d-%6d]=%6d [%6d-%6d]=%6d *%6d\n", lb, logwidth, __matrix__[lb][logwidth],
+            ub - width + 1, logwidth, __matrix__[ub - width + 1][logwidth], 
+            min(__matrix__[lb][logwidth], __matrix__[ub - width + 1][logwidth]));
 #endif
-        return min(__matrix__[lb][width], __matrix__[ub - width + 1][width]);
+        return min(__matrix__[lb][logwidth], __matrix__[ub - width + 1][logwidth]);
 }

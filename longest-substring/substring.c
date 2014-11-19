@@ -121,14 +121,14 @@ int main(int argc, char **argv) {
                 for(uint64_t i = max_array(prev, k); i < n; i++) {
                         uint64_t ub = i;
                         uint64_t lb = min_array(prev, k);
-                        uint64_t minid = rmq(lcp, n, lb, ub);
+                        uint64_t new = rmq(lcp, n, lb, ub);
 #ifdef DEBUG
-                        printf("%6d:%6d,%6d => id=%6d lcp=%6d\n", i, lb, ub, minid, lcp[minid]);
+                        printf("%6d:%6d,%6d => id=%6d", i, lb, ub, new);
 #endif
-                        if (lcp[minid] > max) {
-                                max = lcp[minid];
-                                substr_pos = gsa[minid].pos;
-                                substr_seq = gsa[minid].seq;
+                        if (new > max) {
+                                max = new;
+                                substr_pos = gsa[i].pos;
+                                substr_seq = gsa[i].seq;
                         }
                 }
         }
