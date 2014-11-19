@@ -18,7 +18,7 @@
 */
 
 #include "rmq.h"
-static inline uint64_t min(int a, int b) {
+static inline uint64_t min(uint64_t a, uint64_t b) {
         return a < b ? a : b;
 }
 
