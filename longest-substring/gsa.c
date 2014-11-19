@@ -33,7 +33,9 @@ compute_gsa(gsa_s** gsa, uint64_t** lcp, char** strings, uint64_t k) {
                 char* tmp = strdupa(text);
                 asprintf(&text, "%s%s%c", tmp, strings[seq], (char) seq + 1 + 'Z');
                 len[seq + 1] = len[seq] + strlen(strings[seq]) + 1;
-                printf("%d\n", len[seq + 1]);
+#ifdef DEBUG
+                printf("Len:%d\n", len[seq + 1]);
+#endif
         }
         /*
           Now len[i] is the cumulative length of first i strings
@@ -57,7 +59,9 @@ compute_gsa(gsa_s** gsa, uint64_t** lcp, char** strings, uint64_t k) {
                 (*gsa)[i].pos = sa[i] - len[seq];
                 (*gsa)[i].seq = seq;
                 (*lcp)[i] = lcpt[i];
+#ifdef DEBUG
                 printf("%6d: %6d %6d %6d - %6d\n", i, (*gsa)[i].seq, (*gsa)[i].pos, (*lcp)[i], sa[i]);
+#endif
         }
 
         free(sa);

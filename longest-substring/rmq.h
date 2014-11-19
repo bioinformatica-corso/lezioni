@@ -29,4 +29,4 @@
 #include <math.h>
 
 uint64_t
-rmq(uint64_t* a, uint64_t lb, uint64_t ub);
+rmq(uint64_t* a, size_t size, uint64_t lb, uint64_t ub);

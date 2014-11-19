@@ -10,8 +10,10 @@ CFLAGS_LIBS = `pkg-config --cflags $(STD_LIBS)`
 CFLAGS_TEST =  -DTEST_EVERYTHING  `pkg-config --cflags $(DEBUG_LIBS)`
 LDLIBS = `pkg-config --libs $(STD_LIBS)` -lm
 CFLAGS = $(CFLAGS_STD) $(CFLAGS_EXTRA) $(CFLAGS_LIB)
+debug: CFLAGS += -DDEBUG
 
 CC_FULL = $(CC) $(CFLAGS) $(CFLAGS_LIBS)
+debug: $(P)
 
 bin: $(P) $(LIBS)
 

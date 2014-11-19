@@ -24,8 +24,7 @@
 KSEQ_INIT(gzFile, gzread)
 
 static uint64_t
-min_array(uint64_t* a) {
-        size_t n = sizeof(*a) / sizeof(a[0]);
+min_array(uint64_t* a, size_t n) {
         uint64_t x = a[0];
         for (size_t i = 1; i < n; i++)
                 if (a[i] < x)
@@ -34,8 +33,7 @@ min_array(uint64_t* a) {
 }
 
 static uint64_t
-max_array(uint64_t* a) {
-        size_t n = sizeof(*a) / sizeof(a[0]);
+max_array(uint64_t* a, size_t n) {
         uint64_t x = a[0];
         for (size_t i = 1; i < n; i++)
                 if (a[i] > x)
@@ -66,6 +64,9 @@ static char** read_text(char* filename, uint64_t* kp) {
         char** strings = GC_malloc(*kp * sizeof(char*));
         for (size_t i = 0; i < *kp; i++) {
                 strings[i] = strdup(kv_pop(vec));
+#ifdef DEBUG
+                printf("Input sequence #%d: %s\n", i, strings[i]);
+#endif
         }
         kseq_destroy(seq);
         gzclose(fp);
@@ -114,11 +115,16 @@ int main(int argc, char **argv) {
                         }
                         prev[gsa[i].seq] = i;
                 }
-
-                for(uint64_t i = max_array(prev) - 1; i < n; i++) {
+#ifdef DEBUG
+                printf("Looking for substrings\n");
+#endif
+                for(uint64_t i = max_array(prev, k); i < n; i++) {
                         uint64_t ub = i;
-                        uint64_t lb = min_array(prev);
-                        uint64_t minid = rmq(lcp, lb, ub);
+                        uint64_t lb = min_array(prev, k);
+                        uint64_t minid = rmq(lcp, n, lb, ub);
+#ifdef DEBUG
+                        printf("%6d:%6d,%6d => id=%6d lcp=%6d\n", i, lb, ub, minid, lcp[minid]);
+#endif
                         if (lcp[minid] > max) {
                                 max = lcp[minid];
                                 substr_pos = gsa[minid].pos;

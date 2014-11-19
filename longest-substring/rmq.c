@@ -25,23 +25,38 @@ static inline uint64_t min(int a, int b) {
 static uint64_t** __matrix__ = NULL;
 
 uint64_t
-rmq(uint64_t* a, uint64_t lb, uint64_t ub) {
-        size_t size = sizeof(*a) / sizeof(a[0]);
+rmq(uint64_t* a, size_t size, uint64_t lb, uint64_t ub) {
+        assert(lb <= ub);
+        assert(a != NULL);
         if (__matrix__ == NULL) {
                 /* Initialize the matrix storing the partial RMQ,
                    __matrix__[i][j] stores the RMQ(i, i + 2^j - 1)
                 */
                 size_t logwidth = floor(log2(size));
-                __matrix__ = GC_malloc(size * logwidth);
+                __matrix__ = GC_malloc(size * sizeof(*__matrix__));
                 size_t i, j;
-                for (i = 0; i < size; i++)
+                for (i = 0; i < size; i++) {
+                        __matrix__[i] = GC_malloc(logwidth * sizeof(**__matrix__));
                         __matrix__[i][0] = a[i];
+                }
                 for (j = 1; j <= logwidth; j++) {
                         size_t width = 1 << j;
                         for (i = 0; i + width - 1 < size; i++)
-                                __matrix__[i][j] = min(__matrix__[i][j - 1], __matrix__[i + width][j - 1]);
+                                __matrix__[i][j] = min(__matrix__[i][j - 1], __matrix__[i + width / 2][j - 1]);
                 }
+#ifdef DEBUG
+                printf("RMQ Matrix\n");
+                for (j = 0; j <= logwidth; j++) {
+                        size_t width = 1 << j;
+                        for (i = 0; i + width - 1 < size; i++)
+                                printf("%3d ", __matrix__[i][j]);
+                        printf("\n");
+                }
+#endif
         }
-        size_t width = floor(log2(ub - lb + 1));
+        size_t width = lrint(log2(ub - lb + 1) - 0.5);
+#ifdef DEBUG
+        printf("Query (%6d, %6d). [%6d-%6d] [%6d-%6d]\n", lb, ub, lb, width, ub - width + 1, width);
+#endif
         return min(__matrix__[lb][width], __matrix__[ub - width + 1][width]);
 }
