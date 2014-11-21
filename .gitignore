@@ -29,3 +29,6 @@ note/
 /sa-matching/cmdline.h
 /sa-matching/sa-matching
 /sa-construction/dc
+/longest-substring/cmdline.c
+/longest-substring/cmdline.h
+/longest-substring/substring

@@ -119,6 +119,7 @@ int main(int argc, char **argv) {
                 printf("Looking for substrings\n");
 #endif
                 for(uint64_t i = max_array(prev, k); i < n; i++) {
+                        prev[gsa[i].seq] = i;
                         uint64_t ub = i;
                         uint64_t lb = min_array(prev, k);
                         uint64_t new = rmq(lcp, n, lb, ub);
