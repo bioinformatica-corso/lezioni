@@ -13,9 +13,9 @@ CFLAGS = $(CFLAGS_STD) $(CFLAGS_EXTRA) $(CFLAGS_LIB)
 debug: CFLAGS += -DDEBUG
 
 CC_FULL = $(CC) $(CFLAGS) $(CFLAGS_LIBS)
-bin: $(P) $(LIBS)
-
 debug: $(P)
+
+bin: $(P) $(LIBS)
 
 OBJECTS: substring.o rmq.o gsa.o
 
