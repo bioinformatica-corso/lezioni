@@ -123,6 +123,7 @@ int main(int argc, char **argv) {
                         uint64_t ub = i;
                         uint64_t lb = min_array(prev, k);
                         uint64_t new = rmq(lcp, n, lb, ub);
+                        
 #ifdef DEBUG
                         printf("%6d:%6d,%6d => id=%6d", i, lb, ub, new);
 #endif
