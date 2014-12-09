@@ -21,12 +21,6 @@
 #include "klib/kvec.h"
 KSEQ_INIT(gzFile, gzread)
 
-/* computes the distance between two points */
-static uint64_t uabs(uint64_t a, uint64_t b) {
-        return ((a >= b) ? a - b : b - a);
-}
-
-
 static void read_text(char* filename, char** sp1, char** sp2) {
         gzFile fp = gzopen(filename, "r");
         assert(fp != NULL && "Could not open fasta file\n");
@@ -86,9 +80,6 @@ static char* band_align(uint64_t base, uint64_t extra, char* s1, char* s2) {
         m[0].cell = 0;
         for (uint64_t x = 1; x < band; x++)
                 m[x].cell = 0;
-        for (uint64_t y = 1; y <= l1; y++) {
-                m[y * band].cell = INT_MIN;
-        }
 
         for (uint64_t y = 1; y < l1; y++) {
                 uint64_t sx = y - extra + 1;
@@ -97,7 +88,7 @@ static char* band_align(uint64_t base, uint64_t extra, char* s1, char* s2) {
                 if (dx > l2) dx = l2;
                 {
                         cell_s* tp = m + conv(l1, base, extra, sx, y);
-                        tp->cell = INT_MIN;
+                        tp->cell = 0;
                         tp->prev_x = sx -1;
                         tp->prev_y = y -1;
                         tp = m + conv(l1, base, extra, dx, y);
@@ -105,36 +96,49 @@ static char* band_align(uint64_t base, uint64_t extra, char* s1, char* s2) {
                         tp->prev_x = dx -1;
                         tp->prev_y = y -1;
                 }
-        }
-        for (uint64_t x = sx + 1; x <= dx; x++) {
-                cell_s* tp = m + conv(l1, base, extra, x, y);
-                if (s1[y] == s2[x]) {
-                        tp->cell = m[conv(l1, base, extra, x - 1, y - 1)].cell;
-                        tp->prev_x = x -1;
-                        tp->prev_y = y -1;
-                } else if (m[conv(l1, base, extra, x - 1, y)].cell > m[conv(l1, base, extra, x, y - 1)].cell) {
-                        tp->cell = m[conv(l1, base, extra, x - 1, y)].cell;
-                        tp->prev_x = x - 1;
-                        tp->prev_y = y;
-                } else {
-                        tp->cell = m[conv(l1, base, extra, x, y - 1)].cell;
-                        tp->prev_x = x;
-                        tp->prev_y = y - 1;
+                for (uint64_t x = sx + 1; x <= dx; x++) {
+#ifdef DEBUG
+                        printf("StepB: %d, %d\n", x, y);
+#endif
+                        cell_s* tp = m + conv(l1, base, extra, x, y);
+                        if (s1[y] == s2[x]) {
+                                tp->cell = m[conv(l1, base, extra, x - 1, y - 1)].cell + 1;
+                                tp->prev_x = x -1;
+                                tp->prev_y = y -1;
+                        } else if (m[conv(l1, base, extra, x - 1, y)].cell > m[conv(l1, base, extra, x, y - 1)].cell) {
+                                tp->cell = m[conv(l1, base, extra, x - 1, y)].cell;
+                                tp->prev_x = x - 1;
+                                tp->prev_y = y;
+                        } else {
+                                tp->cell = m[conv(l1, base, extra, x, y - 1)].cell;
+                                tp->prev_x = x;
+                                tp->prev_y = y - 1;
+                        }
+#ifdef DEBUG
+                        printf("StepB result: %d, %d, %d\n", m[conv(l1, base, extra, x, y)].cell,
+                               m[conv(l1, base, extra, x, y)].prev_x, m[conv(l1, base, extra, x, y)].prev_y);
+#endif
                 }
         }
-}
 
 /* reconstruct the solution, if possible */
-uint64_t x = l2;
-uint64_t y = l1;
+        uint64_t x = l2;
+        uint64_t y = l1;
+#ifdef DEBUG
+        printf("StepC: Reconstruction\n");
+#endif
 
-char* lcs = malloc(m[conv(l1, base, extra, l2, l1) + 1].cell * sizeof(char));
-for (cell_s c = m[conv(l1, base, extra, x, y)]; c.cell  > 0; x = c.prev_x, y = c.prev_y) {
-	if (c.cell < 0) return NULL;
-	if (c.prev_x == x - 1 && c.prev_y == y - 1)
-		lcs[c.cell - 1] = s1[x];
-}
-return lcs;
+        char* lcs = malloc(m[conv(l1, base, extra, l2, l1) + 1].cell * sizeof(char));
+        for (cell_s c = m[conv(l1, base, extra, x, y)]; c.cell  > 0; x = c.prev_x, y = c.prev_y) {
+#ifdef DEBUG
+                printf("StepC: %d,%d,%d,%d,%d\n", x, y, c.cell, c.prev_x, c.prev_y);
+#endif
+                if (c.cell < 0) return NULL;
+                if (x <= y - extra) return NULL;
+                if (c.prev_x == x - 1 && c.prev_y == y - 1)
+                        lcs[c.cell - 1] = s1[x];
+        }
+        return lcs;
 }
 
 int main(int argc, char **argv) {
@@ -158,9 +162,13 @@ int main(int argc, char **argv) {
         uint64_t base = l2 - l1 + 1;
         uint64_t extra = 2;
         char* lcs = NULL;
-
-
+#ifdef DEBUG
+        printf("Instance lengths: %d,%d\n", l1, l2);
+#endif
         for (;lcs == NULL && base + 2 * extra <= l2 + 1; extra *= 2) {
+#ifdef DEBUG
+                printf("Step: %d,%d\n", base, extra);
+#endif
                 lcs = band_align(base, extra, s1, s2);
         }
         /* if (lcs != NULL) { */
