@@ -50,19 +50,31 @@ static void read_text(char* filename, char** sp1, char** sp2) {
         kv_destroy(vec);
 }
 
-static uint64_t conv(uint64_t height, uint64_t base, uint64_t extra, uint64_t x, uint64_t y) {
-        assert(x >= y || y - x <= extra + 1);
-        assert(x < y || x - y <= base + 2 + extra);
-        assert(y <= height);
+/**
+   \param: the description of a band, the y coordinate
+   \returns: a range_s that contains the min and max values for the legal range
+   for the y coordinate
+*/
+static range_s range(band_s band, uint64_t y) {
+        range_s r = {0, 0};
+        r.sx = y - band.extra;
+        if (y < band.extra) r.sx = 0;
+        r.dx = y + (band.base - 1) + band.extra;
+        if (r.dx > band.l2) r.dx = band.l2;
+        return r;
+}
 
-        /* if the seeked cell is out of bounds, return 0, which is the worst
-           possible outcome */
-        if (x < y && y - x > extra) return 0;
-        if (x > y && x - y > base + 1 + extra) return 0;
+static uint64_t conv(band_s band, uint64_t x, uint64_t y) {
+        /* assert(x <= y || y - x <= extra); */
+        /* assert(x > y || x - y <= base - 1 + extra); */
+        assert(y <= band.l1);
 
-        if (y == 0) return x;
-        uint64_t band = base + 1 + 2 * extra;
-        return (band * y - 1) + (x - y + extra);
+        /* check if the seeked cell is out of bounds   */
+        assert(x >= y || y - x <= band.extra);
+        assert(x <= y || x - y <= band.base - 1 + band.extra);
+
+        uint64_t width = band.base + 2 * band.extra;
+        return (width * y) + (x - y + band.extra);
 }
 
 /*
@@ -80,46 +92,107 @@ static char* band_align(uint64_t base, uint64_t extra, char* s1, char* s2) {
         m[0].cell = 0;
         for (uint64_t x = 1; x < band; x++)
                 m[x].cell = 0;
+        band_s b = {
+                .base = base,
+                .extra = extra,
+                .l1 = l1,
+                .l2 = l2
+        };
 
-        for (uint64_t y = 1; y < l1; y++) {
-                uint64_t sx = y - extra + 1;
-                if (y < extra) sx = 0;
-                uint64_t dx = y + base + extra;
-                if (dx > l2) dx = l2;
+        for (uint64_t y = 1; y <= l1; y++) {
+                range_s r = range(b, y);
                 {
-                        cell_s* tp = m + conv(l1, base, extra, sx, y);
+                        cell_s* tp = m + conv(b, r.sx, y);
                         tp->cell = 0;
-                        tp->prev_x = sx -1;
-                        tp->prev_y = y -1;
-                        tp = m + conv(l1, base, extra, dx, y);
-                        tp->cell = INT_MIN;
-                        tp->prev_x = dx -1;
-                        tp->prev_y = y -1;
+                        tp->prev_x = 0;
+                        tp->prev_y = 0;
+                        tp = m + conv(b, r.dx, y);
+                        tp->cell = 0;
+                        tp->prev_x = 0;
+                        tp->prev_y = 0;
                 }
-                for (uint64_t x = sx + 1; x <= dx; x++) {
+                for (uint64_t x = r.sx + 1; x <= r.dx; x++) {
 #ifdef DEBUG
                         printf("StepB: %d, %d\n", x, y);
 #endif
-                        cell_s* tp = m + conv(l1, base, extra, x, y);
-                        if (s1[y] == s2[x]) {
-                                tp->cell = m[conv(l1, base, extra, x - 1, y - 1)].cell + 1;
-                                tp->prev_x = x -1;
-                                tp->prev_y = y -1;
-                        } else if (m[conv(l1, base, extra, x - 1, y)].cell > m[conv(l1, base, extra, x, y - 1)].cell) {
-                                tp->cell = m[conv(l1, base, extra, x - 1, y)].cell;
+                        cell_s* tp = m + conv(b, x, y);
+                        tp->cell = m[conv(b, x - 1, y - 1)].cell;
+                        tp->prev_x = x -1;
+                        tp->prev_y = y -1;
+                        if (s1[y - 1] == s2[x - 1]) ++(tp->cell);
+                        if (m[conv(b, x - 1, y)].cell > tp->cell) {
+                                tp->cell = m[conv(b, x - 1, y)].cell;
                                 tp->prev_x = x - 1;
                                 tp->prev_y = y;
-                        } else {
-                                tp->cell = m[conv(l1, base, extra, x, y - 1)].cell;
+                        }
+                        if (x < r.dx && m[conv(b, x, y - 1)].cell > tp->cell) {
+                                tp->cell = m[conv(b, x, y - 1)].cell;
                                 tp->prev_x = x;
                                 tp->prev_y = y - 1;
                         }
 #ifdef DEBUG
-                        printf("StepB result: %d, %d, %d\n", m[conv(l1, base, extra, x, y)].cell,
-                               m[conv(l1, base, extra, x, y)].prev_x, m[conv(l1, base, extra, x, y)].prev_y);
+                        printf("StepB result: %d, %d, %d\n", m[conv(b, x, y)].cell,
+                               m[conv(b, x, y)].prev_x, m[conv(b, x, y)].prev_y);
 #endif
                 }
         }
+
+#ifdef DEBUG
+        printf("CONV: base=%d, extra=%d\n", base, extra);
+        for (uint64_t y = 0; y <= l1; y++) {
+                range_s r = range(b, y);
+                for (uint64_t x = 0; x <= l2; x++) {
+                        if (x < r.sx || x > r.dx)
+                                printf("XX|");
+                        else
+                                printf("%2d|", conv(b, x, y));
+                }
+                printf("\n");
+        }
+        printf("MATRIX: base=%d, extra=%d\n", base, extra);
+        printf("      ");
+        for (uint64_t x = 1; x <= l2; x++)
+                printf(" %c ", s2[x - 1]);
+        printf("\n");
+
+        for (uint64_t y = 0; y <= l1; y++) {
+                if (y > 0)
+                        printf(" %c ", s1[y - 1]);
+                else
+                        printf("   ");
+                range_s r = range(b, y);
+                for (uint64_t x = 0; x <= l2; x++) {
+                        if (x < r.sx || x > r.dx)
+                                printf("XX|");
+                        else
+                                printf("%2d|", m[conv(b, x, y)].cell);
+                }
+                printf("\n");
+        }
+        printf("DIRECTION: base=%d, extra=%d\n", base, extra);
+        printf("      ");
+        for (uint64_t x = 1; x <= l2; x++)
+                printf(" %c ", s2[x - 1]);
+        printf("\n");
+
+        for (uint64_t y = 0; y <= l1; y++) {
+                if (y > 0)
+                        printf(" %c ", s1[y - 1]);
+                else
+                        printf("   ");
+                range_s r = range(b, y);
+                for (uint64_t x = 0; x <= l2; x++) {
+                        if (x < r.sx || x > r.dx)
+                                printf("XX|");
+                        else {
+                                (m[conv(b, x, y)].prev_x < x) ? printf("<") : printf(" ");
+                                (m[conv(b, x, y)].prev_y < y) ? printf("^|") : printf(" |");
+                        }
+                }
+                printf("\n");
+        }
+#endif
+
 
 /* reconstruct the solution, if possible */
         uint64_t x = l2;
@@ -128,15 +201,18 @@ static char* band_align(uint64_t base, uint64_t extra, char* s1, char* s2) {
         printf("StepC: Reconstruction\n");
 #endif
 
-        char* lcs = malloc(m[conv(l1, base, extra, l2, l1) + 1].cell * sizeof(char));
-        for (cell_s c = m[conv(l1, base, extra, x, y)]; c.cell  > 0; x = c.prev_x, y = c.prev_y) {
+        char* lcs = malloc((m[conv(b, l2, l1)].cell + 1) * sizeof(char));
+        lcs[m[conv(b, l2, l1)].cell] = '\0';
+        for (cell_s c = m[conv(b, x, y)]; c.cell  > 0;
+             x = c.prev_x, y = c.prev_y, c = m[conv(b, x, y)]) {
 #ifdef DEBUG
-                printf("StepC: %d,%d,%d,%d,%d\n", x, y, c.cell, c.prev_x, c.prev_y);
+                printf("StepC: %d,%d,%d,%d,%d=%c%c\n", x, y, c.cell, c.prev_x, c.prev_y, s1[y-1], s2[x-1]);
 #endif
                 if (c.cell < 0) return NULL;
-                if (x <= y - extra) return NULL;
-                if (c.prev_x == x - 1 && c.prev_y == y - 1)
-                        lcs[c.cell - 1] = s1[x];
+                range_s r = range(b, y);
+                if (x == r.sx && r.sx > 0 || x == r.dx && r.dx < l2) return NULL;
+                if (s1[y - 1] == s2[x - 1])
+                        lcs[c.cell - 1] = s1[y - 1];
         }
         return lcs;
 }
@@ -160,8 +236,8 @@ int main(int argc, char **argv) {
         uint64_t l1 = strlen(s1);
         uint64_t l2 = strlen(s2);
         uint64_t base = l2 - l1 + 1;
-        uint64_t extra = 2;
-        char* lcs = NULL;
+        uint64_t extra = 1;
+        char* lcs = band_align(base, 0, s1, s2);
 #ifdef DEBUG
         printf("Instance lengths: %d,%d\n", l1, l2);
 #endif
@@ -171,9 +247,9 @@ int main(int argc, char **argv) {
 #endif
                 lcs = band_align(base, extra, s1, s2);
         }
-        /* if (lcs != NULL) { */
-        /*         lcs = std_align(s1, s2); */
-        /* }     */
+        if (lcs == NULL) {
+                lcs = band_align(base, l1, s1, s2);
+        }
 
         if (lcs != NULL) {
                 printf("Longest subsequence:%s\n", lcs);

@@ -4,3 +4,6 @@
 [submodule "karp-rabin/klib"]
 	path = karp-rabin/klib
 	url = https://github.com/attractivechaos/klib.git
+[submodule "band-alignment/klib"]
+	path = band-alignment/klib
+	url = https://github.com/attractivechaos/klib.git

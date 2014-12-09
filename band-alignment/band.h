@@ -34,3 +34,15 @@ typedef struct cell_s {
         uint64_t prev_x;
         uint64_t prev_y;
 } cell_s;
+
+typedef struct range_s {
+        uint64_t sx;
+        uint64_t dx;
+} range_s;
+
+typedef struct band_s {
+        uint64_t l1;
+        uint64_t l2;
+        uint64_t base;
+        uint64_t extra;
+} band_s;
