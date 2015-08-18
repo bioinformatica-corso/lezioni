@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="bigpaper">
+	<layout paper="10000 6000" origin="0 0" frame="10000 6000" crop="yes"/>
+	<titlestyle pos="10 10" color="title" size="LARGE" halign="left" valign="baseline" />
+</ipestyle>

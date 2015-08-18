@@ -1,0 +1,53 @@
+\documentclass[12pt]{beamer}
+\usepackage{pxfonts}
+
+\usepackage{fancyvrb}
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{frame=single,
+fontsize=\scriptsize,
+%fontfamily=helvetica,
+numbersep=1mm,
+numbers=left,
+formatcom=\color{orange}}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{listings}
+\lstset{commentstyle=\color{orange}, keywordstyle=\color{yellow} }
+
+
+\usetheme{Boadilla}
+\useoutertheme{split}
+\usecolortheme{albatross}
+%\setbeamercolor*{normal text}{fg=white!65!black,bg=blue!80!black}
+
+%\usepackage{wallpaper}
+%\CenterWallPaper{0.8}{logounimib}
+
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor*{structure}{fg=green!75!black,bg=blue!70!white}
+\setbeamercolor*{normal text}{fg=green!65!black,bg=blue!80!black}
+\setbeamercolor{palette primary}{use={structure,normal text},fg=green,bg=structure.bg!75!black}
+\setbeamercolor{palette secondary}{use={structure,normal text},fg=structure.fg,bg=structure.bg!60!black}
+\setbeamercolor{palette tertiary}{use={structure,normal text},fg=structure.fg,bg=structure.bg!45!black}
+\setbeamercolor{palette quaternary}{use={structure,normal text},fg=green,bg=structure.bg!75!black}
+\setbeamercolor*{example text}{fg=green!65!black}
+\setbeamercolor*{block body}{bg=structure.bg!90!black}
+\setbeamercolor*{block body alerted}{bg=structure.bg!90!black}
+\setbeamercolor*{block body example}{bg=structure.bg!90!black}
+\setbeamercolor*{block title}{parent=structure,bg=structure.bg!75!black}
+\setbeamercolor*{block title alerted}{use={structure,alerted text},fg=alerted text.fg!75!structure.fg,bg=structure.bg!75!black}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[square]
+\setbeamercolor{item projected}{fg=white}
+\setbeamercolor*{normal text}{fg=white!90!blue,bg=blue!70!black}
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+\setbeamercolor{alerted text}{fg=yellow}
+
+\beamerdefaultoverlayspecification{<+->}
+
+
+
+
+\include{lucidi_bioinformatica_testo}
