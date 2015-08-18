@@ -1,4 +1,4 @@
-2014-15
+Edizione 2015-16
 =======
 
-Elementi di Bioinformatica: 2014-15
+##Materiale del corso
