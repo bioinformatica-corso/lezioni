@@ -10,39 +10,6 @@ pdf: all
 vc.tex:	../.git/logs/HEAD Makefile figs
 	./vc
 
-# Below are the code snippets
-code/KS/KS-leq.c:	../KS/drittel.cpp
-	./cut_lines.sh $< $(@D)
-
-
-code/samtools/calDepth.c:	../samtools/examples/calDepth.c
-	./cut_lines.sh $< $(@D)
-
-code/samtools/samclose.c:	../samtools/sam.c
-	./cut_lines.sh $< $(@D)
-
-code/samtools/bam_import_sam_header_parse.c:	../samtools/bam_import.c
-	./cut_lines.sh $< $(@D)
-
-code/samtools/sam_import_sam_header_parse2.c:	../samtools/sam_header.c
-	./cut_lines.sh $< $(@D)
-
-code/samtools/bam_parse_region.c:	../samtools/bam_aux.c
-	./cut_lines.sh $< $(@D)
-
-code/samtools/bgzf-1.c:	../samtools/bgzf.c
-	./cut_lines.sh $< $(@D)
-
-
-
-
-code: code/KS/KS-leq.c code/samtools/calDepth.c \
-      code/samtools/samclose.c \
-code/samtools/bam_import_sam_header_parse.c \
-code/samtools/sam_import_sam_header_parse2.c \
-code/samtools/bam_parse_region.c \
-code/samtools/bgzf-1.c
-
 
 #The Makefile is released under a Creative Commons Attribution license.
 #The full text of the license is available here.

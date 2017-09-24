@@ -55,10 +55,10 @@ Ufficio U14-2041
 \item
 \url{http://gianluca.dellavedova.org}
 \item
-\url{http://elearning.unimib.it/course/view.php?id=4071}
+\url{https://elearning.unimib.it/course/view.php?id=15423}
 \item
 \url{gianluca.dellavedova@unimib.it}
-\item\url{https://github.com/bioinformatica-corso/2015-16}
+\item\url{https://github.com/bioinformatica-corso/programmi-elementi-bioinformatica}
 \item\url{https://github.com/bioinformatica-corso/lezioni}
 \end{itemize}
 \end{frame}
@@ -1622,7 +1622,7 @@ Smith-Waterman sulle regioni
 \end{frame}
 \end{comment}
 
-
+\begin{comment} 
 \begin{frame}[fragile]
 \frametitle{SamTools: sloccount}
 \begin{verbatim}
@@ -1795,75 +1795,21 @@ Come è fatto \verb+list_t+?
 \frametitle{SamTools: bgzf}
 \lstinputlisting{code/samtools/bgzf-13.c}
 \end{frame}
+\end{comment}
 
 
+\begin{frame}[fragile]
+\frametitle{Filogenesi perfetta.}
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Filogenesi. Neighbor-Joining.}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Clearcut}
-\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Sequenziamento e grafi di de Brujin}
 \end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Velvet}
-\end{frame}
-
-
-
-\begin{comment}
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\lstinputlisting{code/sais/sais.c}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\lstinputlisting{code/sais/sais_main.1}
-\end{frame}
-\end{comment}
-
-
-%  \begin{frame}
-%    \frametitle{Consensus Clustering}
-%    \begin{block}{Problem}
-%      \alert{Input}: set $\Pi$ of partitions of $U$\\
-%      \alert{Output}: a partition $P$ of $U$\\
-%      \alert{Goal}: $P$ the best possible representative of $\Pi$
-%    \end{block}
-
-%    \begin{block}{Objective Function}
-%      \begin{itemize}
-%      \item
-%        Symmetric difference between two partitions =
-%        Pairs of elements clustered differently
-%      \item
-%        $d(P,\Pi)=\sum_{\pi\in \Pi}d(\pi,P)$
-%      \end{itemize}
-%    \end{block}
-%  \end{frame}
-
-
-
-% \begin{frame}\frametitle{Finestre}
-%   \begin{itemize}
-%   \item
-%     Editor (F5)
-%   \item
-%     Log (F6)
-%   \item
-%     Output (F7)
-%   \item
-%     Icona Esegui (F8)
-%   \end{itemize}
-% \end{frame}
-
 
 
 
@@ -1873,7 +1819,7 @@ Come è fatto \verb+list_t+?
   Quest'opera {\`e} soggetta alla licenza Creative Commons: Attribuzione-Condividi
   allo stesso modo 3.0.
 
-  \verb+http://creativecommons.org/licenses/by-sa/3.0/+
+  \verb+https://creativecommons.org/licenses/by-sa/4.0/+
 
   Sei libero di riprodurre, distribuire, comunicare al pubblico, esporre in
   pubblico, rappresentare, eseguire, recitare e modificare quest'opera
@@ -1893,133 +1839,6 @@ Come è fatto \verb+list_t+?
 
 
 
-\begin{comment}
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\begin{block}{S-type/L-type suffix}
-\begin{itemize}
-\item
-$S[i:]$ e $S[i]$ sono  S-type se $S[i:] < S[i+1:]$
-\item
-$S[i:]$ e $S[i]$ sono  L-type se $S[i:] > S[i+1:]$
-\item
-$S[n-1:]$ è S-type
-\end{itemize}
-\end{block}
-
-\begin{block}{Test S-type}
-$S[i]$ è S-type se:
-\begin{enumerate}
-\item
-$S[i] < S[i + 1]$ oppure
-\item
-$S[i] = S[i + 1]$ e  $S[i + 1]$ sono S-type
-\end{enumerate}
-\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\begin{block}{Bucket}
-Sottoarray dei suffissi che iniziano con lo stesso carattere
-\end{block}
-\begin{block}{S-type/L-type Bucket}
-\begin{enumerate}
-\item
-All'interno di un bucket,  L-suffissi precedono S-suffissi
-\item
-L-bucket, S-bucket
-\end{enumerate}
-\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\alert{LMS}: Leftmost S-type
-\begin{block}{LMS character}
-$S[i]$ è LMS se $S[i]$ è S-type e $S[i-1]$ è L-type
-\end{block}
-\begin{block}{LMS suffix}
-$S[i:]$ è LMS se $S[i]$ è LMS
-\end{block}
-\begin{block}{LMS substring}
-\begin{itemize}
-\item
-$S[n-1:n-1]$ è LMS
-\item
-$S[i:j]$ è LMS se $S[i]$ e $S[j]$ sono LMS e nessun $S[l]$ con $i<l<j$ è LMS
-\end{itemize}
-\end{block}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS: sais.h}
-\lstinputlisting{code/sais/sais.h}
-\begin{block}{Parametri}
-\begin{itemize}
-\item
-\verb!k!: dimensione alfabeto
-\item
-\verb!n!: lunghezza testo
-\item
-\verb!T!: Testo
-\item
-\verb!SA!: Suffix Array
-\end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{SAIS: main}
-\lstinputlisting{code/sais/sais_int.c}
-\onslide<2->{\lstinline+sais_main+ gestisce i casi non banali}
-\end{frame}
-
-
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\lstinputlisting{code/sais/sais.C-alphabet.c}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{SAIS}
-\lstinputlisting{code/sais/sais.start-end-bucket.c}
-  \begin{itemize}[<+->]
-  \item
-Come migliorare il codice?
-\item
-12: \lstinline!B[i]=sum; sum+=C[i];!
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS: sais\_main}
-\lstinputlisting{code/sais/sais_main.1}
-code/sais/sais.c
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS: sais\_main}
-\lstinputlisting{code/sais/sais_main.2}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS: sais\_main}
-\lstinputlisting{code/sais/sais_main.2.1}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{SAIS: sais\_main}
-\lstinputlisting{code/sais/sais_main.3}
-\end{frame}
-\end{comment}
 
 
 \end{document}
