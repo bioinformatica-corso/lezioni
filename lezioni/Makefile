@@ -42,4 +42,4 @@ clean :
 	rm -f ./*.pdf ./figures/*.pdf && latexmk -c
 
 release: pdf vc.tex
-	$(foreach f,$(TARGETS), ~/bin/dropbox_uploader.sh upload $(f) elementi-bioinformatica;)
+	$(foreach f,$(TARGETS), cp $(f) ~/nobackup/B121/Elementi Bioinformatica;)

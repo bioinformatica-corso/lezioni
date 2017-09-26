@@ -174,7 +174,7 @@ AND con $U[T[j]]$
 \item
 \alert{$\omega$}: word size
 \item
-$C[j] = \left( \left(C[j-1] >> 1 \right) \  ||\ \left(1 << (\omega -1) \right) \right)\ \&\  U[T[j]]$;
+$C[j] = \left( \left(C[j-1] >> 1 \right) \  | \  \left(1 << (\omega -1) \right) \right)\ \&\  U[T[j]]$;
 \end{itemize}
 \end{block}
 \end{frame}
