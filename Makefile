@@ -4,10 +4,10 @@ LATEXMK = latexmk -recorder -use-make
 all : $(TARGETS)
 pdf: all
 
-%.pdf : %.tex lucidi_bioinformatica_testo.tex vc.tex code
+%.pdf : %.tex lucidi_bioinformatica_testo.tex vc.tex
 	$(LATEXMK) -pdf $<
 
-vc.tex:	../.git/logs/HEAD Makefile figs
+vc.tex:	.git/logs/HEAD Makefile figs
 	./vc
 
 
