@@ -1,4 +1,0 @@
-cmdline.*
-karp-rabin
-tests/*.gz
-tests/output/
