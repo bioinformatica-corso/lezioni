@@ -53,7 +53,7 @@ Elementi di Bioinformatica
 \item
 Ufficio U14-2041
 \item
-\url{http://gianluca.dellavedova.org}
+\url{https://gianluca.dellavedova.org}
 \item
 \url{https://elearning.unimib.it/course/view.php?id=15423}
 \item
@@ -506,6 +506,37 @@ $Lcp$&0&1&3&0&0&2&-\\\hline
 \end{frame}
 
 \begin{frame}[fragile]
+\frametitle{Sottostringa comune più lunga di due stringhe}
+\begin{block}{Due stringhe $s_{1}$ e $s_{2}$}
+\begin{itemize}[<+->]
+\item
+Suffix tree generalizzato = insieme di stringhe
+\item
+$ST(s_{1}\$_{1}s_{2}\$_{2})$
+\item
+Nodo $x$ con foglie di $s_{1}$ e $s_{2}$
+\item
+Sottostringa di $s_{1}$ e $s_{2}$
+\item
+$ST(s_{1}\$s_{2}\$)$
+\item
+Max string-depth
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Suffix tree generalizzato}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{ST-banana-panna}
+\end{center}
+$s_{1}$: BANANA\$, $s_{2}$: PANNA\$
+\end{frame}
+
+
+\begin{frame}[fragile]
 \frametitle{Pattern matching su suffix array}
 \begin{block}{Occorrenza $P$ in $T$}
 Suffissi di $T$ che iniziano con $P$
@@ -515,11 +546,11 @@ Suffissi di $T$ che iniziano con $P$
 \item
 Ricerca dicotomica
 \item
-Tempo $O(m \log m)$ -- caso pessimo
+Tempo $O(m \log n)$ -- caso pessimo
 \item
 Controllare tutto $P$ ad ogni iterazione
 \item
-$log_{2} m$ iterazioni
+$log_{2} n$ iterazioni
 \end{itemize}
 \end{block}
 \end{frame}
@@ -719,37 +750,6 @@ SAIS \url{https://sites.google.com/site/yuta256/}
 
 \begin{frame}[fragile]
 \frametitle{Sottostringa comune più lunga}
-\begin{block}{Due stringhe $s_{1}$ e $s_{2}$}
-\begin{itemize}[<+->]
-\item
-Suffix tree generalizzato = insieme di stringhe
-\item
-$ST(s_{1}\$_{1}s_{2}\$_{2})$
-\item
-Nodo $x$ con foglie di $s_{1}$ e $s_{2}$
-\item
-Sottostringa di $s_{1}$ e $s_{2}$
-\item
-$ST(s_{1}\$s_{2}\$)$
-\item
-Max string-depth
-\end{itemize}
-\end{block}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Suffix tree generalizzato}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{ST-banana-panna}
-\end{center}
-$s_{1}$: BANANA\$, $s_{2}$: PANNA\$
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Sottostringa comune più lunga}
 \begin{block}{$k$ stringhe $\{s_{1}, \ldots , s_{k}\}$}
 \begin{enumerate}[<+->]
 \item
@@ -799,6 +799,8 @@ Algoritmo complesso, ma pratico
 \end{itemize}
 \end{block}
 \end{frame}
+
+
 
 \begin{frame}[fragile]
 \frametitle{Sottostringa comune più lunga di $k$ stringhe}
