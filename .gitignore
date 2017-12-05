@@ -32,3 +32,15 @@ note/
 /longest-substring/cmdline.c
 /longest-substring/cmdline.h
 /longest-substring/substring
+*.aux
+*.latexmk
+*.fls
+*.log
+*.nav
+*.pdf
+*.snm
+*.toc
+*.vrb
+*_latexmk
+/vc.tex
+/auto/header-video.el

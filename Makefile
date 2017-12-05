@@ -1,11 +1,19 @@
-TARGETS = lucidi_bioinformatica_stampa.pdf lucidi_bioinformatica_video.pdf
-LATEXMK = latexmk -recorder -use-make
+stampatexs=$(wildcard *-stampa.tex)
+videotexs=$(wildcard *-video.tex)
+stampapdfs=$(stampatexs:.tex=.pdf)
+videopdfs=$(videotexs:.tex=.pdf)
+LATEXMK = latexmk -recorder -use-make -interaction=nonstopmode -f
 
-all : $(TARGETS)
-pdf: all
+pdf: $(videopdfs)
 
-%.pdf : %.tex lucidi_bioinformatica_testo.tex vc.tex
+%-video.pdf : %-video.tex %-testo.tex
 	$(LATEXMK) -pdf $<
+
+%-stampa.pdf : %-stampa.tex %-testo.tex
+	$(LATEXMK) -pdf $<
+
+clean :
+	rm -f ./*.pdf ./figures/*.pdf *.snm *.nav *.vrb && latexmk -c
 
 vc.tex:	.git/logs/HEAD Makefile figs
 	./vc
@@ -38,8 +46,5 @@ figs: $(pdfs) $(burstpdfs) $(externalfigs) $(svgfigspdf)
 %.pdf : %.svg
 	inkscape $< --export-pdf=$@
 
-clean :
-	rm -f ./*.pdf ./figures/*.pdf && latexmk -c
-
-release: pdf vc.tex
-	cp $(TARGETS) ~/nobackup/B121/Elementi\ Bioinformatica;
+release: $(videopdfs) $(stampapdfs)
+	cp $(videopdfs) $(stampapdfs) ~/Corsi/elementi-bioinformatica/lezioni;

@@ -1,0 +1,63 @@
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf}
+\usepackage{verbatim}
+\usepackage{inconsolata}
+\usepackage{listings}
+\lstset{language=C, frame=single,
+  basicstyle=\scriptsize\ttfamily,
+  numbers=left, numberstyle=\tiny\color{gray},
+   numbersep=5pt, fancyvrb=true
+}
+
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+% \usepackage{fontspec}
+% \setmainfont{Palatino}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{%
+  arrows,
+  arrows.meta,
+  positioning,
+  calc,
+  backgrounds,
+  chains,
+  matrix,
+  patterns,
+  automata,
+  fit,
+  graphs,
+  decorations,
+  decorations.pathmorphing,
+  decorations.pathreplacing,
+  decorations.markings,
+}
+
+\usepgflibrary{shapes,shapes.geometric}
+
+
+\usepackage{url}
+\usepackage{xmpmulti}
+% \usepackage{euler}
+\usepackage[T1]{fontenc}
+\pdfpagebox5
+% \immediate\write18{sh ./vc}
+% \input{vc}
+
+\author{Gianluca Della Vedova}
+\title{Elementi di Bioinformatica}
+\institute{Univ. Milano--Bicocca\\
+  \texttt{http://gianluca.dellavedova.org}}
+\date{\today}
+%\pgfdeclareimage[height=1cm]{university-logo}{logounimib}
+%\logo{\pgfuseimage{university-logo}}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+\beamerdefaultoverlayspecification{<+->}
+\begin{document}

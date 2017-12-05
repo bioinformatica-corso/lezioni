@@ -15,6 +15,30 @@
 % \usepackage{fontspec}
 % \setmainfont{Palatino}
 
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{%
+  arrows,
+  arrows.meta,
+  positioning,
+  calc,
+  backgrounds,
+  chains,
+  matrix,
+  patterns,
+  automata,
+  fit,
+  graphs,
+  decorations,
+  decorations.pathmorphing,
+  decorations.pathreplacing,
+  decorations.markings,
+}
+
+\usepgflibrary{shapes,shapes.geometric}
+
+
 \usepackage{url}
 \usepackage{xmpmulti}
 % \usepackage{euler}
@@ -1447,9 +1471,626 @@ Smith-Waterman sulle regioni
 \frametitle{Filogenesi perfetta.}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Filogenesi. Neighbor-Joining.}
+
+\begin{frame}
+\frametitle{Evolution}
+
+\centering
+\includegraphics<1>[height=0.6\textheight]{figures/evolution-desk-720x380.jpg}
+
+\begin{itemize}
+  \item
+    Change over generations
+  \item Random mutations
+  \end{itemize}
 \end{frame}
+
+% \begin{frame}
+% \frametitle{Good Evolution}
+
+% \centering
+% \includegraphics<1>[height=0.6\textheight]{figures/selective-pressure.jpg}
+
+% \end{frame}
+
+\begin{frame}
+\frametitle{Actual Mutation}
+ 
+\centering
+\includegraphics<1>[height=0.6\textheight]{figures/dna_strand.jpg}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Hollywood Mutation}
+
+\centering
+\includegraphics<1>[height=0.85\textheight]{figures/spiderman-spider-bite-comic}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Individual Evolution}
+
+\centering
+  \includegraphics[width=\linewidth]{figures/progression}
+  \begin{itemize}
+    \item
+      Cells \alert{accumulate} mutations throughout the entire life
+  % \item
+  %   Accumulate mutation $\Rightarrow$ perfect phylogeny
+  \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Character-based evolution}
+
+\centering
+\includegraphics<1>[height=0.55\textheight]{figures/perfect-phylogeny}
+
+\begin{block}{A possible rule}
+Each character is gained \alert{exactly once} in the tree.
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Perfect Phylogeny Problem}
+\begin{columns} 
+  \begin{column}{0.48\textwidth}
+{    \scriptsize
+ \begin{tabular}{l|ccccc}
+        & A & J & H & L & V\\ \hline
+        Scorpion& 0 & 0 & 0 & 0 & 0\\
+        Lamprey& 0 & 0 & 0 & 0 & 1\\
+        Tuna& 0 & 1 & 0 & 0 & 1\\
+        Salamander& 0 & 1 & 0 & 1 & 1\\
+        Turtle& 1 & 1 & 0 & 1 & 1\\
+        Leopard& 1 & 1 & 1 & 1 & 1
+ \end{tabular}
+}\begin{block}{Problem}
+  \begin{itemize}
+    \item
+  Input: a binary matrix $M$
+    \item
+      Output: a tree \alert{explaining} $M$, if it exists
+\end{itemize}
+\end{block}
+
+\end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \centering
+\includegraphics<1>[height=0.52\textheight]{figures/perfect-phylogeny}
+\end{column}
+\end{columns}
+\begin{block}{Linear time algorithm (Gusfield, Networks 1991)}
+  \begin{enumerate}
+    \item
+      Sort the columns by decreasing number of $1$s
+    \item
+      Radix sort the rows
+    \item
+      Build the tree
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Losing characters}
+
+\centering
+\includegraphics<1>[height=0.65\textheight]{figures/classification-of-life-taxonomy}
+
+\begin{block}{A possible rule}
+Each character can be lost (once).
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Characters and States}
+
+\begin{block}{Change of state}
+  \begin{itemize} 
+\item  A character $c$ is \alert{gained} $\Rightarrow$  the state of $c$ changes from $0$ to $1$
+  in an edge
+\item  A character $c$ is \alert{lost} $\Rightarrow$  the state of $c$ changes from $1$ to $0$
+  in an edge (\alert{backmutation})
+\end{itemize}
+\end{block}
+
+\begin{block}{Models of Evolution}
+  Each character $c$ is gained \alert{exactly once} in the tree.
+\begin{enumerate}
+\item
+  Perfect Phylogeny:  No backmutations
+\item
+  Persistent Phylogeny: Each character can be lost at most once in the tree.
+\alert{$012$ model}
+\item
+  \alert{Dollo} parsimony: 
+  Unlimited backmutations
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Persistent Phylogeny}
+\begin{columns} 
+  \begin{column}{0.48\textwidth}
+    \begin{block}{Instance}
+ \begin{tabular}{c|cccccc}\scriptsize
+        $M$& $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$\\ \hline
+        $s_1$ & 0 & 0 & 0 & 1 & 0 & 0\\
+        $s_2$ & 0 & 0 & 1 & 1 & 1 & 1\\
+        $s_3$ & 0 & 1 & 1 & 0 & 0 & 0 \\
+        $s_4$ & 1 & 1 & 0 & 0 & 0 & 0 \\
+        $s_5$ & 1 & 1 & 1 & 0 & 1 & 0\\
+        $s_6$ & 0 & 1 & 1 & 1 & 1 & 0
+ \end{tabular}
+\end{block}
+\begin{block}{Problem}
+  \begin{itemize}
+    \item
+  Input: a binary matrix $M$
+    \item
+Output: a persistent phylogeny consistent with $M$, if it exists
+\end{itemize}
+\end{block}
+
+\end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \centering
+    \begin{tikzpicture}[sibling distance=25mm, scale=0.6]
+    \node[circle,draw]           (00000000) {}
+    child {node[rectangle,draw]     (00010000) {$s_{1}$}
+      child {node[circle,draw]     (00110000) {}
+        child {node[circle,draw]  (00111000) {}
+          child {node[rectangle,draw]  (00111100) {$s_{2}$}
+            edge from parent node[left] {$c_{6^{+}}$}
+          }
+          child {node[rectangle,draw]     (01111000) {$s_{6}$}
+            child {node[circle,draw]     (01101000) {}
+              child {node[rectangle,draw]     (11101000) {$s_{5}$}
+                child {node[circle,draw]     (11100000) {}
+                  child {node[rectangle,draw]     (01100000) {$s_{3}$}
+                    edge from parent node[left] {$c_{1}^{-}$}
+                  }
+                  child {node[rectangle,draw]     (11000000) {$s_{4}$}
+                    edge from parent node[right] {$c_{3}^{-}$}
+                  }
+                  edge from parent node[right] {$c_{5}^{-}$}
+                }
+                edge from parent node[right] {$c_{1}^{+}$}
+              }
+              edge from parent node[right] {$c_{4}^{-}$}
+            }
+            edge from parent node[right] {$c_{2}^{+}$}
+          }
+          edge from parent node[right] {$c_{5}^{+}$}
+        }
+        edge from parent node[right] {$c_{3}^{+}$}
+      }
+      edge from parent node[right] {$c_{4}^{+}$}
+    };
+    \end{tikzpicture}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Tumor}
+
+\centering
+  \includegraphics[width=0.8\linewidth]{figures/tumor-heterogeneous}
+  \begin{itemize}
+    \item 
+      A \alert{tumor} is a mixture of healthy and cancer cells
+    \item 
+      A \alert{tumor} is a mixture of cancer clones
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Tumor Evolution}
+
+\centering
+  \includegraphics[width=\linewidth]{figures/clonal}
+\begin{itemize}
+\item Different clones make different fractions of the tumor 
+\end{itemize}
+\end{frame}
+
+
+\def\mut#1#2{%
+\begin{scope}[shift={#1}]
+\node[thick,draw,fill=blue!70,circle, scale=3.5] (#2) {};
+\end{scope}
+}
+
+\def\muta#1#2{%
+\begin{scope}[shift={#1}]
+\mut{(0,0)}{#2};
+\draw[fill=white] (0,0) circle (.1);
+\end{scope}
+}
+
+\def\mutb#1#2{%
+\begin{scope}[shift={#1}]
+\muta{(0,0)}{#2};
+\node[fill,color=brown,star, star points=6,scale=0.75] at (45:0.3) {};
+\end{scope}
+}
+
+\def\mutc#1#2{%
+\begin{scope}[shift={#1}]
+\muta{(0,0)}{#2};
+\node[fill,color=green,regular polygon, regular polygon sides=3,scale=0.65] at (90:0.3) {};
+\end{scope}
+}
+
+\def\mutd#1#2{%
+\begin{scope}[shift={#1}]
+\mutc{(0,0)}{#2};
+\node[fill,color=red,regular polygon, regular polygon sides=4,scale=0.75] at (0:0.3) {};
+\end{scope}
+}
+
+\def\mute#1#2{%
+\begin{scope}[shift={#1}]
+\mutd{(0,0)}{#2};
+\node[draw,cross out, draw=pink, very thick,scale=.8] at (180:.3) {};
+\end{scope}
+}
+
+\def\mutf#1#2{%
+\begin{scope}[shift={#1}]
+\mutd{(0,0)}{#2};
+\node[draw,diamond,scale=0.6, fill,color=blue]  at (270:0.3) {};
+\end{scope}
+}
+
+\begin{frame}
+\frametitle{Tumor Evolution}
+
+\begin{columns} 
+  \begin{column}{0.48\textwidth}
+\centering
+\resizebox{0.95\textwidth}{!}{\begin{tikzpicture}[,>=triangle 60]
+\mutf{(-5,5)}{s5};
+\muta{(-5.5,7)}{s4};
+\muta{(-4,9)}{s4};
+
+\muta{(-2.4,5.8)}{s4};
+\mutb{(-1.2,6.7)}{s1};
+\mutb{(-3.5,7)}{s1};
+\mutc{(-2,8.2)}{s3};
+\mutc{(-0.2,8)}{s3};
+
+\mutc{(-4,2)}{s1};
+\mut{(-2.5,2)}{};
+\mut{(0.5,3.5)}{};
+\mut{(-4.5,3.5)}{};
+\mutd{(0.5,1.8)}{s6};
+\mute{(-3,3.5)}{s2};
+\mutf{(-1.2,3)}{s5};
+\mutc{(0.5,5)}{s32};
+
+\draw[rotate=30,thick] (2,7) ellipse (2.8 and 2.1);
+\node at (-4,0.5) {Sample 1};
+\draw[rotate=0,thick] (-3,2.8) ellipse (2.8 and 1.8);
+\node at (-2,10) {Sample 2};
+\end{tikzpicture}}
+\end{column}
+  \begin{column}{0.48\textwidth}
+
+\begin{itemize}
+\item A \alert{sample} is a mixture of clones
+\item For each sample, we have the \alert{frequency} of each mutation
+\item
+  frequency matrix $F$
+%\item inference of tumoral phylogeny
+\end{itemize}
+
+\centering
+\resizebox{0.95\textwidth}{!}{\begin{tikzpicture}[scale=0.8]
+\draw[fill=white] (3,2) circle (.1);
+\node[fill,color=brown,star, star points=6,scale=0.75] at (6,2) {};
+\node[fill,color=green,regular polygon, regular polygon sides=3,scale=0.65] at (2,2) {};
+\node[draw,cross out, draw=pink, very thick,scale=.8] at (5,2) {};
+\node[draw,diamond,scale=0.6, fill,color=blue]  at (1,2) {};
+\node[fill,color=red,regular polygon, regular polygon sides=4,scale=0.75] at (4,2) {};
+
+\node at (1,1) {0.2}; \node at (2,1) {0.6}; \node at (3,1) {0.6};
+\node at (4,1) {0.4}; \node at (5,1) {0.2}; \node at (6,1) {0.0};
+\node at (1,0) {0.0}; \node at (2,0) {0.4}; \node at (3,0) {1.0};
+\node at (4,0) {0.0}; \node at (5,0) {0.0}; \node at (6,0) {0.4};
+
+\node at (0,1) {$S_{1}$}; \node at (0,0) {$S_{2}$};
+\end{tikzpicture}}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Tumor Evolution: Compute}
+
+\begin{columns} 
+  \begin{column}{0.38\textwidth}
+    \begin{block}{Matrix $B$ representing tree $T$}
+    \end{block}
+\centering
+\resizebox{0.79\textwidth}{!}{\begin{tikzpicture}[scale=0.8]
+\draw[fill=white] (3,2) circle (.1);
+\node[fill,color=brown,star, star points=6,scale=0.75] at (6,2) {};
+\node[fill,color=green,regular polygon, regular polygon sides=3,scale=0.65] at (2,2) {};
+\node[draw,cross out, draw=pink, very thick,scale=.8] at (5,2) {};
+\node[draw,diamond,scale=0.6, fill,color=blue]  at (1,2) {};
+\node[fill,color=red,regular polygon, regular polygon sides=4,scale=0.75] at (4,2) {};
+\end{tikzpicture}}
+\begin{tabular}{rrrrrr}
+    0 & 0 & 1 & 0 & 0 &1  \\
+  0 & 1 & 1 & 1 & 1 &0  \\
+  0 & 1 & 1 & 0 & 0 &0  \\
+  0 & 0 & 1 & 0 & 0 &0  \\
+  1 & 1 & 1 & 1 & 0 &0  \\
+\end{tabular}
+    \begin{block}{Usage matrix $U$}
+    \end{block}
+\resizebox{0.99\textwidth}{!}{\begin{tabular}{rrrrr}
+     \multicolumn{5}{c}{Species}\\
+  0 & 0.2 & 0.2 & 0 & 0.2  \\
+  0.4 & 0 & 0.4 & 0.2 & 0   \\
+\end{tabular}}
+\end{column}
+
+
+  \begin{column}{0.58\textwidth}
+  \resizebox{\textwidth}{!}{
+  \begin{tikzpicture}[>=triangle 60]
+    \mut{(3,9.5)}{N};
+    \muta{(3,7)}{s4};
+    \mutb{(5,0.5)}{s1};
+    \mutc{(0,5)}{s3};
+\mutd{(-2,2.8)}{s6};
+\mute{(-3,0.5)}{s2};
+\mutf{(-1,0.5)}{s5};
+\mutc{(1,0.5)}{s32};
+\muta{(3,0.5)}{s42};
+\draw[thick,->,>=stealth] (N) to node[midway, right=5pt,circle, fill, scale=.6] (e1){} node[right=10pt]{}(s4) ;
+\draw[thick,->,>=stealth] (s4) to node[near start,right=5pt,fill,color=brown,star, star points=7,scale=0.6]  {}node[right=10pt,near start]{} (s1) ;
+\draw[thick,->,>=stealth] (s4) to node[near start,left=5pt,fill,color=green,regular polygon, regular polygon sides=3,scale=0.45]  {} node[left=10pt,near start]{} (s3) ;
+\draw[thick,->,>=stealth] (s3) to node[near start,left=5pt,fill,color=red,regular polygon, regular polygon sides=4,scale=0.7]  {} node[left=10pt,near start]{} (s6) ;
+\draw[thick,->,>=stealth] (s6) to node[near start,left=5pt,draw,cross out, pink, very thick,scale=.7]  {} node[left=10pt,near start]{} (s2) ;
+\draw[thick,->,>=stealth] (s6) to node[near start,right=5pt,fill,diamond,scale=0.5, fill,color=blue]  {} node[right=10pt,near start]{} (s5) ;
+\draw[thick,->,>=stealth] (s3) -- (s32) ;
+\draw[thick,->,>=stealth] (s4) to   (s42) ;
+
+\draw (-4,-1) rectangle node[pos=.18] {Sample 1}(1.9,1.5);
+\draw[dashed] (6,-1.5) rectangle node[yellow, pos=.2] {Sample 2}(0.0,2);
+  \end{tikzpicture}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tumor Evolution}
+
+\centering
+\resizebox{0.4\textwidth}{!}{$F=UB$}
+
+\vspace{1ex}
+\onslide<2->{
+\begin{block}{Approaches}
+  \begin{itemize}
+  \item
+    Split-row (Hajirasouliha and Raphael, WABI, 2014).
+    Guess the composition of each sample.
+  \item
+    AncesTree (El-Kebir, Bioinformatics, 2015).
+    Guess the phylogeny, constraint on the frequencies.
+  \end{itemize}
+\end{block}}
+\onslide<3->{
+\begin{block}{Model}
+ Perfect phylogeny $\Rightarrow$ infinite site assumption
+\end{block}
+\begin{block}{Cons}
+    no mutation loss
+\end{block}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Attack to the infinite site assumption!}
+
+\begin{itemize}
+  \item
+``Our results refute the general validity of
+the infinite sites assumption''
+  \item
+``6 childhood
+acute lymphoblastic leukemia (ALL) patients \ldots
+Our test returns extremely high BFs\footnote{BF: Bayes Factor.
+ It is ratio of the likelihoods of seeing the
+  actual data given the infinite site assumption and the finite site assumption} in the
+range 
+of \alert{$10^{5}$} to \alert{$10^{15}$} \ldots
+for all samples apart from patient 5, the recurrent
+mutation is a \alert{back mutation}''
+\end{itemize}
+
+\vspace{1ex}
+From: A statistical test on single-cell data reveals widespread
+recurrent mutations in tumor evolution, Kuipers et al., BioRxiv, 2016
+\end{frame}
+
+\begin{frame}
+\frametitle{Back mutations for the win!}
+
+\begin{itemize}
+  \item
+``infer the phylogeny for individual patients using the \alert{Dollo parsimony}
+method and a branch and bound exhaustive search for the best phylogenetic
+reconstruction''
+  \item
+``In genomically unstable cancers, \alert{deletion of
+  large chromosomal segments is common}''
+  \item
+``large deletions on
+several branches of a tree can span a shared locus, and thus a given mutation may be \alert{deleted independently multiple
+times}''
+\end{itemize}
+
+\vspace{1ex}
+From:
+Brown, D. et al. Phylogenetic analysis of metastatic progression
+in breast cancer using somatic mutations and copy number aberrations. Nat. Commun.
+8, 14944 doi: 10.1038/ncomms14944 (2017)
+\end{frame}
+
+\begin{frame}
+\frametitle{Tumor Evolution}
+
+\begin{columns} 
+  \begin{column}{0.4\textwidth}
+\begin{block}{Approaches}
+  \begin{itemize}
+  \item
+    Persistent Phylogeny (Bonizzoni et al., ACM BCB, 2017)
+  \item
+    ILP
+  \item
+    Also Dollo$(k)$
+  \item
+    choose number of clones
+  \end{itemize}
+\end{block}
+\end{column}
+  \begin{column}{0.5\textwidth}
+
+\centering
+
+\uncover<2->{
+\resizebox{!}{17em}{
+  \begin{tikzpicture}[
+    sibling distance=55mm,
+    level 5/.style={sibling distance=45mm},
+  every node/.style = {shape=ellipse, draw, align=center},
+  loss/.style = {draw=blue, fill=red, text=black, align=center}
+  ]
+  \node {Germline}
+    child { node { SAMHD1 }
+      child { node { EXOC6B }
+        child {node { NAMPTL }
+            child {node { SLC12A1 }
+                child {node { PLA2G16 }
+                    child {node { DAZAP1 }
+                        child {node[loss] { NAMPTL- }
+                            child {node { LRRC16A }
+                                child {node { GHDC }}
+                            }
+                        }
+                    }
+                }
+            }
+            child {node[loss] { EXOC6B- }
+                child {node { NOD1 }}
+                child {node { BCL2L13 }
+                    child {node { GPR158 }
+                        child {node { COL24A1 }
+                            child {node { HMCN1 }}
+                        }
+                        child {node { OCA2 }}
+                    }
+                }
+            }
+        }
+      }
+      child { node { MAP2K1 }
+        child {node { KLHDC2 }}
+      }
+         };
+\end{tikzpicture}
+}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Algoritmo lineare per filogenesi perfetta.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Approcci basati su distanze.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ultrametrica e orologio molecolare.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Alberi e distanze additive.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Algoritmo per matrice di distanze additive.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{UPGMA.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Neighbor Joining.}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Modelli di evoluzione.}
+\begin{itemize}
+\item
+  Probabilità di transizione fra stati (A, C, G, T).
+%
+\item
+  dipende dal tempo trascorso fra i due eventi
+\item
+  tasso istantaneo di mutazione
+\item
+  somma su ogni riga = $0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Modelli di evoluzione: Jukes-Cantor.}
+\begin{itemize}
+\item
+  ogni mutazione è equiprobabile
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Massima verosimiglianza.}
+\end{frame}
+
 
 
 \begin{frame}[fragile]

@@ -1,0 +1,609 @@
+\begin{frame}
+      \titlepage
+
+        \centering
+          Allineamento 
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Allineamento di 2 sequenze}
+\begin{block}{Allineamento}
+\begin{itemize}
+\item
+Input: 2 sequenze $s_{1}$ e $s_{2}$
+\item
+Aggiunta di \alert{indel} in $s_{1}$ e $s_{2}$
+\item
+sequenze estese = stessa lunghezza
+\item
+NO colonne di indel
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Allineamento: esempio}
+\begin{block}{Input}
+\texttt{ABRACADABRA}\\
+\texttt{BANANA}
+\end{block}
+
+\begin{block}{sequenze allineate 1}
+\texttt{ABRACADABRA}\\
+\texttt{-B-ANA---NA}
+\end{block}
+\begin{block}{sequenze allineate 2}
+\texttt{ABR-AC-ADABRA}\\
+\texttt{---B-ANA---NA}
+\end{block}
+\begin{block}{sequenze allineate 3}
+\texttt{ABRACADABRA}\\
+\texttt{-BANA----NA}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Allineamento: costo o valore?}
+\begin{block}{Problema di ottimizzazione}
+\begin{itemize}
+\item
+Istanza: insieme infinito di casi
+\item
+Soluzioni ammissibili: ammissibilità verificabile in tempo polinomiale
+\item
+Funzione obiettivo: Istanza $\mapsto \mathbb{R}^{+}$
+\item
+Massimizzazione o minimizzazione
+\end{itemize}
+\end{block}
+\begin{block}{costo o valore?}
+\begin{itemize}
+\item
+Costo da minimizzare
+\item
+Valore da massimizzare
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Valore}
+\begin{block}{Valore di un allineamento}
+\begin{itemize}[<+->]
+\item
+Somma dei valori delle singole colonne
+\item
+Valore di una colonna =
+\item
+valore in ingresso
+\end{itemize}
+\end{block}
+
+\only<4->{\begin{block}{Istanza}
+\begin{itemize}
+\item
+due sequenze $s_{1}$ e $s_{2}$
+\item
+matrice di score
+$d:\left(\Sigma\cup\{-\}\right)\times\left(\Sigma\cup\{-\}\right) \mapsto
+\mathbb{R^{+}}$
+\item
+problema di massimizzazione = massima omologia
+\end{itemize}
+\end{block}}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Needleman-Wunsch: Equazione di ricorrenza}
+\begin{block}{Definizione}
+$M[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$
+\end{block}
+\begin{equation*}
+M[i,j] = \max \left\{
+\begin{array}{r}%{r@{\quad }l}
+M[i-1, j-1] + d(s_{1}[i], s_{2}[j])\\
+M[i  , j-1] + d( -     , s_{2}[j])\\
+M[i-1, j  ] + d(s_{1}[i], -      )
+\end{array}
+\right.
+\end{equation*}
+\begin{block}{Condizione al contorno}
+\begin{itemize}
+\item
+$M[0,0] = 0$
+\item
+$M[i,0] = M[i-1,0] + d(s_{1}[i],-)$
+\item
+$M[0,j] = M[0,j-1 + d(-,s_{2}[j])$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Allineamento locale}
+\begin{block}{Allineamento globale}
+Si allineano le sequenze intere
+\end{block}
+\begin{block}{Allineamento locale}
+\begin{enumerate}
+\item
+Input: $s_{1}$, $s_{2}$, matrice di score $d$
+\item
+Individuare sottostringhe $t_{1}$ di $s_{1}$ e $t_{2}$ di $s_{2}$ tale che
+\item
+$All[t_{1}, t_{2}] \geq All[u_{1}, u_{2}]$ per ogni coppia di sottostringhe
+$u_{1}, u_{2}$ di $s_{1}, s_{2}$.
+\item
+Algoritmo banale:
+calcolo tutte le sottostringhe di $s_{1}$, $s_{2}$ e ne
+calcolo allineamento globale
+\item
+Tempo $O(n^{3}m^{3})$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Smith-Waterman}
+\begin{block}{Osservazione 1}
+\begin{enumerate}
+\item
+Matrice $M[i,j]$ memorizza allineamento di tutte le coppie di \alert{prefissi} di
+$s_{1}$, $s_{2}$
+\item
+Allineamento massimo fra coppie di prefissi = valore massimo in $M$
+\end{enumerate}
+\end{block}
+\begin{block}{Osservazione 2}
+\begin{enumerate}
+\item
+$M[0,0] = 0$
+\item
+quindi non si prendono sottostringhe con allineamento negativo
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Equazione di ricorrenza}
+\begin{block}{Definizione}
+$M[i,j] = $ ottimo fra tutte le stringhe $s_{1}[k:i]$, $s_{2}[h:j]$
+\end{block}
+\begin{equation*}
+M[i,j] = \max \left\{
+\begin{array}{r}%{r@{\quad }l}
+M[i-1, j-1] + d(s_{1}[i], s_{2}[j])\\
+M[i  , j-1] + d( -     , s_{2}[j])\\
+M[i-1, j  ] + d(s_{1}[i], -      )\\
+0
+\end{array}
+\right.
+\end{equation*}
+\begin{block}{Condizione al contorno}
+\begin{itemize}
+\item
+$M[0,0] = M[i,0] = M[0,j] =0$
+\item
+punto finale = valore massimo
+\item
+si risale nell'allineamento fino a uno $0$.
+\item
+Tempo $(nm)$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Gap}
+\begin{block}{Definizione}
+\begin{enumerate}
+\item
+Sequenza contigua di indel in un \alert{allineamento}
+\end{enumerate}
+\end{block}
+\begin{block}{Esempio}
+\texttt{ABR\alert{-}AC\alert{-}ADABRA}: 2 gap\\
+\texttt{\alert{---}B\alert{-}ANA\alert{---}NA}: 3 gap
+\end{block}
+\begin{block}{Osservazione}
+\begin{enumerate}
+\item
+Un gap sposta il frame di lettura
+\item
+1 indel $\approx$ 2 indel
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Allineamento con gap generici}
+\begin{itemize}[<+->]
+\item
+costo gap lungo $l$: $P(l)$
+\item
+Come descrivo l'allineamento ottimo?
+\item
+Come è fatta l'ultima colonna?
+\item
+Come è fatto l'ultimo gap?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Gap generico}
+\begin{block}{Definizione}
+$M[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$
+\end{block}
+\begin{equation*}
+M[i,j] = \max \left\{
+\begin{array}{r}%{r@{\quad }l}
+M[i-1, j-1] + d(s_{1}[i], s_{2}[j])\only<2>{\alert{\text{ no gap}}}\\
+\max_{l>0} M[i  , j-l] + P(l)\only<2>{\alert{\text{ gap in }s_{1}}}\\
+\max_{l>0} M[i-l, j  ] + P(l)\only<2>{\alert{\text{ gap in }s_{2}}}
+\end{array}
+\right.
+\end{equation*}
+\begin{block}{Condizione al contorno}
+\begin{itemize}[<+->]
+\item
+$M[0,0] = 0$
+\item
+$M[i,0] = P(i)$, $M[0,j] = P(j)$
+\item
+Tempo $O(nm(n+m))$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Allineamento con gap affine}
+\begin{itemize}[<+->]
+\item
+costo gap lungo $l$: $P_{o} + lP_{e}$
+\item
+$P_{o}$: costo apertura gap
+\item
+$P_{e}$: costo estensione gap
+\item
+$P_{e}, P_{o}>0$
+\item
+Come descrivo l'allineamento ottimo?
+\item
+Come è fatta l'ultima colonna?
+\item
+Come è fatto l'ultimo gap?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Gap affine}
+\begin{block}{Definizione}
+\begin{itemize}
+\item
+$M[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$
+\item
+$E_{1}[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$, con estensione di gap finale
+in $s_{1}$
+\item
+$E_{2}[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$, con estensione di gap finale
+in $s_{2}$
+\item
+$N_{1}[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$, con apertura di gap alla
+fine di $s_{1}$
+\item
+$N_{2}[i,j] = $ ottimo su $s_{1}[:i]$, $s_{2}[:j]$, con apertura di gap alla
+fine di $s_{1}$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Gap affine}
+\begin{equation*}
+M[i,j] = \max \left\{
+\begin{array}{l}%{r@{\quad }l}
+M[i-1, j-1] + d(s_{1}[i], s_{2}[j])\\
+E_{1}[i,j],
+E_{2}[i,j] \\
+N_{1}[i,j],
+N_{2}[i,j]
+\end{array}
+\right.
+\end{equation*}
+\begin{equation*}
+E_{1}[i,j] = \max \left\{
+\begin{array}{l}%{r@{\quad }l}
+E_{1}[i,j-1] + P_{e}\\
+N_{1}[i,j-1] + P_{e}
+\end{array}
+\right.
+\end{equation*}
+\begin{equation*}
+E_{2}[i,j] = \max \left\{
+\begin{array}{l}%{r@{\quad }l}
+E_{2}[i-1,j] + P_{e} \\
+N_{2}[i-1,j] + P_{e}
+\end{array}
+\right.
+\end{equation*}
+\begin{equation*}
+N_{1}[i,j] = M[i,j-1] + P_{o} + P_{e}, \quad
+N_{2}[i,j] = M[i-1,j] + P_{o} + P_{e}
+\end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Allineamento multiplo}
+\begin{block}{$k$ sequenze}
+\begin{itemize}[<+->]
+\item
+Input: insieme di sequenze $\{s_{1}, \ldots , s_{k}\}$
+\item
+Aggiunta di \alert{indel} nelle sequenze
+\item
+sequenze estese = tutte stessa lunghezza
+\item
+NO colonne di indel
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Valore di una colonna}
+\begin{block}{SP: sum of pairs}
+\begin{itemize}[<+->]
+\item
+$\{s_{1}, \ldots , s_{k}\} \mapsto \{s^{*}_{1}, \ldots , s^{*}_{k}\}$ allineate
+\item
+Valore $\{s^{*}_{1}[h], \ldots , s^{*}_{k}[h]\}$
+\item
+$\sum_{i<j} d(s^{*}_{1}[i], s^{*}_{k}[j])$
+\end{itemize}
+\end{block}
+\begin{block}{Complessità}
+\begin{itemize}[<+->]
+\item
+se $k$ è arbitrario $\Rightarrow$ NP-completo
+\item
+se $k$ è fissato $\Rightarrow$ tempo $O(n^{k})$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{comment}
+\begin{frame}[fragile]
+\frametitle{Allineamento con banda.}
+\begin{enumerate}
+\item
+$Opt$ = valore allineamento
+\end{frame}
+\end{frame}
+
+\begin{comment}
+\begin{frame}[fragile]
+\frametitle{Algoritmo di Carrillo-Lipman}
+\begin{quote}{Euristica}
+\begin{enumerate}
+\item
+Input: $3$ sequenze $s_{1}$, $s_{2}$, $s_{3}$
+\item
+Non visitiamo tutta la matrice di programmazione dinamica
+\item
+Caso peggiore $O(n^{3})$
+\end{enumerate}
+\end{quote}
+\end{frame}
+\end{comment}
+
+\begin{frame}[fragile]
+\frametitle{Matrici di sostituzione}
+\begin{enumerate}
+\item
+Utilizzate per valutare un allineamento
+\item
+Implicitamente probabilità di transizione
+\item
+Mutazioni ricorrenti
+\item
+Allineamenti di proteine
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{PAM: unità di misura}
+\begin{enumerate}
+\item
+PAM: point/percent accepted mutation
+\item
+due sequenze $s_{1}$ e $s_{2}$: quanto sono distanti?
+\item
+distanza 1PAM $\Rightarrow$ numero mutazioni = $\frac{1}{100} |s_{1}|$
+\item
+semplice in assenza di indel
+\item
+Mutazioni ricorrenti $\Rightarrow$ misura affidabile solo per piccoli valori
+\item
+$s_{1}$ e $s_{2}$ distanti $100$ PAM $\Rightarrow$ una singola base ha 36\% di
+probabilità di non essere mutata
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Matrici PAM}
+\begin{enumerate}
+\item
+dipende dalla distanza attesa
+\item
+PAM250, PAM200, PAM1
+\end{enumerate}
+\begin{block}{Calcolo PAM$k$}
+\begin{enumerate}
+\item
+Costruzione PAM$k$
+\item
+Si prendono varie sequenze distanti $k$PAM
+\item
+si allineano le sequenze
+\item
+si calcolano le frequenze $f(i)$, $f(i,j)$ di tutti i singoli caratteri e le
+coppie di caratteri
+\item
+PAM$k(i,j)=\log\frac{f(i,j)}{f(i)f(j)}$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Log odds ratio}
+\begin{block}{Odds ratio}
+\begin{enumerate}
+\item
+$\frac{p}{1-p}$, $p$ è la probabilità dell'evento interessante (target)
+\item
+$\frac{f(i,j)}{f(i)f(j)}$
+\item
+$f(i,j)$: frequenza della mutazione misurata
+\item
+$f(i)f(j)$: ipotesi nulla (caratteri indipendenti)
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Matrici PAM}
+\begin{block}{Calcolo PAM$k$ nella realtà}
+\begin{itemize}
+\item
+Problema: come allineare se non si conosce la matrice
+\item
+Allineate sequenze molto simili
+\item
+no indel
+\item
+$M_{k}(i,j)=\log\frac{f(i)M_{1}^{k}(i,j)}{f(i)f(j)}=\log\frac{M_{1}^{k}(i,j)}{f(j)}$
+\item
+valori moltiplicati per $10$
+\item
+arrotondati all'intero più vicino
+\item
+si somma un intero a tutti i valori
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Matrici BLOSUM}
+\begin{block}{Confronto con PAM}
+\begin{itemize}
+\item
+PAM allinea sequenze vicine
+\item
+ma viene usata per allineare sequenze lontane
+\item
+regioni conservate e non conservate hanno stessa importanza
+\end{itemize}
+\end{block}
+
+\begin{block}{BLOCKS}
+\begin{itemize}
+\item
+blocchi di regioni conservate
+\item
+scelte ``a mano''
+\item
+$B(i,j)=\log\frac{f(i,j)}{f(i)f(j)}$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Matrici BLOSUM}
+\begin{block}{BLOSUM$x$}
+\begin{itemize}
+\item
+le sequenze che sono simili più di $x$\% vengono clusterizzate
+\item
+cluster = rimuovere tutte tranne una
+\item
+scopo:  evitare di sovrapesare parti sovrarappresentate nel campione
+\item
+BLOSUM62: più usata per gli allineamenti
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Statistiche Karlin-Altschul}
+\begin{block}{Ricerca in un database}
+\begin{itemize}
+\item
+Punteggio positivo possibile
+\item
+Punteggio medio negativo
+\item
+Simboli indipendenti e equiprobabili
+\item
+Sequenze infinitamente lunghe
+\item
+Allineamenti senza gap
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Equazione Karlin-Altschul}
+\begin{equation*}
+E=kmne^{-\lambda S}
+\end{equation*}
+\begin{itemize}
+\item
+$E$: numero allineamenti
+\item
+$k$: costante
+\item
+$n$: numero caratteri in database
+\item
+$m$: lunghezza stringa query
+\item
+$\lambda S$: punteggio normalizzato
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{BLAST}
+\begin{block}{Basic Local Alignment Search Tool}
+\begin{itemize}
+\item
+Ricerca seed
+\item
+seed = pattern matching con sottostringa di lunghezza $3$
+\item
+Costruzione  high-scoring segment pair (HSP)
+= estensione seed
+\item
+Filtro seed tenuti solo HSP con  alta significatività
+\item
+Fusione HSP  vicine
+\item
+Smith-Waterman sulle regioni
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% TeX-master: "alignment-video"
+%%% buffer-file-coding-system: utf-8
+%%% End:
