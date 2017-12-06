@@ -12,7 +12,7 @@ pdf: $(videopdfs)
 %-stampa.pdf : %-stampa.tex %-testo.tex
 	$(LATEXMK) -pdf $<
 
-clean :
+clean:
 	rm -f ./*.pdf ./figures/*.pdf *.snm *.nav *.vrb && latexmk -c
 
 vc.tex:	.git/logs/HEAD Makefile figs
