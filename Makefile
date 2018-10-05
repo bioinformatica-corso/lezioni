@@ -45,4 +45,4 @@ today.txt: .git/logs/HEAD
 	autorevision -t tex > today.txt
 
 release: $(OBJECTS)
-	rsync -avc $(OBJECTS) ~/Corsi/elementi-bioinformatica/lezioni
+	rsync -avc $(OBJECTS) ~/B121/elementi-bioinformatica/slides
