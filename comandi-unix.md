@@ -32,9 +32,6 @@
 *  `<` redirezione di standard input
 *  `2>` redirezione di standard error
 *  `|` pipe. lo stdout del primo programma diventa stdin del secondo
-*  `tr` cambia alcuni caratteri in altri
-*  `sort` ordina un insieme di righe
-*  `uniq` fonde le righe consecutive identiche
 
 ## Altri comandi
 
@@ -42,3 +39,9 @@
 *  `scp` per copiare un file da/a un altro computer
 *  `rsync` come `scp`, ma copia solo se necessario
 *  `make` per compilare solo quello che serve
+*  `tr` cambia alcuni caratteri in altri
+*  `sort` ordina un insieme di righe
+*  `uniq` fonde le righe consecutive identiche
+*  `cut` estrae alcune colonne
+*  `less` paginatore
+*  `find` cerca file
