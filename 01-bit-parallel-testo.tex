@@ -1,0 +1,158 @@
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}\frametitle{Gianluca Della Vedova}
+\begin{itemize}
+\item
+Elementi di Bioinformatica
+\item
+Ufficio U14-2041
+\item
+\url{https://gianluca.dellavedova.org}
+\item
+\url{https://elearning.unimib.it/course/view.php?id=19214}
+\item
+\url{gianluca.dellavedova@unimib.it}
+\item\url{https://github.com/bioinformatica-corso/programmi-elementi-bioinformatica}
+\item\url{https://github.com/bioinformatica-corso/lezioni}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Notazione}
+\begin{itemize}
+\item
+\alert{simbolo}: $T[i]$\\
+\item
+\alert{stringa}: $T[1]T[2]\cdots T[l]$\\
+\item
+\alert{sottostringa}: $T[i:j]$\\
+\item
+\alert{prefisso}: $T[:j]=T[1:j]$\\
+\item
+\alert{suffisso}: $T[i:]=T[i:|T|]$
+\item
+\alert{concatenazione}: $T_{1}\cdot T_{2} = T_{1}T_{2}$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Pattern Matching}
+\begin{block}{Problema}
+\alert{Input}: testo $T=T[1]\cdots T[n]$, pattern $P=P[1]\cdots P[m]$, alfabeto $\Sigma$\\
+\alert{Goal}: trovare \emph{tutte} le occorrenze di $P$ in $T$\\
+\alert{Goal}: trovare tutti gli $i$ tale che $T[i]\cdots T[i+m-1]=P$
+\end{block}
+\begin{block}{Algoritmo banale}
+\alert{Tempo}: $O(nm)$
+\end{block}
+\begin{block}{Lower bound}
+\alert{Tempo}: $O(n+m)$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bit-parallel}
+\begin{block}{Algoritmi seminumerici}
+\begin{itemize}
+\item
+$25$
+\item
+$25=00011001$
+\item
+$25=00011001=$FFFTTFFT
+\end{itemize}
+\end{block}
+\begin{block}{Operazioni bit-level}
+\alert{Or}: $x\lor y$, \alert{And}: $x\land y$, \alert{Xor}: $x\oplus y$\\
+\alert{Left Shift}: $x << k$, \alert{Right Shift}: $x >> k$,
+\begin{itemize}
+\item
+Tutte bitwise
+\item
+Tutte in hardware
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{D\"om\"olki / Baeza-Yates, Gonnet}
+\begin{block}{Matrice $M$}
+$M(i,j)=1$ sse $P[:i]=T[j-i+1:j]$\\
+$0\le i\le m$, $0\le j\le n$
+\end{block}
+\begin{block}{Occorrenza di $P$ in $T$}
+$M(m,\cdot)=1$
+\end{block}
+\begin{itemize}
+\item
+$M(0,\cdot)=1$, $M(\cdot,0)=0$
+\item
+\alert{$M(i,j)=1$} sse $M(i-1, j-1)=1$ AND $P[i]=T[j]$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Esempio}
+\begin{block}{Esempio}
+$T$=abracadabra\\
+$P$=abr
+\end{block}
+
+\begin{center}
+\begin{tabular}[l]{ll}
+%\hline{1}
+10010101001\\
+01000000100\\
+00100000010&$\leftarrow$ \alert{occorrenze}\\%\hline
+\end{tabular}
+\end{center}
+
+\begin{block}{Matrice $M$}
+1 colonna = 1 numero
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Colonne}
+$U[\sigma]$ = array di bit dove $U[\sigma,i]=1$ sse $P[i]=\sigma$
+
+\begin{block}{$C[j]$ da $C[j-1]$}
+\begin{itemize}
+\item
+Right shift di $C[j-1]$
+\item
+$1$ in prima posizione
+\item
+AND con $U[T[j]]$
+\item
+\alert{$\omega$}: word size
+\item
+$C[j] = \left( \left(C[j-1] >> 1 \right) \  | \  \left(1 << (\omega -1) \right) \right)\ \&\  U[T[j]]$;
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Note}
+\begin{itemize}
+\item
+Tempo $O(n)$ se $m\le \omega$
+\item
+Tempo $O(nm)$
+\item
+No condizioni
+\item
+$\omega < m\le 2\omega$?
+\end{itemize}
+\end{frame}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% TeX-master: "01-bit-parallel-video"
+%%% buffer-file-coding-system: utf-8
+%%% End:
+

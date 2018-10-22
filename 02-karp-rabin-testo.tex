@@ -1,0 +1,141 @@
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Karp-Rabin}
+\begin{block}{Alfabeto binario}
+\begin{itemize}
+\item
+$H(S)=\sum_{i=1}^{|S|} 2^{i-1}H(S[i])$
+\item
+sliding window di ampiezza $m$ su $T$
+\item
+$H(T[i+1:i+m]) =$\\
+$=\left(H(T[i:i+m-1]) - T[i] \right) / 2 + 2^{m}T[i+m]$
+\item
+operazioni su bit
+\item
+$T[i:i+m-1]=P \Leftrightarrow H(T[i:i+m-1])=H(P)$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Karp-Rabin: problema}
+\begin{block}{Numeri troppo grandi}
+\begin{itemize}
+\item
+Modello RAM: numeri $O(n+m)$
+\item
+mod $p$
+\item
+$H(T[i+1:i+m]) =$\\
+$\left(\left(H(T[i:i+m-1]) - T[i] \right) / 2 + 2^{m}T[i+m] \right)\mod p$
+\item \textbf{NO}
+\item
+$2^{m-1}T[i+m] \mod p$ calcolato iterativamente, $\mod p$ ad ogni passo
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Karp-Rabin: falsi positivi}
+\begin{block}{Possibili errori}
+\begin{itemize}
+\item
+Falso positivo (FP): occorrenza non vera
+\item
+Falso negativo (FN): occorrenza non trovata
+\item
+$H(T[i:i+m-1])=H(P) \Leftrightarrow T[i:i+m-1]=P$
+\item
+$H(T[i:i+m-1])  \mod p = H(P)  \mod p$
+$\Leftarrow T[i:i+m-1]=P$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Karp-Rabin: falsi positivi}
+\begin{block}{Probabilità di errore}
+$P[\#FP\ge 1] \le O(nm/I)$ se il numero primo $p$ è scelto fra tutti i primi $\le
+I$
+\end{block}
+
+\begin{block}{Valori di $I$}
+\begin{itemize}
+\item
+$I=n^{2}m \Rightarrow P[\#FP\ge 1] \le 2.54/n$
+\item
+$I=nm^{2}  \Rightarrow P[\#FP\ge 1] \in O(1/m)$
+\end{itemize}
+\end{block}
+
+\begin{block}{Abbassare probabilità di errore}
+Scegliere $k$ primi casuali (indipendenti senza ripetizioni), cambiare primo
+dopo ogni FP
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Las Vegas vs.
+  Monte Carlo}
+\begin{block}{Classificazione algoritmi probabilistici}
+\begin{itemize}
+\item
+Monte Carlo:
+\begin{itemize}
+\item
+Sempre veloce
+
+\item
+Forse non corretto
+\item
+Karp-Rabin
+\end{itemize}
+\item
+Las Vegas:
+\begin{itemize}
+\item
+Sempre corretto
+\item
+Forse non veloce
+\item
+Quicksort con pivot random
+\end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Controllo falsi positivi}
+$L$: posizioni iniziali in $T$ delle occorrenze
+\begin{block}{Run}
+sequenza $\langle l_{1}, \ldots, l_{k}\rangle$ di posizioni in $L$ distanti al
+massimo $m/2$
+\end{block}
+
+\begin{itemize}
+\item
+$d=l_{2}-l_{1}$
+\item
+$P$ semiperiodico con periodo $d$
+\item
+$P=\alpha\beta^{k-1}$, $\alpha$ suffisso di $\beta$
+\item
+ogni run occupa $\ge n$ caratteri di $T$
+\item
+ogni carattere  di $T$ è in max $2$ run
+\end{itemize}
+\end{frame}
+
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% TeX-master: "02-karp-rabin-video"
+%%% buffer-file-coding-system: utf-8
+%%% End:
