@@ -2,12 +2,18 @@
 \usepackage{pxfonts}
 
 \usepackage{fancyvrb}
-\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{frame=single,
-fontsize=\scriptsize,
+\fvset{%frame=single,
+commandchars=\\\{\},
+%framesep=1mm,
+fontfamily=helvetica,
+fontsize=\normalsize
+}
+%\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{frame=single,
+%fontsize=\large,
 %fontfamily=helvetica,
-numbersep=1mm,
-numbers=left,
-formatcom=\color{orange}}
+%numbersep=1mm,
+%numbers=left,
+%formatcom=\color{orange}}
 \usepackage[bitstream-charter]{mathdesign}
 \usepackage{listings}
 \lstset{commentstyle=\color{orange}, keywordstyle=\color{yellow} }
@@ -43,6 +49,6 @@ formatcom=\color{orange}}
 \setbeamercolor*{normal text}{fg=white!90!blue,bg=blue!70!black}
 \setbeamercolor*{separation line}{}
 \setbeamercolor*{fine separation line}{}
-\setbeamercolor{alerted text}{fg=yellow}
+\setbeamercolor{alerted text}{fg=green}
 
 %\beamerdefaultoverlayspecification{<+->}
