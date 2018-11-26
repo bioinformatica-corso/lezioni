@@ -336,7 +336,7 @@ Ogni $k$-mero viene diviso in $(k-1)$-meri
 \item
 Un vertice per ogni $(k-1)$-mero
 \item
-Un arco per ogni $(k)$-mero
+Un arco per ogni $k$-mero
 \end{enumerate}
 \end{block}
 \begin{block}{Adesso}
@@ -474,6 +474,67 @@ Qual è più difficile da risolvere?
 \end{block}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Grafi Euleriani}
+\begin{block}{Definizione}
+Sia $G=\langle  V,A \rangle$ un grafo orientato.
+$G$ è semi-euleriano se esistono due vertici $s$, $t$ tali che $N^{-}_{G}(s) =
+N^{+}_{G}(s) +1$,  $N^{-}_{G}(t) = N^{+}_{G}(v) -1$, mentre per ogni altro
+vertice $w$,  $N^{-}_{G}(w) =N^{+}_{G}(w)$.
+\end{block}
+
+\begin{block}{Definizione}
+Sia $G=\langle  V,A \rangle$ un grafo orientato.
+$G$ è euleriano se $N^{-}_{G}(w) =N^{+}_{G}(w)$. per ogni
+vertice.
+\end{block}
+
+\begin{block}{Teorema}
+Un grafo connesso $G=\langle  V,A \rangle$ ha un cammino euleriano se e solo se $G$ è semi-euleriano.
+$G$ ha un ciclo euleriano se e solo se $G$ è euleriano.
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Grafi Euleriani 2}
+
+\begin{block}{Teorema}
+Sia $G=\langle  V,A \rangle$ un grafo semi-euleriano e sia $P$ un  cammino da $s$ a $t$.
+Sia $G_{1}$ il grafo ottenuto da $G$ togliendo tutti gli archi di $P$.
+Allora $G_{1}$ è euleriano.
+\end{block}
+
+\begin{block}{Teorema}
+Sia $G=\langle  V,A \rangle$ un grafo euleriano e sia $C$ un ciclo di $G$.
+Sia $G_{1}$ il grafo ottenuto da $G$ togliendo tutti gli archi di $C$.
+Allora $G_{1}$ è euleriano.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Altre fasi}
+\begin{itemize}
+\item
+bubble popping
+\item
+tip removal
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Scaffolding}
+
+\begin{itemize}
+\item
+Fondere contigs in scaffolds
+\item
+usando mate pairs
+\item
+anche con revcomp
+\end{itemize}
+\end{frame}
 
 
 %%% Local Variables:
