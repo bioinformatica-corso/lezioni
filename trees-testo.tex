@@ -161,94 +161,38 @@ Each character is gained \alert{exactly once} in the tree.
 
 
 
-% \begin{frame}
-% \frametitle{Persistent Phylogeny}
-% \begin{columns} 
-%   \begin{column}{0.48\textwidth}
-%     \begin{block}{Instance}
-%  \begin{tabular}{c|cccccc}\scriptsize
-%         $M$& $c_1$ & $c_2$ & $c_3$ & $c_4$ & $c_5$ & $c_6$\\ \hline
-%         $s_1$ & 0 & 0 & 0 & 1 & 0 & 0\\
-%         $s_2$ & 0 & 0 & 1 & 1 & 1 & 1\\
-%         $s_3$ & 0 & 1 & 1 & 0 & 0 & 0 \\
-%         $s_4$ & 1 & 1 & 0 & 0 & 0 & 0 \\
-%         $s_5$ & 1 & 1 & 1 & 0 & 1 & 0\\
-%         $s_6$ & 0 & 1 & 1 & 1 & 1 & 0
-%  \end{tabular}
-% \end{block}
-% \begin{block}{Problem}
-%   \begin{itemize}
-%     \item
-%   Input: a binary matrix $M$
-%     \item
-% Output: a persistent phylogeny consistent with $M$, if it exists
-% \end{itemize}
-% \end{block}
-
-% \end{column}
-    
-%     \begin{column}{0.48\textwidth}
-%       \centering
-%     \begin{tikzpicture}[sibling distance=25mm, scale=0.6]
-%     \node[circle,draw]           (00000000) {}
-%     child {node[rectangle,draw]     (00010000) {$s_{1}$}
-%       child {node[circle,draw]     (00110000) {}
-%         child {node[circle,draw]  (00111000) {}
-%           child {node[rectangle,draw]  (00111100) {$s_{2}$}
-%             edge from parent node[left] {$c_{6^{+}}$}
-%           }
-%           child {node[rectangle,draw]     (01111000) {$s_{6}$}
-%             child {node[circle,draw]     (01101000) {}
-%               child {node[rectangle,draw]     (11101000) {$s_{5}$}
-%                 child {node[circle,draw]     (11100000) {}
-%                   child {node[rectangle,draw]     (01100000) {$s_{3}$}
-%                     edge from parent node[left] {$c_{1}^{-}$}
-%                   }
-%                   child {node[rectangle,draw]     (11000000) {$s_{4}$}
-%                     edge from parent node[right] {$c_{3}^{-}$}
-%                   }
-%                   edge from parent node[right] {$c_{5}^{-}$}
-%                 }
-%                 edge from parent node[right] {$c_{1}^{+}$}
-%               }
-%               edge from parent node[right] {$c_{4}^{-}$}
-%             }
-%             edge from parent node[right] {$c_{2}^{+}$}
-%           }
-%           edge from parent node[right] {$c_{5}^{+}$}
-%         }
-%         edge from parent node[right] {$c_{3}^{+}$}
-%       }
-%       edge from parent node[right] {$c_{4}^{+}$}
-%     };
-%     \end{tikzpicture}
-%   \end{column}
-% \end{columns}
-% \end{frame}
-
-
 \begin{frame}
-\frametitle{Tumor}
-
+\frametitle{Tumors}
+\begin{columns}
+\begin{column}{0.75\textwidth}
 \centering
-  \includegraphics[width=0.8\linewidth]{figures/tumor-heterogeneous}
-  \begin{itemize}
-    \item 
-      A \alert{tumor} is a mixture of healthy and cancer cells
-    \item 
-      A \alert{tumor} is a mixture of cancer clones
+\includegraphics[width=0.9\linewidth]{figures/tumor-heterogeneous}
+\end{column}
+\begin{column}{0.25\textwidth}
+\begin{itemize}
+\item
+A \alert{tumor} is a mixture of healthy and cancer cells
+\item
+A \alert{tumor} is a mixture of cancer clones
 \end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Tumor Evolution}
-
+\begin{columns}
+\begin{column}{0.75\textwidth}
 \centering
-  \includegraphics[width=\linewidth]{figures/clonal}
+  \includegraphics[width=0.99\linewidth]{figures/clonal}
+\end{column}
+\begin{column}{0.25\textwidth}
 \begin{itemize}
 \item Different clones make different fractions of the tumor 
 \end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 
@@ -304,7 +248,7 @@ Each character is gained \alert{exactly once} in the tree.
 \frametitle{Tumor Evolution}
 
 \begin{columns} 
-  \begin{column}{0.48\textwidth}
+  \begin{column}{0.38\textwidth}
 \centering
 \resizebox{0.95\textwidth}{!}{\begin{tikzpicture}[,>=triangle 60]
 \mutf{(-5,5)}{s5};
@@ -332,7 +276,7 @@ Each character is gained \alert{exactly once} in the tree.
 \node at (-2,10) {Sample 2};
 \end{tikzpicture}}
 \end{column}
-  \begin{column}{0.48\textwidth}
+  \begin{column}{0.58\textwidth}
 
 \begin{itemize}
 \item A \alert{sample} is a mixture of clones
@@ -368,17 +312,17 @@ Each character is gained \alert{exactly once} in the tree.
 \frametitle{Tumor Evolution: Compute}
 
 \begin{columns} 
-  \begin{column}{0.38\textwidth}
+  \begin{column}{0.40\textwidth}
     \begin{block}{Matrix $B$ representing tree $T$}
     \end{block}
 \centering
-\resizebox{0.79\textwidth}{!}{\begin{tikzpicture}[scale=0.8]
+\resizebox{0.61\textwidth}{!}{\begin{tikzpicture}[scale=0.44]
 \draw[fill=white] (3,2) circle (.1);
-\node[fill,color=brown,star, star points=6,scale=0.75] at (6,2) {};
-\node[fill,color=green,regular polygon, regular polygon sides=3,scale=0.65] at (2,2) {};
-\node[draw,cross out, draw=pink, very thick,scale=.8] at (5,2) {};
-\node[draw,diamond,scale=0.6, fill,color=blue]  at (1,2) {};
-\node[fill,color=red,regular polygon, regular polygon sides=4,scale=0.75] at (4,2) {};
+\node[fill,color=brown,star, star points=6,scale=0.5] at (6,2) {};
+\node[fill,color=green,regular polygon, regular polygon sides=3,scale=0.5] at (2,2) {};
+\node[draw,cross out, draw=pink, very thick,scale=.6] at (5,2) {};
+\node[draw,diamond,scale=0.46, fill,color=blue]  at (1,2) {};
+\node[fill,color=red,regular polygon, regular polygon sides=4,scale=0.5] at (4,2) {};
 \end{tikzpicture}}
 \begin{tabular}{rrrrrr}
     0 & 0 & 1 & 0 & 0 &1  \\
@@ -389,7 +333,7 @@ Each character is gained \alert{exactly once} in the tree.
 \end{tabular}
     \begin{block}{Usage matrix $U$}
     \end{block}
-\resizebox{0.99\textwidth}{!}{\begin{tabular}{rrrrr}
+\resizebox{0.79\textwidth}{!}{\begin{tabular}{rrrrr}
      \multicolumn{5}{c}{Species}\\
   0 & 0.2 & 0.2 & 0 & 0.2  \\
   0.4 & 0 & 0.4 & 0.2 & 0   \\
@@ -397,7 +341,7 @@ Each character is gained \alert{exactly once} in the tree.
 \end{column}
 
 
-  \begin{column}{0.58\textwidth}
+  \begin{column}{0.42\textwidth}
   \resizebox{\textwidth}{!}{
   \begin{tikzpicture}[>=triangle 60]
     \mut{(3,9.5)}{N};
@@ -426,152 +370,20 @@ Each character is gained \alert{exactly once} in the tree.
 \end{columns}
 \end{frame}
 
-% \begin{frame}
-% \frametitle{Tumor Evolution}
-
-% \centering
-% \resizebox{0.4\textwidth}{!}{$F=UB$}
-
-% \vspace{1ex}
-% \onslide<2->{
-% \begin{block}{Approaches}
-%   \begin{itemize}
-%   \item
-%     Split-row (Hajirasouliha and Raphael, WABI, 2014).
-%     Guess the composition of each sample.
-%   \item
-%     AncesTree (El-Kebir, Bioinformatics, 2015).
-%     Guess the phylogeny, constraint on the frequencies.
-%   \end{itemize}
-% \end{block}}
-% \onslide<3->{
-% \begin{block}{Model}
-%  Perfect phylogeny $\Rightarrow$ infinite site assumption
-% \end{block}
-% \begin{block}{Cons}
-%     no mutation loss
-% \end{block}}
-% \end{frame}
-
-% \begin{frame}
-% \frametitle{Attack to the infinite site assumption!}
-
-% \begin{itemize}
-%   \item
-% ``Our results refute the general validity of
-% the infinite sites assumption''
-%   \item
-% ``6 childhood
-% acute lymphoblastic leukemia (ALL) patients \ldots
-% Our test returns extremely high BFs\footnote{BF: Bayes Factor.
-%  It is ratio of the likelihoods of seeing the
-%   actual data given the infinite site assumption and the finite site assumption} in the
-% range 
-% of \alert{$10^{5}$} to \alert{$10^{15}$} \ldots
-% for all samples apart from patient 5, the recurrent
-% mutation is a \alert{back mutation}''
-% \end{itemize}
-
-% \vspace{1ex}
-% From: A statistical test on single-cell data reveals widespread
-% recurrent mutations in tumor evolution, Kuipers et al., BioRxiv, 2016
-% \end{frame}
-
-% \begin{frame}
-% \frametitle{Back mutations for the win!}
-
-% \begin{itemize}
-%   \item
-% ``infer the phylogeny for individual patients using the \alert{Dollo parsimony}
-% method and a branch and bound exhaustive search for the best phylogenetic
-% reconstruction''
-%   \item
-% ``In genomically unstable cancers, \alert{deletion of
-%   large chromosomal segments is common}''
-%   \item
-% ``large deletions on
-% several branches of a tree can span a shared locus, and thus a given mutation may be \alert{deleted independently multiple
-% times}''
-% \end{itemize}
-
-% \vspace{1ex}
-% From:
-% Brown, D. et al. Phylogenetic analysis of metastatic progression
-% in breast cancer using somatic mutations and copy number aberrations. Nat. Commun.
-% 8, 14944 doi: 10.1038/ncomms14944 (2017)
-% \end{frame}
-
-% \begin{frame}
-% \frametitle{Tumor Evolution}
-
-% \begin{columns} 
-%   \begin{column}{0.4\textwidth}
-% \begin{block}{Approaches}
-%   \begin{itemize}
-%   \item
-%     Persistent Phylogeny (Bonizzoni et al., ACM BCB, 2017)
-%   \item
-%     ILP
-%   \item
-%     Also Dollo$(k)$
-%   \item
-%     choose number of clones
-%   \end{itemize}
-% \end{block}
-% \end{column}
-%   \begin{column}{0.5\textwidth}
-
-% \centering
-
-% \uncover<2->{
-% \resizebox{!}{17em}{
-%   \begin{tikzpicture}[
-%     sibling distance=55mm,
-%     level 5/.style={sibling distance=45mm},
-%   every node/.style = {shape=ellipse, draw, align=center},
-%   loss/.style = {draw=blue, fill=red, text=black, align=center}
-%   ]
-%   \node {Germline}
-%     child { node { SAMHD1 }
-%       child { node { EXOC6B }
-%         child {node { NAMPTL }
-%             child {node { SLC12A1 }
-%                 child {node { PLA2G16 }
-%                     child {node { DAZAP1 }
-%                         child {node[loss] { NAMPTL- }
-%                             child {node { LRRC16A }
-%                                 child {node { GHDC }}
-%                             }
-%                         }
-%                     }
-%                 }
-%             }
-%             child {node[loss] { EXOC6B- }
-%                 child {node { NOD1 }}
-%                 child {node { BCL2L13 }
-%                     child {node { GPR158 }
-%                         child {node { COL24A1 }
-%                             child {node { HMCN1 }}
-%                         }
-%                         child {node { OCA2 }}
-%                     }
-%                 }
-%             }
-%         }
-%       }
-%       child { node { MAP2K1 }
-%         child {node { KLHDC2 }}
-%       }
-%          };
-% \end{tikzpicture}
-% }}
-% \end{column}
-% \end{columns}
-% \end{frame}
-
 \begin{frame}[fragile]
-\frametitle{Algoritmo lineare per filogenesi perfetta.}
+\frametitle{Approcci basati su parsimonia.}
+\begin{itemize}
+\item
+Piccola vs grande parsimonia
+\item
+Algoritmo di Fitch
+\item
+Algoritmo di Sankoff
+\item
+Confronto
+\end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{Approcci basati su distanze.}
