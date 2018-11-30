@@ -384,6 +384,75 @@ Confronto
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Piccola parsimonia}
+\begin{block}{Istanza}
+\begin{itemize}
+\item
+Matrice binaria $M$ con $n$ specie e insieme di caratteri $C$
+\item
+Albero $T$, le cui foglie corrispondono alle specie di $M$
+\item
+Per ogni carattere $c\in C$, un costo $w_{c}$ fra ogni coppia di stati
+\end{itemize}
+\end{block}
+\begin{block}{Soluzioni ammissibili}
+Per ogni carattere $c\in C$, una etichettatura $\lambda_{c}$ che assegna ad ogni nodo
+uno degli stati possibili per $C$
+\end{block}
+\begin{block}{Funzione obiettivo}
+$\min \sum_{c\in C} \sum_{(x,y)\in E(T)} w_{c}(\lambda_{c}(x), \lambda_{c}(y))$, dove $E(T)$ è
+l'insieme di lati di $T$
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Algoritmo Sankoff}
+\begin{block}{Osservazione}
+Ogni carattere può essere gestito separatamente
+\end{block}
+
+\begin{block}{Programmazione dinamica}
+\begin{itemize}
+\item
+$M[x,z]$: soluzione ottimale del sottoalbero di $T$ che ha radice $x$, sotto la
+condizione che $x$ abbia etichetta $z$
+\item
+$M[x,z] = 0$, se $x$ è una foglia con etichetta $z$
+\item
+$M[x,z] = +\infty$, se $x$ è una foglia con etichetta diversa da $z$
+\item
+$M[x,z] = \sum_{f \in F(x)} \min_{s} \left\{ w(z,s) + M[f,s] \right\}$, dove $F(x)$ è
+l'insieme dei figli di $x$ in $T$, se $x$ è un nodo interno
+\item
+soluzione ottimale $\min_{s} \left\{ M[r,s] \right\}$, dove $r$ è la radice di
+$T$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Algoritmo Fitch}
+Solo per il caso non pesato, albero $T$ binario
+\begin{block}{Algoritmo}
+\begin{itemize}
+\item
+$S(x)=\lambda_{c}(x)$, se $x$ è una foglia
+\item
+$S(x)= S(f_{l}) \cap S(f_{r})$, dove $f_{l}$ e $f_{r}$ sono i figli di $x$ in $T$,
+se $S(f_{l}) \cap S(f_{r})\neq \emptyset$
+\item
+$S(x)= S(f_{l}) \cup S(f_{r})$, dove $f_{l}$ e $f_{r}$ sono i figli di $x$ in $T$,
+se $S(f_{l}) \cap S(f_{r}) = \emptyset$
+\end{itemize}
+\end{block}
+\begin{block}{Unificazione}
+$B(x)$: insieme degli stati $z$ tali che $M[x,z]$ è minimo.
+\onslide<2->{ \alert{$B(x) = S(x)$}}
+\end{block}
+\onslide<3>{Come estendere Fitch ad albero generico (sempre caso non pesato)?}
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Approcci basati su distanze.}
@@ -395,6 +464,22 @@ Confronto
 
 \begin{frame}[fragile]
 \frametitle{Alberi e distanze additive.}
+\begin{block}{Proprietà}
+Sia $T$ un albero binario senza radice e sia $D$ la matrice delle distanze associata a $T$.
+Allora $D$ soddisfa la condizione dei 4 punti.
+\end{block}
+\begin{block}{Condizione dei 4 punti}
+Si consideri:
+\begin{enumerate}
+\item
+$D[v,w] + D[x,y]$
+\item
+$D[v,x] + D[w,y]$
+\item
+$D[v,y] + D[w,x]$
+\end{enumerate}
+Il massimo dei tre valori è ottenuto da esattamente due dei 3 casi sopra
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
