@@ -13,7 +13,7 @@ $H(S)=\sum_{i=1}^{|S|} 2^{i-1}H(S[i])$
 sliding window di ampiezza $m$ su $T$
 \item
 $H(T[i+1:i+m]) =$\\
-$=\left(H(T[i:i+m-1]) - T[i] \right) / 2 + 2^{m-1}T[i+m]$
+$=\left(H(T[i:i+m-1]) - T[i] \right) / 2 + 2^{m}T[i+m]$
 \item
 operazioni su bit
 \item
@@ -32,7 +32,7 @@ Modello RAM: numeri $O(n+m)$
 mod $p$
 \item
 $H(T[i+1:i+m]) =$\\
-$\left(\left(H(T[i:i+m-1]) - T[i] \right) / 2 + 2^{m-1}T[i+m] \right)\mod p$
+$\left(\left(H(T[i:i+m-1]) - T[i] \right) / 2 + 2^{m}T[i+m] \right)\mod p$
 \item \textbf{NO}
 \item
 $2^{m-1}T[i+m] \mod p$ calcolato iterativamente, $\mod p$ ad ogni passo
