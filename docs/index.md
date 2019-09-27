@@ -10,7 +10,7 @@ title: Elementi di Bioinformatica (2019-20)
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
 | 1  | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | Gusfield 1.1, 4.1, 4.2.[1-2] 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 2  | GDV     | 3/10  | Richiamo linguaggio C                                                                                                   | [Modern C](https://modernc.gforge.inria.fr/)                                                                    |               |           |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+| 2  | GDV     | 3/10  | Richiamo linguaggio C                                                                                                   | 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
 | 3  | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
@@ -69,7 +69,7 @@ title: Elementi di Bioinformatica (2019-20)
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
 | 31 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | (Gusfield, 1.1, 4.1, 4.2.[1-2])                                                                           
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 32 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple                                                                           
+| 32 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple.ZZ                                                                           
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
 
 
