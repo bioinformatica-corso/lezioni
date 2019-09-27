@@ -6,13 +6,13 @@ title: Elementi di Bioinformatica (2019-20)
 ## Elenco delle lezioni
 
 
-| #  | Who | Date  |Topic      | Material   | Assignments   | Solutions | 
+| #  | Docente | Data  |Argomento      | Materiale   | Esercizi   | Soluzioni | 
 | -- | --- | ----- | --------- | ---------- | ------------- | --------- |
-| 1 | GDV | 1/10 | Introduction to the Jupyter Notebook, Array, lists, loops, dictionaries. Reading files, functions, and libraries.  | [Notebook 1](https://jakevdp.github.io/PythonDataScienceHandbook/01.00-ipython-beyond-normal-python.html) [Notebook 2](https://github.com/gdv/EngComp/blob/master/modules/1_offtheground/1_Interacting_with_Python.ipynb) [Notebook python basics](https://nbviewer.jupyter.org/github/gdv/foundationsCS/blob/master/py-01-basics.ipynb) [Notebook introduction](https://nbviewer.jupyter.org/github/gdv/foundationsCS/blob/master/py-02-intro-notebook.ipynb) | [Exercise](https://github.com/gdv/foundationsCS/blob/master/ex-01-DictFilesFunc.ipynb), [PromessiSposi.txt](https://github.com/gdv/foundationsCS/blob/master/ex-data/PromessiSposi.txt)  |         [Solution Part 1](https://github.com/gdv/foundationsCS/blob/master/ex-01-DictFilesFunc-solution-full.ipynb)                   |
+| 1 | GDV | 2/10 | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.  | (Gusfield, 1.1, 4.1, 4.2.[1-2]) | | |
 | -- | --- | ----- | --------- | ---------- | ------------- | --------- |
-| 2 | GDV | 2/10 | Separator-based files. Relational model DBMS. Schemas and instances. Exploring a DB. Constraints, Keys, Indices. Null values. | [slides](https://github.com/gdv/introduction_to_relational_databases/raw/master/01-intro.pdf) [planets.csv](https://raw.githubusercontent.com/mwaskom/seaborn-data/master/planets.csv) |  |
+| 2 | GDV | 3/10 | Richiamo linguaggio C |  |  |
 | -- | --- | ----- | --------- | ---------- | ------------- | --------- |
-| 3 | RR | 4/10 |  Basic shell usage, Version control | See "Linux shell commands" at the end of this page and [version control](http://swcarpentry.github.io/git-novice/) for version control. | 
+| 3 | RR | 7/10 |  Introduzione a Python. Stringhe, liste, tuple |  | 
 | -- | --- | ----- | --------- | ---------- | ------------- | --------- |
 
 
