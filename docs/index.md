@@ -8,69 +8,62 @@ title: Elementi di Bioinformatica (2019-20)
 
 | #  | Docente | Data  | Argomento                                                                                                               | Materiale                                                                                                       | Esercizi      | Soluzioni |  
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 1  | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | Gusfield 1.1, 4.1, 4.2.[1-2] 
+| A1  | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | Gusfield 1.1, 4.1, 4.2.[1-2] 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 2  | GDV     | 3/10  | Richiamo linguaggio C                                                                                                   | 
+| A2  | GDV     | 3/10  | Richiamo linguaggio C. Karp-Rabin: algoritmo e implementazione.                                                                                                    | 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 3  | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple
+| P1  | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 4  | GDV     | 9/10  | Karp-Rabin: algoritmo e implementazione. Richiami shell Linux. Make                                                     | Gusfield 4.4                                                                  
+| A3  | GDV     | 9/10  | Richiami shell Linux. Make                                                     | Gusfield 4.4                                                                  
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 5  | GDV     | 10/10 | Implementazione Karp-Rabin. Shell Linux.    
+| A4  | GDV     | 10/10 |Suffix array e Suffix tree: definizioni. Suffix array e Suffix tree: relazioni. LCP                                     | Gusfield, 5, 5.1, 5.2, 5.3, 5.4, 7.14. [dispensa](http://courses.csail.mit.edu/6.851/spring12/lectures/L16.pdf) |  
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 6  | RR      | 7/10  |                                                                                                                       
+| P2  | RR      | 7/10  |                                                                                                                       
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 7  | GDV     | 16/10 | Suffix array e Suffix tree: definizioni. Suffix array e Suffix tree: relazioni. LCP                                     | Gusfield, 5, 5.1, 5.2, 5.3, 5.4, 7.14. [dispensa](http://courses.csail.mit.edu/6.851/spring12/lectures/L16.pdf) | 
+| A5 | GDV     | 16/10 |  Calcolo della sottostringa comune più lunga di 2 stringhe. Suffix array: pattern matching. Controllo di versione (git). | Gusfield 7.4, 7.14.2                   
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 8  | GDV     | 17/10 | Calcolo della sottostringa comune più lunga di 2 stringhe. Suffix array: pattern matching. Controllo di versione (git). | Gusfield 7.4, 7.14.2                                                                                            |  
-  | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 9  | RR      | 7/10  | 
+| A6 | GDV     | 17/10 | Implementazione di pattern matching su suffix array. Python, FFI, Cython.
+| -- | --   | ----- | ---------   | ----------   | ------------- | --------- |
+| P3  | RR      | 7/10  | 
                                                                                                                       | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 10 | GDV     | 2/10  | Implementazione di pattern matching su suffix array.                                                                    | 4.2.[1-2])                                                                                                      |             
+| A7 | GDV     | 2/10  | Ricerca della sottostringa comune più lunga di k stringhe (Gusfield, 7.4): algoritmo e implementazione   
  | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 11 | GDV     | 3/10  | Ricerca della sottostringa comune più lunga di k stringhe (Gusfield, 7.4): algoritmo e implementazione   
+| A8 | GDV     | 3/10  | Allineamento globale di 2 sequenze. Needleman-Wunsch (Gusfield 11.2, 11.3, 11.4, 11.6
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 12 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple 
+| P4 | RR      | 7/10  | 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 13 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | (Gusfield, 1.1, 4.1, 4.2.[1-2])                                       
+| A9 | GDV     | 2/10  | Allineamento locale di 2 sequenze. Smith-Waterman (Gusfield 11.7)
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 14 | GDV     | 3/10  | Richiamo linguaggio C                                                                                                   | [Modern C](https://modernc.gforge.inria.fr/)                                                                    |       
+| A10 | GDV     | 3/10  | Allineamento con banda (Gusfield 12.2.3, 12.2.4)
+Allineamento con gap (Gusfield 11.8)
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 15 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple                                                                           
+| P5 | RR      | 7/10  | 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 16 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | (Gusfield, 1.1, 4.1, 4.2.[1-2])                   
+| A11 | GDV     | 2/10  | Allineamento globale come caso generale di distanza di edit e LCS. (Gusfield, 11.6, 11.6.[1-2],).                                   | (Gusfield, 1.1, 4.1, 4.2.[1-2])                   
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 17 | GDV     | 3/10  | Richiamo linguaggio C                                                                                                   | [Modern C](https://modernc.gforge.inria.fr/)
+| A12 | GDV     | 3/10  | Implementare algoritmi di programmazione dinamica. Allineamento multiplo (Gusfield 14.1, 14.[5-6]).
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 18 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple
+| P6 | RR      | 7/10  | 
 ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 19 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python. 
+| A13 | GDV     | 2/10  | Sequenziamento: string graphs (Gusfield 16.14, 16.15, 16.16, 16.17.1, 16.17.2). 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 20 | GDV     | 3/10  | Richiamo linguaggio C
+| A14 | GDV     | 3/10  | Sequenziamento: grafi di de Brujin (Gusfield 16.18).
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 21 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple
+| P7 | RR      | 7/10  | 
 |----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 22 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | (Gusfield, 1.1, 4.1, 4.2.[1-2])    
+| A15 | GDV     | 2/10  | Filogenesi basata su caratteri (Gusfield 17.3, Gusfield 17.6.1, Jones&Pevzner Capitolo 10)
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 23 | GDV     | 3/10  | Richiamo linguaggio C 
+| A16 | GDV     | 3/10  | Filogenesi basata su distanze. Neighbor-joining.  (Gusfield 17.1, 17.2, 17.4)
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 24 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple                                                                           
+| P8 | RR      | 7/10  |                                            
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 25 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | (Gusfield, 1.1, 4.1, 4.2.[1-2])
+| A17 | GDV     | 2/10  | Modelli di evoluzione. Max likelihood. (Felsenstein X.2, X.8) 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 26 | GDV     | 3/10  | Richiamo linguaggio C
+| P9 | RR      | 7/10  | 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 27 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple   
+| P10 | RR      | 7/10  | 
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 28 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.
-| -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 29 | GDV     | 3/10  | Richiamo linguaggio C
-|   | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 30 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple
-| -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 31 | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto. Cenni di Python.                                  | (Gusfield, 1.1, 4.1, 4.2.[1-2])                                                                           
-| -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
-| 32 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple.YY                                                                           
+| P11 | RR      | 7/10  | Introduzione a Python. Stringhe, liste, tuple.YY                                                                           
 | -- | ---     | ----- | ---------                                                                                                               | ----------                                                                                                      | ------------- | --------- |  
 
 
