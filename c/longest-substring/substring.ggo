@@ -1,0 +1,10 @@
+package "longest-substring"
+version "0.1.0"
+description "Find the longest substring of a set of strings"
+args "--unamed-opts"
+
+# Options
+option  "strings"	s "FASTA file of strings"			string	typestr="filename"
+details="\n
+The input strings must be in FASTA format.\n
+---------------------------\n"
