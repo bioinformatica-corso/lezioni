@@ -1,0 +1,12 @@
+package "sa-matching"
+version "0.1.0"
+description "Implementation of the pattern matching on a suffix array"
+args "--unamed-opts"
+
+# Options
+option  "text"		t "Text file"			string	typestr="filename"
+option  "pattern"	p "Pattern"			string  typestr="pattern"
+option  "accelerant"	a "Accelerant type (default=0)"	int optional default="0"
+details="\n
+The text file is in FASTA format.\n
+---------------------------\n"
