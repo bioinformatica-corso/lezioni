@@ -1,10 +1,6 @@
-[submodule "karp-rabin/miller-rabin"]
-	path = c/karp-rabin/miller-rabin
-	url = https://github.com/wizykowski/miller-rabin.git
-[submodule "karp-rabin/klib"]
+[submodule "c/karp-rabin/klib"]
 	path = c/karp-rabin/klib
 	url = https://github.com/attractivechaos/klib.git
-[submodule "band-alignment/klib"]
-	path = c/band-alignment/klib
-	url = https://github.com/attractivechaos/klib.git
-
+[submodule "c/karp-rabin/miller-rabin"]
+	path = c/karp-rabin/miller-rabin
+	url = https://github.com/wizykowski/miller-rabin.git

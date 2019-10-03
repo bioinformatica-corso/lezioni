@@ -16,7 +16,6 @@ CC_FULL = $(CC) $(CFLAGS) -I$(SRC_DIR) -I$(LIB_DIR) $(CFLAGS_LIBS)
 bin: $(P) $(LIBS)
 
 $(P): $(P).c $(P).h $(LIBS)
-	
 
 clean:
 	@echo "Cleaning..."
