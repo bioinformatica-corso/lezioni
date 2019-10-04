@@ -69,7 +69,7 @@ Le lezioni su Python si tengono nel LAB718 (edificio U7) a partire da **Lunedì 
 Viene usato Github per gestire i programmi che vengono sviluppati o analizzati. 
 Tutto il materiale (sia slide che i programmi) si troveranno nel repo [lezioni](https://github.com/bioinformatica-corso/lezioni).
 
-Le note scritte del docente a lezione sono [qui](https://oc.dellavedova.org/index.php/s/qRqqkHDgFo6r9f8).
+Le note scritte del docente a lezione sono [qui](https://oc.dellavedova.org/index.php/s/i5PNq49SYsHr9Sw).
 
 ## Azure Notebooks
 
