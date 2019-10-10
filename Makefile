@@ -7,8 +7,8 @@
 #project by displaying a notice stating their product contains code
 #and/or text from the Open Data Structures Project and/or linking to
 #opendatastructures.org.
-stampatexs=$(wildcard *-stampa.tex)
-videotexs=$(wildcard *-video.tex)
+stampatexs=$(wildcard *-*-stampa.tex)
+videotexs=$(wildcard *-*-video.tex)
 OBJECTS = $(videotexs:.tex=.pdf) $(stampatexs:.tex=.pdf)
 LATEXMK = latexmk -recorder -use-make -pdf -interaction=nonstopmode
 
