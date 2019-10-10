@@ -6,8 +6,8 @@ title: Elementi di Bioinformatica (2019-20)
 ## Elenco delle lezioni
 
 
-| #   | Docente | Data  | Argomento                                                                                                               | Materiale                                                                                                      | Esercizi                               | Soluzioni |
 | --  | ---     | ----- | ---------                                                                                                               | ----------                                                                                                     | -------------                          | --------- |
+| #   | Docente | Data  | Argomento                                                                                                               | Materiale                                                                                                      | Esercizi                               | Soluzioni |
 | A1  | GDV     | 2/10  | Pattern Matching. Algoritmo Bit-parallel per pattern matching esatto.                                                   | Gusfield 1.1, 4.1, 4.2.[1-2]                                                                                   |                                        |           |
 | A2  | GDV     | 3/10  | Richiamo linguaggio C. Karp-Rabin: algoritmo e implementazione. Cenni di Python.                                        |                                                                                                               | [parole](c-esercizio-parole-frequenti) |           |
 | --  | ---     | ----- | ---------                                                                                                               | ----------                                                                                                     | -------------                          | --------- |
