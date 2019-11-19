@@ -44,3 +44,6 @@ note/
 *_latexmk
 /vc.tex
 /auto/header-video.el
+/02-karp-rabin-video.synctex.gz
+*.synctex.gz
+/*.rel
