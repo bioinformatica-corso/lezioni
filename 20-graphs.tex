@@ -1,3 +1,7 @@
+\include{header}
+
+\begin{document}
+
 \begin{frame}
       \titlepage
 
@@ -28,7 +32,7 @@ Ricostruire il genoma: circa 3 miliardi bp
 
 \begin{frame}[fragile]
 \frametitle{Evoluzione tecnologica}
-\includegraphics[width=0.7\textwidth]{figures/Developments_in_next_generation_sequencing.jpg}
+\includegraphics[width=0.6\textwidth]{figures/Developments_in_next_generation_sequencing.jpg}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -47,19 +51,29 @@ Ricostruire il genoma: circa 3 miliardi bp
 Suffisso di una read può essere prefisso di un'altra read: overlap
 
 \begin{block}{Overlap --- sovrapposizione}
+\begin{minipage}{.68\textwidth}
 \begin{Verbatim}
-    TCTATATCTCGGCTCTAGG 
-        ||||||| ||||||| 
-        TATCTCGACTCTAGGCC
-\end{Verbatim}        
+TCTATATCTCGGCTCTAGG
+    ||||||| |||||||
+    TATCTCGACTCTAGGCCC
+\end{Verbatim}
+\end{minipage}\hfill%
+\begin{minipage}{.28\textwidth}
+Read 1\\\\Read 2
+\end{minipage}
 \end{block}
 
 \begin{block}{Probabile motivo}
+\begin{minipage}{.68\textwidth}
 \begin{Verbatim}
-    TCTATATCTCGGCTCTAGG 
-GGCGTCTATATCTCGGCTCTAGGCCCTCATTTTTT 
-        TATCTCG\alert{A}CTCTAGGCC
-        \end{Verbatim}
+    TCTATATCTCGGCTCTAGG
+GGCGTCTATATCTCGGCTCTAGGCCCTCATTTTTT
+        TATCTCG\alert{A}CTCTAGGCCC
+\end{Verbatim}
+\end{minipage}\hfill%
+\begin{minipage}{.28\textwidth}
+Read 1\\True genome\\Read 2
+\end{minipage}
 \end{block}
 
 Errore oppure organismi diploidi
@@ -84,17 +98,17 @@ Arco fra tutte le coppie di read con overlap abbastanza lungo
 					\node[draw, fill=blue, circle, font=\scriptsize, minimum size=1cm] (k2) at (0.35,-0.4) {CGTGTGC};
 					\node[draw, fill=blue, circle, font=\scriptsize, minimum size=1cm] (k3) at (2.7,-2.8) {GTGCCA};
 					\node[draw, fill=blue, circle, font=\scriptsize, minimum size=1cm] (k4) at (3.95,-0.4) {CCACG};
-					
+
 					\draw[->, thick] (k1) to node[rotate=45, font=\scriptsize, above] {A} (k2);
 					\draw[->, thick] (k2) to node[rotate=-45, font=\scriptsize, above] {CGT} (k3);
 					\draw[->, thick] (k3) to node[rotate=45, font=\scriptsize, below] {GTG} (k4);
-					
+
 					\draw[->, thick] (k1) to node[font=\scriptsize, below] {ACGT} (k3);
 					\draw[->, thick] (k2) to node[font=\scriptsize, above] {CGTGTG}(k4);
 					\end{tikzpicture}
           \end{block}
                   \end{frame}
-        
+
 
 \begin{frame}[fragile]
 \frametitle{String Graph}
@@ -115,16 +129,16 @@ Si rimuovono gli archi transitivi dal grafo di overlap
 					\node[draw, fill=blue, circle, font=\scriptsize, minimum size=1cm] (k2) at (0.35,-0.4) {CGTGTGC};
 					\node[draw, fill=blue, circle, font=\scriptsize, minimum size=1cm] (k3) at (2.7,-2.8) {GTGCCA};
 					\node[draw, fill=blue, circle, font=\scriptsize, minimum size=1cm] (k4) at (3.95,-0.4) {CCACG};
-					
+
 					\draw[->, thick] (k1) to node[rotate=45, font=\scriptsize, above] {A} (k2);
 					\draw[->, thick] (k2) to node[rotate=-45, font=\scriptsize, above] {CGT} (k3);
 					\draw[->, thick] (k3) to node[rotate=45, font=\scriptsize, below] {GTG} (k4);
-					
+
 					\end{tikzpicture}
 				\end{block}
         \end{frame}
 
-        
+
 \begin{frame}[fragile]
 \frametitle{Shortest superstring}
 \begin{block}{Istanza}
@@ -162,40 +176,40 @@ Finchè non rimane una stringa sola
 \begin{frame}[fragile]
 \frametitle{Esempio: a\_long\_long\_long\_time}
 \begin{enumerate}
-\item 
-ng\_lon \_long\_ a\_long long\_l ong\_ti ong\_lo long\_t g\_long 
+\item
+ng\_lon \_long\_ a\_long long\_l ong\_ti ong\_lo long\_t g\_long
 \alert{g\_time ng\_tim}
 \item
-  ng\_time ng\_lon 
+  ng\_time ng\_lon
 \alert{\_long\_}
- a\_long long\_l ong\_ti ong\_lo long\_t 
+ a\_long long\_l ong\_ti ong\_lo long\_t
 \alert{g\_long}
 \item
-  ng\_time g\_long\_ ng\_lon a\_long long\_l 
+  ng\_time g\_long\_ ng\_lon a\_long long\_l
 \alert{ong\_ti}
- ong\_lo 
+ ong\_lo
 \alert{long\_t}
 \item
-  ng\_time long\_ti g\_long\_ 
+  ng\_time long\_ti g\_long\_
 \alert{ng\_lon}
- a\_long long\_l 
+ a\_long long\_l
 \alert{ong\_lo}
 \item
 \alert{ng\_time}
- ong\_lon 
+ ong\_lon
 \alert{long\_ti}
- g\_long\_ a\_long long\_l 
+ g\_long\_ a\_long long\_l
 \item
 \alert{ong\_lon}
- long\_time g\_long\_ a\_long 
+ long\_time g\_long\_ a\_long
 long\_l\alert{}
 \item
-  long\_lon 
+  long\_lon
 \alert{long\_time g\_long\_}
- a\_long 
+ a\_long
 \item
 \alert{long\_lon g\_long\_time}
- a\_long 
+ a\_long
 \item
 \alert{long\_long\_time a\_long}
 \item
@@ -203,7 +217,7 @@ long\_l\alert{}
   \end{enumerate}
   \end{frame}
 
-  
+
 \begin{frame}[fragile]
 \frametitle{Problema del commesso viaggiatore (TSP)}
 \begin{block}{Istanza}
@@ -243,7 +257,7 @@ lunghezza stringa $\neq$ costo percorso TSP
 \uncover<2>{
 \begin{block}{Proprietà}
 $|\mathcal{S}| = \sum_{i=1}^{n}|s_{i}| - \sum_{i=1}^{n-1}|ov(s_{i}, s_{i+1})|$, dove
-$ov(\cdot,\cdot)$ è la lunghezza della sovrapposizione fra le stringhe
+$ov(\cdot,\cdot)$ è la sovrapposizione fra le stringhe
 \end{block}}
 \end{frame}
 
@@ -268,11 +282,11 @@ $ov(\cdot,\cdot)$ è la lunghezza della sovrapposizione fra le stringhe
 					\node[draw, fill=blue, rectangle, font=\scriptsize] (k2) at (1.35,-0.4) {CGTGTGC};
 					\node[draw, fill=blue, rectangle, font=\scriptsize] (k3) at (3.7,-2.8) {GTGCCA};
 					\node[draw, fill=blue, rectangle, font=\scriptsize] (k4) at (4.95,-0.4) {CCACG};
-					
+
 					\draw[->, thick] (k1) to node[rotate=45, font=\scriptsize, above] {A} (k2);
 					\draw[->, thick] (k2) to node[rotate=-45, font=\scriptsize, above] {CGT} (k3);
 					\draw[->, thick] (k3) to node[rotate=45, font=\scriptsize, below] {GTG} (k4);
-					
+
 					\draw[->, thick] (k1) to node[font=\scriptsize, below] {ACGT} (k3);
 					\draw[->, thick] (k2) to node[font=\scriptsize, above] {CGTGTG}(k4);
 
@@ -542,8 +556,28 @@ anche con revcomp
 \end{frame}
 
 
-%%% Local Variables:
-%%% TeX-PDF-mode: t
-%%% TeX-master: "graphs-video"
-%%% buffer-file-coding-system: utf-8
-%%% End:
+
+\begin{frame}[containsverbatim]\frametitle{Licenza d'uso}
+  \small
+
+  Quest'opera {\`e} soggetta alla licenza Creative Commons:
+Attribuzione-Condividi allo stesso modo 4.0.
+  (\verb+https://creativecommons.org/licenses/by-sa/4.0/+).
+
+Sei libero di riprodurre, distribuire, comunicare al pubblico, esporre
+in pubblico, rappresentare, eseguire, recitare e modificare quest'opera
+alle seguenti condizioni:
+\begin{itemize}
+\item
+Attribuzione — Devi attribuire la paternit{\`a} dell'opera nei modi
+indicati dall'autore o da chi ti ha dato l'opera in licenza e in modo tale da
+non suggerire che essi avallino te o il modo in cui tu usi l'opera.
+\item
+Condividi allo stesso modo — Se alteri o trasformi quest'opera, o se
+la usi per crearne un'altra, puoi distribuire l'opera risultante solo con
+una licenza identica o equivalente a  questa.
+\end{itemize}
+%  \vspace*{1cm}
+\end{frame}
+
+\end{document}

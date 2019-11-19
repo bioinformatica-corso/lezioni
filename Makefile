@@ -7,17 +7,13 @@
 #project by displaying a notice stating their product contains code
 #and/or text from the Open Data Structures Project and/or linking to
 #opendatastructures.org.
-stampatexs=$(wildcard *-*-stampa.tex)
-videotexs=$(wildcard *-*-video.tex)
-OBJECTS = $(videotexs:.tex=.pdf) $(stampatexs:.tex=.pdf)
+texs=$(wildcard *-*.tex)
+OBJECTS = $(texs:.tex=.pdf)
 LATEXMK = latexmk -recorder -use-make -pdf -interaction=nonstopmode
 
 pdf: $(OBJECTS)
 
-%-video.pdf : %-video.tex %-testo.tex
-	$(LATEXMK) -pdf $<
-
-%-stampa.pdf : %-stampa.tex %-testo.tex
+%.pdf : %.tex
 	$(LATEXMK) -pdf $<
 
 clean:
@@ -40,9 +36,3 @@ figs: $(pdfs) $(burstpdfs) $(externalfigs) $(svgfigspdf)
 
 %.pdf : %.svg
 	inkscape $< --export-pdf=$@
-
-today.txt: .git/logs/HEAD
-	autorevision -t tex > today.txt
-
-release: $(OBJECTS)
-	rsync -avc $(OBJECTS) ~/B121/elementi-bioinformatica/slides

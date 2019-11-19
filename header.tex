@@ -8,12 +8,6 @@ commandchars=\\\{\},
 fontfamily=helvetica,
 fontsize=\normalsize
 }
-%\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{frame=single,
-%fontsize=\large,
-%fontfamily=helvetica,
-%numbersep=1mm,
-%numbers=left,
-%formatcom=\color{orange}}
 \usepackage[bitstream-charter]{mathdesign}
 \usepackage{listings}
 \lstset{commentstyle=\color{orange}, keywordstyle=\color{yellow} }
@@ -22,10 +16,6 @@ fontsize=\normalsize
 \usetheme{Boadilla}
 \useoutertheme{split}
 \usecolortheme{albatross}
-%\setbeamercolor*{normal text}{fg=white!65!black,bg=blue!80!black}
-
-%\usepackage{wallpaper}
-%\CenterWallPaper{0.8}{logounimib}
 
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
@@ -51,4 +41,59 @@ fontsize=\normalsize
 \setbeamercolor*{fine separation line}{}
 \setbeamercolor{alerted text}{fg=green}
 
-%\beamerdefaultoverlayspecification{<+->}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf}
+\usepackage{verbatim}
+\usepackage{inconsolata}
+\usepackage{listings}
+\lstset{language=C, frame=single,
+  basicstyle=\ttfamily,
+  numbers=left, numberstyle=\tiny\color{gray},
+  numbersep=5pt, fancyvrb=true
+}
+
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+% \usepackage{fontspec}
+% \setmainfont{Palatino}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{%
+  arrows,
+  arrows.meta,
+  positioning,
+  calc,
+  backgrounds,
+  chains,
+  matrix,
+  patterns,
+  automata,
+  fit,
+  graphs,
+  decorations,
+  decorations.pathmorphing,
+  decorations.pathreplacing,
+  decorations.markings,
+}
+
+\usepgflibrary{shapes,shapes.geometric}
+
+
+\usepackage{url}
+\usepackage{xmpmulti}
+% \usepackage{euler}
+\usepackage[T1]{fontenc}
+\pdfpagebox5
+% \immediate\write18{sh ./vc}
+% \input{vc}
+
+\author{Gianluca Della Vedova}
+\title{Elementi di Bioinformatica}
+\institute{Univ. Milano--Bicocca\\
+  \texttt{http://gianluca.dellavedova.org}}
+\date{\today}
+%\pgfdeclareimage[height=1cm]{university-logo}{logounimib}
+%\logo{\pgfuseimage{university-logo}}
