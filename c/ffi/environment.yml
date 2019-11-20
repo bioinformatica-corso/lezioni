@@ -1,0 +1,7 @@
+name: cython
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - cython
+  - cffi
