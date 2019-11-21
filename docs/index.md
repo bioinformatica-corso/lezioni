@@ -73,7 +73,7 @@ Le note scritte del docente a lezione sono [qui](https://oc.dellavedova.org/inde
 ## Materiale Python
 
 1.  Installare [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html), scegliendo la versione
-    per Pyton 3
+    per Python 3
 
 # License
 
