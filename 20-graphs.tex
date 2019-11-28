@@ -532,30 +532,60 @@ Allora $G_{1}$ è euleriano.
 \end{block}
 \end{frame}
 
+% \begin{frame}[fragile]
+% \frametitle{Altre fasi}
+% \begin{itemize}
+% \item
+% bubble popping
+% \item
+% tip removal
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}[fragile]
+% \frametitle{Scaffolding}
+
+% \begin{itemize}
+% \item
+% Fondere contigs in scaffolds
+% \item
+% usando mate pairs
+% \item
+% anche con revcomp
+% \end{itemize}
+% \end{frame}
+
 \begin{frame}[fragile]
-\frametitle{Altre fasi}
+\frametitle{Ridurre il grafo di overlap}
 \begin{itemize}
 \item
-bubble popping
-\item
-tip removal
+Caso senza errori
 \end{itemize}
+
+\begin{block}{Osservazione 1}
+$G$ grafo di overlap con $(a\to b_{1})$ unico arco irriducibile uscente da $a$, e $(a, b_{1}), \ldots , (a,  b_{n})$ archi
+uscenti da $a$.
+Allora $(b_{i}\to b_{i+1})$ con $1\le i\le n-1$ sono archi di $G$.
+\end{block}
+
+\begin{block}{Osservazione 2}
+$G$ grafo di overlap con $(a\to b_{1})$ unico arco irriducibile uscente da $a$, e $(a, b_{1}), \ldots , (a,  b_{n})$ archi
+uscenti da $a$.
+Allora $(b_{1}\to b_{i})$ con $2\le i\le n-1$ sono archi di $G$.
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Scaffolding}
-
-\begin{itemize}
+\frametitle{Ridurre il grafo di overlap --- algoritmo}
+\begin{enumerate}
 \item
-Fondere contigs in scaffolds
+$b_{i}$ ordinati per lunghezza dell'arco
 \item
-usando mate pairs
+Marcare ``da eliminare'' i vertici $b_{j}$ tale che $(b_{i} \to b_{j})$ con $i<j$
 \item
-anche con revcomp
-\end{itemize}
+Rimuovere gli archi che terminano in vertici da eliminare
+\end{enumerate}
 \end{frame}
-
-
 
 \begin{frame}[containsverbatim]\frametitle{Licenza d'uso}
   \small
