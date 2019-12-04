@@ -11,15 +11,15 @@
 
 
 \begin{frame}
-\frametitle{Evolution}
+\frametitle{Evoluzione}
 
 \centering
 \includegraphics<1>[height=0.6\textheight]{figures/evolution-desk-720x380.jpg}
 
 \begin{itemize}
   \item
-    Change over generations
-  \item Random mutations
+    Effetti visibili in generazioni
+  \item Mutazioni casuali
   \end{itemize}
 \end{frame}
 
@@ -32,7 +32,7 @@
 % \end{frame}
 
 \begin{frame}
-\frametitle{Actual Mutation}
+\frametitle{Mutazioni reali}
  
 \centering
 \includegraphics<1>[height=0.6\textheight]{figures/dna_strand.jpg}
@@ -42,7 +42,7 @@
 
 
 \begin{frame}
-\frametitle{Hollywood Mutation}
+\frametitle{Mutazione fantasiosa}
 
 \centering
 \includegraphics<1>[height=0.85\textheight]{figures/spiderman-spider-bite-comic}
@@ -50,13 +50,13 @@
 
 
 \begin{frame}
-\frametitle{Individual Evolution}
+\frametitle{Evoluzione in un individuo}
 
 \centering
   \includegraphics[width=\linewidth]{figures/progression}
   \begin{itemize}
     \item
-      Cells \alert{accumulate} mutations throughout the entire life
+      Cellule \alert{accumulano} mutazioni durante la vita
   % \item
   %   Accumulate mutation $\Rightarrow$ perfect phylogeny
   \end{itemize}
@@ -66,37 +66,37 @@
 
 
 \begin{frame}
-\frametitle{Character-based evolution}
+\frametitle{Evoluzione basata su caratteri}
 
 \centering
 \includegraphics<1>[height=0.55\textheight]{figures/perfect-phylogeny}
 
-\begin{block}{A possible rule}
-Each character is gained \alert{exactly once} in the tree.
+\begin{block}{Regola 1 (semplice)}
+Ogni carattere è acquisito \alert{esattamente una volta} nell'albero.
 \end{block}
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{Perfect Phylogeny Problem}
+  \frametitle{Filogenesi perfetta}
 \begin{columns} 
   \begin{column}{0.48\textwidth}
 {    \scriptsize
  \begin{tabular}{l|ccccc}
         & A & J & H & L & V\\ \hline
-        Scorpion& 0 & 0 & 0 & 0 & 0\\
-        Lamprey& 0 & 0 & 0 & 0 & 1\\
-        Tuna& 0 & 1 & 0 & 0 & 1\\
-        Salamander& 0 & 1 & 0 & 1 & 1\\
-        Turtle& 1 & 1 & 0 & 1 & 1\\
-        Leopard& 1 & 1 & 1 & 1 & 1
+        Scorpione& 0 & 0 & 0 & 0 & 0\\
+        Anguilla& 0 & 0 & 0 & 0 & 1\\
+        Tonno& 0 & 1 & 0 & 0 & 1\\
+        Salamandra& 0 & 1 & 0 & 1 & 1\\
+        Tartaruga& 1 & 1 & 0 & 1 & 1\\
+        Leopardo& 1 & 1 & 1 & 1 & 1
  \end{tabular}
-}\begin{block}{Problem}
+}\begin{block}{Problema}
   \begin{itemize}
     \item
-  Input: a binary matrix $M$
+  Input: matrice binaria $M$
     \item
-      Output: a tree \alert{explaining} $M$, if it exists
+      Output: un albero che \alert{spiega} $M$, se esiste
 \end{itemize}
 \end{block}
 
@@ -107,12 +107,12 @@ Each character is gained \alert{exactly once} in the tree.
 \includegraphics<1>[height=0.52\textheight]{figures/perfect-phylogeny}
 \end{column}
 \end{columns}
-\begin{block}{Linear time algorithm (Gusfield, Networks 1991)}
+\begin{block}{Algorithm di Gusfield --- lineare}
   \begin{enumerate}
     \item
-      Radix Sort the columns by decreasing number of $1$s
+      Radix Sort delle colonne, in ordine decrescente
     \item
-      Build the tree, inserting the species one at a time
+      Costruire l'albero, una specie alla volta
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -136,28 +136,28 @@ Each character is gained \alert{exactly once} in the tree.
 
 
 \begin{frame}
-\frametitle{Characters and States}
+\frametitle{Caratteri e stati}
 
-\begin{block}{Change of state}
+\begin{block}{Cambio di stato}
   \begin{itemize} 
-\item  A character $c$ is \alert{gained} $\Rightarrow$  the state of $c$ changes from $0$ to $1$
-  in an edge
-\item  A character $c$ is \alert{lost} $\Rightarrow$  the state of $c$ changes from $1$ to $0$
-  in an edge (\alert{backmutation})
+\item  Un carattere $c$ è  \alert{acquisito} $\Rightarrow$ lo stato di  $c$ passa da  $0$ a $1$
+  in un arco
+  \item  Un carattere $c$ è \alert{perso} $\Rightarrow$   lo stato di  $c$ passa da  $1$ a $0$
+  in un arco (\alert{backmutation})
 \end{itemize}
 \end{block}
 
-\begin{block}{Models of Evolution}
-  Each character $c$ is gained \alert{exactly once} in the tree.
+\begin{block}{Modelli di evoluzione}
+Ogni carattere $c$ è  acquisito \alert{esattamente una volta} nell'albero.
 \begin{enumerate}
 \item
-  Perfect Phylogeny:  No backmutations
+  Filogenesi perfetta: nessuna backmutation
 \item
-  Persistent Phylogeny: Each character can be lost at most once in the tree.
-\alert{$012$ model}
+  Filogenesi persistente: ogni carattere può essere perso al massimo una volta nell'albero.
+\alert{modello $012$}
 \item
-  \alert{Dollo} parsimony: 
-  Unlimited backmutations
+  \alert{Dollo}:
+  backmutations senza limiti
 \end{enumerate}
 \end{block}
 \end{frame}
@@ -165,7 +165,7 @@ Each character is gained \alert{exactly once} in the tree.
 
 
 \begin{frame}
-\frametitle{Tumors}
+\frametitle{Tumori}
 \begin{columns}
 \begin{column}{0.75\textwidth}
 \centering
@@ -174,9 +174,9 @@ Each character is gained \alert{exactly once} in the tree.
 \begin{column}{0.25\textwidth}
 \begin{itemize}
 \item
-A \alert{tumor} is a mixture of healthy and cancer cells
+Un \alert{tumore} contiene sia cellule cancerose che sane
 \item
-A \alert{tumor} is a mixture of cancer clones
+Un \alert{tumore} è un miscuglio di cloni (sottopopolazioni) diverse.
 \end{itemize}
 \end{column}
 \end{columns}
@@ -184,7 +184,7 @@ A \alert{tumor} is a mixture of cancer clones
 
 
 \begin{frame}
-\frametitle{Tumor Evolution}
+\frametitle{Evoluzione tumorale}
 \begin{columns}
 \begin{column}{0.75\textwidth}
 \centering
@@ -192,7 +192,7 @@ A \alert{tumor} is a mixture of cancer clones
 \end{column}
 \begin{column}{0.25\textwidth}
 \begin{itemize}
-\item Different clones make different fractions of the tumor 
+\item I cloni compaiono con numerosità differente nel tumore
 \end{itemize}
 \end{column}
 \end{columns}
@@ -248,7 +248,7 @@ A \alert{tumor} is a mixture of cancer clones
 }
 
 \begin{frame}
-\frametitle{Tumor Evolution}
+\frametitle{Evoluzione tumorale}
 
 \begin{columns} 
   \begin{column}{0.38\textwidth}
@@ -282,10 +282,10 @@ A \alert{tumor} is a mixture of cancer clones
   \begin{column}{0.58\textwidth}
 
 \begin{itemize}
-\item A \alert{sample} is a mixture of clones
-\item For each sample, we have the \alert{frequency} of each mutation
+\item Un \alert{campione} contiene diversi cloni
+\item Per ogni campione, abbiamo la \alert{frequenza} con cui ogni mutazione appare
 \item
-  frequency matrix $F$
+  matrice di frequenze $F$
 %\item inference of tumoral phylogeny
 \end{itemize}
 
@@ -312,7 +312,7 @@ A \alert{tumor} is a mixture of cancer clones
 
 
 \begin{frame}
-\frametitle{Tumor Evolution: Compute}
+\frametitle{Calcolare l'evoluzione tumorale}
 
 \begin{columns} 
   \begin{column}{0.40\textwidth}
@@ -377,7 +377,7 @@ A \alert{tumor} is a mixture of cancer clones
 \frametitle{Approcci basati su parsimonia.}
 \begin{itemize}
 \item
-Piccola vs grande parsimonia
+Piccola (topologia nota) vs grande (topologia ignota)
 \item
 Algoritmo di Fitch
 \item
@@ -388,7 +388,7 @@ Confronto
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Piccola parsimonia}
+\frametitle{Piccolo problema di parsimonia}
 \begin{block}{Istanza}
 \begin{itemize}
 \item
