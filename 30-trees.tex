@@ -316,7 +316,7 @@ Un \alert{tumore} è un miscuglio di cloni (sottopopolazioni) diverse.
 
 \begin{columns} 
   \begin{column}{0.40\textwidth}
-    \begin{block}{Matrix $B$ representing tree $T$}
+    \begin{block}{Matrice $B$ spiegata da $T$}
     \end{block}
 \centering
 \resizebox{0.61\textwidth}{!}{\begin{tikzpicture}[scale=0.44]
@@ -334,10 +334,10 @@ Un \alert{tumore} è un miscuglio di cloni (sottopopolazioni) diverse.
   0 & 0 & 1 & 0 & 0 &0  \\
   1 & 1 & 1 & 1 & 0 &0  \\
 \end{tabular}
-    \begin{block}{Usage matrix $U$}
+    \begin{block}{Matrice uso $U$}
     \end{block}
 \resizebox{0.79\textwidth}{!}{\begin{tabular}{rrrrr}
-     \multicolumn{5}{c}{Species}\\
+     \multicolumn{5}{c}{Specie}\\
   0 & 0.2 & 0.2 & 0 & 0.2  \\
   0.4 & 0 & 0.4 & 0.2 & 0   \\
 \end{tabular}}
@@ -459,7 +459,37 @@ $B(x)$: insieme degli stati $z$ tali che $M[x,z]$ è minimo.
 
 \begin{frame}[fragile]
 \frametitle{Approcci basati su distanze.}
+\begin{block}{Distanza}
+$d: S \times S \mapsto \mathbb{R}^{+}$ tale che:
+\begin{enumerate}
+\item
+$d(a,b) = 0 \Leftrightarrow a=b$, $\forall a,b\in S$
+\item
+$d(a,b) = d(b,a)$, $\forall a,b\in S$ (simmetria)
+\item
+$d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
+\end{enumerate}
+\end{block}
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ultrametrica}
+\begin{block}{definizione}
+$d: S \times S \mapsto \mathbb{R}^{+}$ tale che:
+\begin{enumerate}
+\item
+$d(a,b) = 0 \Leftrightarrow a=b$, $\forall a,b\in S$
+\item
+$d(a,b) = d(b,a)$, $\forall a,b\in S$ (simmetria)
+\item
+$d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
+\item
+$\max\{d(a,b) \le d(a,c) + d(c,b) \}$ ottenuto da almeno 2 casi, $\forall a,b,c\in S$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
 
 \begin{frame}[fragile]
 \frametitle{Ultrametrica e orologio molecolare.}
@@ -487,6 +517,15 @@ Il massimo dei tre valori è ottenuto da esattamente due dei 3 casi sopra
 
 \begin{frame}[fragile]
 \frametitle{Algoritmo per matrice di distanze additive.}
+\begin{block}{Tripla degenere}
+Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
+Allora la tripla $(x,y,z)$ è \alert{degenere} se $D[x,y] + D[x,z] = D[y,z]$.
+\end{block}
+
+\begin{block}{Sbilancio}
+Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
+Allora lo sbilancio di $x$ rispetto a $(y,z)$ è $S(x, y, z) = D[x,y] + D[x,z] - D[y,z]$.
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
