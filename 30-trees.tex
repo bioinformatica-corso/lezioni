@@ -110,7 +110,7 @@ Ogni carattere è acquisito \alert{esattamente una volta} nell'albero.
 \begin{block}{Algorithm di Gusfield --- lineare}
   \begin{enumerate}
     \item
-      Radix Sort delle colonne, in ordine decrescente
+      Radix Sort delle colonne, in ordine decrescente (anche del numero di 1)
     \item
       Costruire l'albero, una specie alla volta
     \end{enumerate}
@@ -334,13 +334,13 @@ Un \alert{tumore} è un miscuglio di cloni (sottopopolazioni) diverse.
   0 & 0 & 1 & 0 & 0 &0  \\
   1 & 1 & 1 & 1 & 0 &0  \\
 \end{tabular}
-    \begin{block}{Matrice uso $U$}
-    \end{block}
-\resizebox{0.79\textwidth}{!}{\begin{tabular}{rrrrr}
-     \multicolumn{5}{c}{Specie}\\
-  0 & 0.2 & 0.2 & 0 & 0.2  \\
-  0.4 & 0 & 0.4 & 0.2 & 0   \\
-\end{tabular}}
+%     \begin{block}{Matrice uso $U$}
+%     \end{block}
+% \resizebox{0.79\textwidth}{!}{\begin{tabular}{rrrrr}
+%      \multicolumn{5}{c}{Specie}\\
+%   0 & 0.2 & 0.2 & 0 & 0.2  \\
+%   0.4 & 0 & 0.4 & 0.2 & 0   \\
+% \end{tabular}}
 \end{column}
 
 
@@ -392,7 +392,7 @@ Confronto
 \begin{block}{Istanza}
 \begin{itemize}
 \item
-Matrice binaria $M$ con $n$ specie e insieme di caratteri $C$
+Matrice binaria $M$ con $n$ specie e insieme di $m$ caratteri $C$
 \item
 Albero $T$, le cui foglie corrispondono alle specie di $M$
 \item
@@ -418,17 +418,17 @@ Ogni carattere può essere gestito separatamente
 \begin{block}{Programmazione dinamica}
 \begin{itemize}
 \item
-$M[x,z]$: soluzione ottimale del sottoalbero di $T$ che ha radice $x$, sotto la
+$P[x,z]$: soluzione ottimale del sottoalbero di $T$ che ha radice $x$, sotto la
 condizione che $x$ abbia etichetta $z$
 \item
-$M[x,z] = 0$, se $x$ è una foglia con etichetta $z$
+$P[x,z] = 0$, se $x$ è una foglia con etichetta $z$
 \item
-$M[x,z] = +\infty$, se $x$ è una foglia con etichetta diversa da $z$
+$P[x,z] = +\infty$, se $x$ è una foglia con etichetta diversa da $z$
 \item
-$M[x,z] = \sum_{f \in F(x)} \min_{s} \left\{ w(z,s) + M[f,s] \right\}$, dove $F(x)$ è
+$P[x,z] = \sum_{f \in F(x)} \min_{s} \left\{ w(z,s) + P[f,s] \right\}$, dove $F(x)$ è
 l'insieme dei figli di $x$ in $T$, se $x$ è un nodo interno
 \item
-soluzione ottimale $\min_{s} \left\{ M[r,s] \right\}$, dove $r$ è la radice di
+soluzione ottimale $\min_{s} \left\{ P[r,s] \right\}$, dove $r$ è la radice di
 $T$
 \end{itemize}
 \end{block}
@@ -439,6 +439,9 @@ $T$
 \frametitle{Algoritmo Fitch}
 Solo per il caso non pesato, albero $T$ binario
 \begin{block}{Algoritmo}
+$S(x)$ è l'insieme di stati ottimali per il nodo $x$. Nessuna restizione sull'insieme degli stati.
+
+
 \begin{itemize}
 \item
 $S(x)=\lambda_{c}(x)$, se $x$ è una foglia
@@ -451,7 +454,7 @@ se $S(f_{l}) \cap S(f_{r}) = \emptyset$
 \end{itemize}
 \end{block}
 \begin{block}{Unificazione}
-$B(x)$: insieme degli stati $z$ tali che $M[x,z]$ è minimo.
+$B(x)$: insieme degli stati $z$ tali che $P[x,z]$ è minimo.
 \onslide<2->{ \alert{$B(x) = S(x)$}}
 \end{block}
 \onslide<3>{Come estendere Fitch ad albero generico (sempre caso non pesato)?}
@@ -484,7 +487,7 @@ $d(a,b) = d(b,a)$, $\forall a,b\in S$ (simmetria)
 \item
 $d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
 \item
-$\max\{d(a,b) \le d(a,c) + d(c,b) \}$ ottenuto da almeno 2 casi, $\forall a,b,c\in S$
+$\max\{d(a,b), d(a,c), d(c,b) \}$ ottenuto da almeno 2 casi, $\forall a,b,c\in S$
 \end{enumerate}
 \end{block}
 \end{frame}
