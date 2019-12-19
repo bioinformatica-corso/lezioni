@@ -1,0 +1,147 @@
+\include{header}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+
+  \centering
+  Aplotipi
+\end{frame}
+
+\begin{frame}
+\frametitle{Ricostruzione aplotipi in pedigree}
+
+\begin{block}{Istanza}
+\begin{itemize}
+\item
+Pedigree $P$
+\item
+Per ogni individuo, il suo genotipo ($00$, $11$, $01$)
+\item
+No dati mancanti
+\item
+No ricombinazioni
+\item
+Caso biallelico
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ricostruzione aplotipi in pedigree}
+\begin{block}{Variabili}
+\begin{itemize}
+\item
+$g_{i}[j]$: genotipo dell'individuo $i$ nel locus $j$.
+Vale $0$ o $1$ se omozigote, $2$ se eterozigote.
+\item
+$w_{i}[j]$.
+Vale $0$  se il locus $j$ dell'individuo $i$ è omozigote, $1$ se eterozigote.
+% \item
+% $PS_{i}$: sorgente genitoriale.
+% $0$ se il primo allele è ereditato dal padre, $1$ se ereditato dalla madre.
+% Se omozigote, allora $PS_{i}[j] = g_{i}[j]$
+\item
+$h_{x,i}$ se $x$ è genitore di $i$.
+Se $x$ passa il suo aplotipo paterno a $i$, allora $h_{x,i}=0$, altrimenti $1$
+\item
+$p_{i}[j]$: aplotipo paterno dell'individuo $i$ nel locus $j$
+\end{itemize}
+\end{block}
+\onslide<2->{%
+  \begin{block}{Aplotipi}
+\begin{itemize}
+\item
+$(g_{i}[j], g_{i}[j])$ se omozigote,
+$(0,1)$ oppure $(1,0)$ se eterizigote
+\onslide<3->{%
+\item
+aplotipo materno $p_{i}[j] + w_{i}[j]$ in $\mathbb{Z}_{2}$
+}
+\end{itemize}
+\end{block}
+}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ereditarietà di Mendel}
+\begin{block}{Variabili}
+\begin{itemize}
+\item
+$p$ padre, $m$ madre, $f$ figlio/a, $x$ genitore
+\item
+$h_{p,f}=0 \Rightarrow p_{f}[j] = p_{p}[j]$
+\item
+$h_{p,f}=1 \Rightarrow p_{f}[j] = p_{p}[j]  + w_{p}[j]$;
+\item
+$h_{m,f}=0 \Rightarrow p_{f}[j] + w_{f}[j] = p_{m}[j]$
+\item
+$h_{m,f}=1 \Rightarrow p_{f}[j] + w_{f}[j]  = p_{m}[j]  + w_{m}[j]$;
+\onslide<2->{%
+\item
+$p_{f}[j] = p_{p}[j]  + w_{p}[j] h_{p,f}[j]$;
+\item
+$p_{f}[j] + w_{f}[j]  = p_{m}[j]  + w_{m}[j] h_{m,f}$;
+}
+\onslide<3->{%
+\item
+$p_{f}[j] + d_{x,f} = p_{x}[j]  + w_{x}[j] h_{m,f}$, dove $d_{p,f}=0$ e $d_{m,f} = w_{f}$
+}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sistema}
+\begin{block}{Equazioni}
+\begin{itemize}
+\item
+$p_{f}[j] + d_{x,f} = p_{x}[j]  + w_{x}[j] h_{m,f}$, per ogni coppia $(x,f)$ genitore--figlio
+\item
+$d_{p,f}=0$ per ogni coppia $(p,f)$ padre--figlio
+\item
+$d_{m,f} = w_{f}$ per ogni coppia $(m,f)$ madre--figlio
+\item
+$p_{i}[j] = g_{i}[j]$, se $g_{i}[j] \neq 2$
+\item
+$w_{i}[i] = 1$, se $g_{i}[j] = 2$
+\item
+$w_{i}[i] = 0$, se $g_{i}[j] \neq 2$
+\end{itemize}
+\end{block}
+\begin{block}{Incognite}
+\begin{itemize}
+\item
+$p_{x}[j]$
+\item
+$h_{x,f}$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[containsverbatim]\frametitle{Licenza d'uso}
+  \small
+
+  Quest'opera {\`e} soggetta alla licenza Creative Commons:
+Attribuzione-Condividi allo stesso modo 4.0.
+  (\verb+https://creativecommons.org/licenses/by-sa/4.0/+).
+
+Sei libero di riprodurre, distribuire, comunicare al pubblico, esporre
+in pubblico, rappresentare, eseguire, recitare e modificare quest'opera
+alle seguenti condizioni:
+\begin{itemize}
+\item
+Attribuzione — Devi attribuire la paternit{\`a} dell'opera nei modi
+indicati dall'autore o da chi ti ha dato l'opera in licenza e in modo tale da
+non suggerire che essi avallino te o il modo in cui tu usi l'opera.
+\item
+Condividi allo stesso modo — Se alteri o trasformi quest'opera, o se
+la usi per crearne un'altra, puoi distribuire l'opera risultante solo con
+una licenza identica o equivalente a  questa.
+\end{itemize}
+%  \vspace*{1cm}
+\end{frame}
+
+\end{document}
