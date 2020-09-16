@@ -45,3 +45,23 @@
 *  `cut` estrae alcune colonne
 *  `less` paginatore
 *  `find` cerca file
+
+## Screencast
+
+* [ls, cd, pwd](https://asciinema.org/a/197295)
+* [mv cp nano touch rsync](https://asciinema.org/a/197355)
+* [redirection pipe cut wc sort head tail](https://asciinema.org/a/197358)
+* [for history echo](https://asciinema.org/a/197360)
+* [bash programs, script, filenames with spaces](https://asciinema.org/a/197363)
+* [grep, find](https://asciinema.org/a/197364)
+* [fg, bg, ctrl+c, ctrl+z, ps, kill, chmod](https://asciinema.org/a/197590)
+
+## Materiale C
+
+ *  [Awesome C](https://notabug.org/koz.ross/awesome-c)
+ *  [TAP](https://www.eyrie.org/~eagle/software/c-tap-harness/)
+
+# License
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
