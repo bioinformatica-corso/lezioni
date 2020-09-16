@@ -1,3 +1,5 @@
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
 # Makefile for Karp-Rabin
 P = karp-rabin
 
