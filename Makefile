@@ -36,3 +36,7 @@ figs: $(pdfs) $(burstpdfs) $(externalfigs) $(svgfigspdf)
 
 %.pdf : %.svg
 	inkscape $< --export-pdf=$@
+
+
+publish:
+	rsync -a --delete *.pdf  ~/B121/Elementi\ Bioinformatica/slides/
