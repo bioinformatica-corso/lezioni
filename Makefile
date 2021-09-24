@@ -39,4 +39,4 @@ figs: $(pdfs) $(burstpdfs) $(externalfigs) $(svgfigspdf)
 
 
 publish:
-	rsync -a --delete *.pdf  ~/B121/Elementi\ Bioinformatica/slides/
+	test -d ~/Documenti/Didattica/Elementi-Bioinformatica/slides && cp -u *.pdf ~/Documenti/Didattica/Elementi-Bioinformatica/slides/
