@@ -5,7 +5,7 @@
   \titlepage
 
   \centering
-  Alberi evolutivi
+  Alberi evolutivi --- Filogenesi
 \end{frame}
 
 
@@ -143,7 +143,7 @@ Ogni carattere è acquisito \alert{esattamente una volta} nell'albero.
 \item  Un carattere $c$ è  \alert{acquisito} $\Rightarrow$ lo stato di  $c$ passa da  $0$ a $1$
   in un arco
   \item  Un carattere $c$ è \alert{perso} $\Rightarrow$   lo stato di  $c$ passa da  $1$ a $0$
-  in un arco (\alert{backmutation})
+  in un arco (\alert{mutazione ricorrente})
 \end{itemize}
 \end{block}
 
@@ -151,19 +151,22 @@ Ogni carattere è acquisito \alert{esattamente una volta} nell'albero.
 Ogni carattere $c$ è  acquisito \alert{esattamente una volta} nell'albero.
 \begin{enumerate}
 \item
-  Filogenesi perfetta: nessuna backmutation
-\item
-  Filogenesi persistente: ogni carattere può essere perso al massimo una volta nell'albero.
-\alert{modello $012$}
+  Filogenesi perfetta: nessuna mutazione ricorrente, nessuna perdita
+% \item
+%   Filogenesi persistente: ogni carattere può essere perso al massimo una volta nell'albero.
+% \alert{modello $012$}
 \item
   \alert{Dollo}:
-  backmutations senza limiti
+  mutazioni ricorrenti senza limiti, ma senza perdite
+\item
+  \alert{Camin-Sokal}:
+  Perdite senza limiti, ma senza mutazioni ricorrenti
 \end{enumerate}
 \end{block}
 \end{frame}
 
 
-
+\begin{comment}
 \begin{frame}
 \frametitle{Tumori}
 \begin{columns}
@@ -372,6 +375,7 @@ Un \alert{tumore} è un miscuglio di cloni (sottopopolazioni) diverse.
 \end{column}
 \end{columns}
 \end{frame}
+\end{comment}
 
 \begin{frame}[fragile]
 \frametitle{Approcci basati su parsimonia.}
