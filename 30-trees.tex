@@ -479,6 +479,31 @@ $d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
 \end{block}
 \end{frame}
 
+
+\begin{frame}[fragile]
+  \frametitle{UPGMA}
+\begin{itemize}
+\item
+  Unweighted Pair Group with Arithmetic Mean
+\item
+  $D(C_{1}, C_{2}) \gets \frac{1}{|C_{1}||C_{2}|}\sum_{i\in C_{1}}\sum_{j\in C_{2}} D(i,j)$
+\item
+  All'inizio $h=0$ per ogni cluster/specie
+\item
+Fondi i due cluster $C_{1}$, $C_{2}$ con minimo $D(\cdot, \cdot)$, ottenendo $C$
+\item
+  Per ogni cluster $C^{*}\neq C$, $D(C, C^{*}) = \frac{1}{|C||C^{*}|}\sum_{i\in C}\sum_{j\in C^{*}} D(i,j)$
+\item
+  $h(C)\gets \frac{1}{2}D(C_{1}, C_{2})$
+\item
+  $h(C) - h(C_{1})$ etichetta $(C, C_{1})$; $h(C) - h(C_{2})$ etichetta $(C, C_{2})$
+\item
+  UPGMA produce ultrametrica
+\end{itemize}
+\end{frame}
+
+
+
 \begin{frame}[fragile]
 \frametitle{Ultrametrica}
 \begin{block}{definizione}
@@ -533,28 +558,6 @@ Allora la tripla $(x,y,z)$ è \alert{degenere} se $D[x,y] + D[x,z] = D[y,z]$.
 Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
 Allora lo sbilancio di $x$ rispetto a $(y,z)$ è $S(x, y, z) = D[x,y] + D[x,z] - D[y,z]$.
 \end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{UPGMA}
-\begin{itemize}
-\item
-  Unweighted Pair Group with Arithmetic Mean
-\item
-  $D(C_{1}, C_{2}) \gets \frac{1}{|C_{1}||C_{2}|}\sum_{i\in C_{1}}\sum_{j\in C_{2}} D(i,j)$
-\item
-  All'inizio $h=0$ per ogni cluster/specie
-\item
-Fondi i due cluster $C_{1}$, $C_{2}$ con minimo $D(\cdot, \cdot)$, ottenendo $C$
-\item
-  Per ogni cluster $C^{*}\neq C$, $D(C, C^{*}) = \frac{1}{|C||C^{*}|}\sum_{i\in C}\sum_{j\in C^{*}} D(i,j)$
-\item
-  $h(C)\gets \frac{1}{2}D(C_{1}, C_{2})$
-\item
-  $h(C) - h(C_{1})$ etichetta $(C, C_{1})$; $h(C) - h(C_{2})$ etichetta $(C, C_{2})$
-\item
-  UPGMA produce ultrametrica
-\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
