@@ -1,356 +1,395 @@
 \include{header}
-
+\usepackage{forloop}
+\newcounter{slideno}
 \begin{document}
 
 \begin{frame}
-  \titlepage
+	\titlepage
 \end{frame}
 
 
 
 
 \begin{frame}[fragile]
-\frametitle{Pattern matching su suffix array}
-\begin{block}{Occorrenza $P$ in $T$}
-Suffissi di $T$ che iniziano con $P$
-\end{block}
-\begin{block}{Ricerca in $SA$}
-\begin{itemize}
-\item
-Ricerca dicotomica
-\item
-Tempo $O(m \log n)$ -- caso pessimo
-\item
-Controllare tutto $P$ ad ogni iterazione
-\item
-$log_{2} n$ iterazioni
-\end{itemize}
-\end{block}
+	\frametitle{Pattern matching su suffix array}
+	\begin{block}{Occorrenza $P$ in $T$}
+		Suffissi di $T$ che iniziano con $P$
+	\end{block}
+	\begin{block}{Ricerca in $SA$}
+		\begin{itemize}
+			\item
+			      Ricerca dicotomica
+			\item
+			      Tempo $O(m \log n)$ -- caso pessimo
+			\item
+			      Controllare tutto $P$ ad ogni iterazione
+			\item
+			      $log_{2} n$ iterazioni
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Accelerante 1}
-\begin{columns}
-\begin{column}{0.6\textwidth}
-\begin{itemize}
-\item
-Intervallo $SA(L, R)$ di $SA$
-\item
-Elemento mediano $M$
-\item
-Tutti i suffissi in $SA(L,R)$ iniziano con uno stesso prefisso lungo $Lcp(SA[L],
-SA[R])$
-\item
-Non confrontare con i primi $Lcp(SA[L], SA[R])$ caratteri
-\end{itemize}
-\end{column}
-\begin{column}{0.35\textwidth}
-\begin{center}
-\onslide<1->{\multiinclude[<+>][start=1,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-pattern-matching1}}
-%\onslide<4->{\includegraphics[width=\textwidth]{figures/trie3}}
-\end{center}
-\end{column}
-\end{columns}
+	\frametitle{Accelerante 1}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item
+				      Intervallo $SA(L, R)$ di $SA$
+				\item
+				      Elemento mediano $M$
+				\item
+				      Tutti i suffissi in $SA(L,R)$ iniziano con uno stesso prefisso lungo $Lcp(SA[L],
+					      SA[R])$
+				\item
+				      Non confrontare con i primi $Lcp(SA[L], SA[R])$ caratteri
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.35\textwidth}
+			\begin{center}
+				\onslide<1->{\multiinclude[<+>][start=1,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-pattern-matching1}}
+				%\onslide<4->{\includegraphics[width=\textwidth]{figures/trie3}}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Accelerante 2}
+	\begin{columns}[T]
+		\begin{column}{0.32\textwidth}
+			\multiinclude[<+>][start=2,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-accelerant}
+			%\only<2->{\multiinclude[<alert@+| +->][start=1,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-accelerant}}
+		\end{column}
+		\begin{column}[T]{0.6\textwidth}
+			\begin{block}{$l$: $lcp(L,P)$; $r$: $Lcp(R,P)$}
+				\begin{enumerate}
+					\item
+					      Caso 1: $l>r$
+					      \only<2->{\begin{itemize}}
+							      \only<2->{\item
+							            $Lcp(L,M)>l$ \only<3->{$\Rightarrow L\gets M$}}
+							            \only<4->{\item
+							            $Lcp(L,M)<l$ \only<5->{$\Rightarrow$\\ $R\gets M, r\gets Lcp(M,L)$}}
+							            \only<6->{\item
+							            $Lcp(L,M)=l$ \only<7->{$\Rightarrow$ confronto $P[l+1:]$, $M[l+1:]$}}
+							            \only<2->{\end{itemize}}
+
+					      \only<8->{\item Caso 2: $l=r$}
+					      \only<9->{
+						      \begin{itemize}
+							      \item $Lcp(L,M)>l$
+							            \only<10->{\item $Lcp(M,R)>l$}
+							            \only<11->{\item $Lcp(L,M)=Lcp(M,R)=l$}
+						      \end{itemize}}
+				\end{enumerate}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+% \begin{frame}[fragile]
+% 	\frametitle{Accelerante 2}
+% 	\begin{columns}[T]
+% 		\begin{column}[T]{0.6\textwidth}
+% 			\begin{block}{$l$: $lcp(L,P)$; $r$: $Lcp(R,P)$}
+% 				\begin{enumerate}
+% 					\item
+% 					      Caso 1: $l>r$
+% 					      \begin{itemize}
+% 						      \item
+% 						            $Lcp(L,M)>l$ {$\Rightarrow L\gets M$}
+% 						      \item
+% 						            $Lcp(L,M)<l$ {$\Rightarrow$\\ $R\gets M, r\gets Lcp(M,L)$}
+% 						      \item
+% 						            $Lcp(L,M)=l$ {$\Rightarrow$ confronto $P[l+1:]$, $M[l+1:]$}
+% 					      \end{itemize}
+% 					\item
+% 					      Caso 2: $l=r$
+% 					      \begin{itemize}
+% 						      \item
+% 						            $Lcp(L,M)>l$
+% 						      \item $Lcp(M,R)>l$
+% 						      \item $Lcp(L,M)=Lcp(M,R)=l$
+% 					      \end{itemize}
+% 				\end{enumerate}
+% 			\end{block}
+% 		\end{column}
+% 		\begin{column}{0.32\textwidth}
+% 			\includegraphics[width=0.95\textwidth]{figures/SA-accelerant}
+% 			\only<2->{\multiinclude[<alert@+| +->][start=1,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-accelerant}}
+% 		\end{column}
+% 	\end{columns}
+% \end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Accelerante 3: calcolo $Lcp$ in tempo $O(n)$}
+	\begin{itemize}[<+->]
+		\item
+		      Iterazione 1: $(L,R)=(1,n)$
+		\item
+		      Iterazione 2: $(L,R)=(1,n/2)$ oppure $(n/2,n)$
+		\item
+		      Iterazione $k$: $L = h\frac{n}{2^{k-1}}$, $R = (h+1)\frac{n}{2^{k-1}}$
+		\item
+		      Iterazione $\lceil \log_{2}n\rceil$: $R=L+1$, $Lcp(h,h+1)$
+		\item
+		      Iterazione $\lceil \log_{2}n\rceil -1$: aggrego i risultati dell'iterazione
+		      $\lceil \log_{2}n\rceil$
+		\item
+		      Iterazione $k$: $Lcp(h\frac{n}{2^{k-1}}, (h+1)\frac{n}{2^{k-1}})$
+		\item
+		      $t=\frac{n}{2^{k}}$,
+		      $Lcp\left(2ht + 1, \left(2h+2\right)t\right))=\min\{$
+		      $Lcp\left( 2ht + 1, \left( 2h+1 \right) t\right),$
+		      $Lcp\left( \left(2h+1 \right)t +1, \left(2h+2\right)t\right),$
+		      $Lcp\left( \left(2h+1\right)t,\left(2h+1\right)t+1\right)
+			      \}$
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Accelerante 2}
-\begin{columns}[T]
-\begin{column}[T]{0.6\textwidth}
-\begin{block}{$l$: $lcp(L,P)$; $r$: $Lcp(R,P)$}
-\begin{enumerate}
-\item
-Caso 1: $l>r$
-\only<3->{\begin{itemize}\item
-$Lcp(L,M)>l$\only<4->{$\Rightarrow L\gets M$}
-\only<5->{\item
-$Lcp(L,M)<l$\only<6->{$\Rightarrow$\\ $R\gets M, r\gets Lcp(M,L)$}}
-\only<7->{\item
-  $Lcp(L,M)=l$\only<8->{$\Rightarrow$ confronto $P[l+1:]$, $M[l+1:]$}
-}\end{itemize}}
-\only<9->{\item
-  Caso 2: $l=r$
-\only<10->{\begin{itemize}\item
-  $Lcp(L,M)>l$
-\only<11->{\item $Lcp(M,R)>l$}
-\only<12->{\item $Lcp(L,M)=Lcp(M,R)=l$}
-  \end{itemize}}}
-\end{enumerate}
-\end{block}
-\end{column}
-\begin{column}{0.32\textwidth}
-\only<2->{\multiinclude[<+>][start=1,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-accelerant}}
-%\only<2->{\multiinclude[<alert@+| +->][start=1,format=pdf,graphics={width=0.95\textwidth}]{figures/SA-accelerant}}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Accelerante 3: calcolo $Lcp$ in tempo $O(n)$}
-\begin{itemize}[<+->]
-\item
-Iterazione 1: $(L,R)=(1,n)$
-\item
-Iterazione 2: $(L,R)=(1,n/2)$ oppure $(n/2,n)$
-\item
-Iterazione $k$: $L = h\frac{n}{2^{k-1}}$, $R = (h+1)\frac{n}{2^{k-1}}$
-\item
-Iterazione $\lceil \log_{2}n\rceil$: $R=L+1$, $Lcp(h,h+1)$
-\item
-Iterazione $\lceil \log_{2}n\rceil -1$: aggrego i risultati dell'iterazione
-$\lceil \log_{2}n\rceil$
-\item
-Iterazione $k$: $Lcp(h\frac{n}{2^{k-1}}, (h+1)\frac{n}{2^{k-1}})$
-\item
-$t=\frac{n}{2^{k}}$,
-$Lcp\left(2ht + 1, \left(2h+2\right)t\right))=\min\{$
-$Lcp\left( 2ht + 1, \left( 2h+1 \right) t\right),$
-$Lcp\left( \left(2h+1 \right)t +1, \left(2h+2\right)t\right),$
-$Lcp\left( \left(2h+1\right)t,\left(2h+1\right)t+1\right)
-\}$
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{columns}[T]
-\begin{column}[T]{0.8\textwidth}
-\frametitle{Accelerante 3: calcolo $Lcp$ in tempo $O(n)$}
-\multiinclude[<+>][start=1,format=pdf,graphics={width=\textwidth}]{figures/SA-linear-Lcp}
-\end{column}
-\begin{column}{0.18\textwidth}
-\uncover<5->{\vfill Passaggio da $s$ a $z$ deve esistere}
-\end{column}
-\end{columns}
+	\begin{columns}[T]
+		\begin{column}[T]{0.8\textwidth}
+			\frametitle{Accelerante 3: calcolo $Lcp$ in tempo $O(n)$}
+			\multiinclude[<+>][start=1,format=pdf,graphics={width=\textwidth}]{figures/SA-linear-Lcp}
+		\end{column}
+		\begin{column}{0.18\textwidth}
+			\uncover<5->{\vfill Passaggio da $s$ a $z$ deve esistere}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
-\frametitle{Osservazione}
-\begin{itemize}[<+->]
-\item
-Tempo per trovare un'occorrenza
-\item
-Tempo per trovare tutte le occorrenze?
-\item
-$O(n+m+k)$, per $k$ occorrenze | scansione lineare a partire dall'occorrenza trovata
-\end{itemize}
+	\frametitle{Osservazione}
+	\begin{itemize}[<+->]
+		\item
+		      Tempo per trovare un'occorrenza
+		\item
+		      Tempo per trovare tutte le occorrenze?
+		\item
+		      $O(n+m+k)$, per $k$ occorrenze | scansione lineare a partire dall'occorrenza trovata
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Costruzione suffix array: nuovo alfabeto}
-\begin{itemize}
-\item
-Alfabeto $\Sigma$ con $\sigma$ simboli, testo $T$ lungo $n$
-\item
-Aggrego triple di caratteri
-\item
-Alfabeto $\Sigma^{3}$ con $\sigma^{3}$ simboli, testo lungo $n/3$
-\item
-$T_{1}=(T[1],T[2],T[3])\cdots (T[3i+1],T[3i+2],T[3i+3])\cdots$\\
-$T_{2}=(T[2],T[3],T[4])\cdots (T[3i+2],T[3i+3],T[3i+4])\cdots$\\
-$T_{0}=(T[3],T[4],T[5])\cdots (T[3i],T[3i+1],T[3i+2])\cdots$
-\item
-suffissi$(T)$ $\Leftrightarrow$ $\bigcup_{i=0,1,2}$ suffissi$(T_{i})$
-\end{itemize}
+	\frametitle{Costruzione suffix array: nuovo alfabeto}
+	\begin{itemize}
+		\item
+		      Alfabeto $\Sigma$ con $\sigma$ simboli, testo $T$ lungo $n$
+		\item
+		      Aggrego triple di caratteri
+		\item
+		      Alfabeto $\Sigma^{3}$ con $\sigma^{3}$ simboli, testo lungo $n/3$
+		\item
+		      $T_{1}=(T[1],T[2],T[3])\cdots (T[3i+1],T[3i+2],T[3i+3])\cdots$\\
+		      $T_{2}=(T[2],T[3],T[4])\cdots (T[3i+2],T[3i+3],T[3i+4])\cdots$\\
+		      $T_{0}=(T[3],T[4],T[5])\cdots (T[3i],T[3i+1],T[3i+2])\cdots$
+		\item
+		      suffissi$(T)$ $\Leftrightarrow$ $\bigcup_{i=0,1,2}$ suffissi$(T_{i})$
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Costruzione suffix array: ricorsione}
-\begin{enumerate}
-\item
-Ricorsione su $T_{0}T_{1}$
-\item
-suffissi$(T_{0}T_{1})$ $\Leftrightarrow$ suffissi$(T_{0})$, suffissi$(T_{1})$
-\item
-suffissi$(T_{0}T_{1})$  $\Leftrightarrow$ suffissi$(T_{2})$
-\item
-$T_{2}[i:] \approx T[3i+2:]$
-\item
-$T[3i+2:] = T[3i+2]T[3i+3:] =T[3i+2]T_{0}[i+1:]$
-\item
-suffissi$(T_{0})$ ordinati
-\item
-Radix sort
-\item
-Fusione suffissi$(T_{0}T_{1})$,  suffissi$(T_{2})$
-\end{enumerate}
+	\frametitle{Costruzione suffix array: ricorsione}
+	\begin{enumerate}
+		\item
+		      Ricorsione su $T_{0}T_{1}$
+		\item
+		      suffissi$(T_{0}T_{1})$ $\Leftrightarrow$ suffissi$(T_{0})$, suffissi$(T_{1})$
+		\item
+		      suffissi$(T_{0}T_{1})$  $\Leftrightarrow$ suffissi$(T_{2})$
+		\item
+		      $T_{2}[i:] \approx T[3i+2:]$
+		\item
+		      $T[3i+2:] = T[3i+2]T[3i+3:] =T[3i+2]T_{0}[i+1:]$
+		\item
+		      suffissi$(T_{0})$ ordinati
+		\item
+		      Radix sort
+		\item
+		      Fusione suffissi$(T_{0}T_{1})$,  suffissi$(T_{2})$
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
-\frametitle{Costruzione suffix array: fusione}
-Confronto suffisso di $T_{0}$ e $T_{2}$
-\begin{enumerate}
-\item
-$T_{0}[i:] <=> T_{2}[j:]$
-\item
-$T[3i:] <=> T[3j+2:]$
-\item
-$T[3i]T[3i+1:] <=> T[3j+2]T[3j+3:]$
-\item
-$T[3i]T_{1}[i:] <=> T[3j+2]T_{0}[j+1:]$
-\end{enumerate}
+	\frametitle{Costruzione suffix array: fusione}
+	Confronto suffisso di $T_{0}$ e $T_{2}$
+	\begin{enumerate}
+		\item
+		      $T_{0}[i:] <=> T_{2}[j:]$
+		\item
+		      $T[3i:] <=> T[3j+2:]$
+		\item
+		      $T[3i]T[3i+1:] <=> T[3j+2]T[3j+3:]$
+		\item
+		      $T[3i]T_{1}[i:] <=> T[3j+2]T_{0}[j+1:]$
+	\end{enumerate}
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{Costruzione suffix array: fusione}
-Confronto suffisso di $T_{1}$ e $T_{2}$
-\begin{enumerate}
-\item
-$T_{1}[i:] <=> T_{2}[j:]$
-\item
-$T[3i+1:] <=> T[3j+2:]$
-\item
-$T[3i+1]T[3i+2:] <=> T[3j+2]T[3j+3:]$
-\item
-$T[3i+1]T[3i+2]T[3i+3:] <=> T[3j+2]T[3j+3]T[3j+4:]$
-\item
-$T[3i+1]T[3i+2]T_{0}[i+1:] <=> T[3j+2]T[3j+3]T_{1}[j+1:]$
-\end{enumerate}
+	\frametitle{Costruzione suffix array: fusione}
+	Confronto suffisso di $T_{1}$ e $T_{2}$
+	\begin{enumerate}
+		\item
+		      $T_{1}[i:] <=> T_{2}[j:]$
+		\item
+		      $T[3i+1:] <=> T[3j+2:]$
+		\item
+		      $T[3i+1]T[3i+2:] <=> T[3j+2]T[3j+3:]$
+		\item
+		      $T[3i+1]T[3i+2]T[3i+3:] <=> T[3j+2]T[3j+3]T[3j+4:]$
+		\item
+		      $T[3i+1]T[3i+2]T_{0}[i+1:] <=> T[3j+2]T[3j+3]T_{1}[j+1:]$
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
-\frametitle{KS}
-\begin{enumerate}
-\item
-Juha Kärkkäinen, Peter Sanders and Stefan Burkhardt.
-Linear work suffix array construction. J. ACM, 53 (6), 2006, pp. 918-936.
-\item
-Difference cover (DC) 3
-\item
-Stefan Burkhardt and Juha Kärkkäinen.
-Fast lightweight suffix array construction and checking
-In Proc. 14th Symposium on Combinatorial Pattern Matching (CPM '03), LNCS 2676,
-Springer, 2003, pp. 55-69. \url{http://www.stefan-burkhardt.net/CODE/cpm_03.tar.gz}
-\item
-Yuta Mori.
-SAIS \url{https://sites.google.com/site/yuta256/}
-\end{enumerate}
+	\frametitle{KS}
+	\begin{enumerate}
+		\item
+		      Juha Kärkkäinen, Peter Sanders and Stefan Burkhardt.
+		      Linear work suffix array construction. J. ACM, 53 (6), 2006, pp. 918-936.
+		\item
+		      Difference cover (DC) 3
+		\item
+		      Stefan Burkhardt and Juha Kärkkäinen.
+		      Fast lightweight suffix array construction and checking
+		      In Proc. 14th Symposium on Combinatorial Pattern Matching (CPM '03), LNCS 2676,
+		      Springer, 2003, pp. 55-69. \url{http://www.stefan-burkhardt.net/CODE/cpm_03.tar.gz}
+		\item
+		      Yuta Mori.
+		      SAIS \url{https://sites.google.com/site/yuta256/}
+	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}[fragile]
-\frametitle{Sottostringa comune più lunga}
-\begin{block}{$k$ stringhe $\{s_{1}, \ldots , s_{k}\}$}
-\begin{enumerate}[<+->]
-\item
-Suffix tree generalizzato
-\item
-Vettore $C_{x}[1:k]$ per ogni nodo $x$
-\item
-$C_{x}[i]$: sottoalbero con radice $x$ ha una foglia di $s_{i}$
-\item
-$C_{x} = \bigvee C$ sui figli di $C$
-\item
-Nodo $z$, $C_{z}=$ tutti ${1}$
-\item
-Tempo $O(kn)$
-\item
-$n$: summa lunghezze $|s_{1}| + \cdots + |s_{k}|$
-\end{enumerate}
-\end{block}
+	\frametitle{Sottostringa comune più lunga}
+	\begin{block}{$k$ stringhe $\{s_{1}, \ldots , s_{k}\}$}
+		\begin{enumerate}[<+->]
+			\item
+			      Suffix tree generalizzato
+			\item
+			      Vettore $C_{x}[1:k]$ per ogni nodo $x$
+			\item
+			      $C_{x}[i]$: sottoalbero con radice $x$ ha una foglia di $s_{i}$
+			\item
+			      $C_{x} = \bigvee C$ sui figli di $C$
+			\item
+			      Nodo $z$, $C_{z}=$ tutti ${1}$
+			\item
+			      Tempo $O(kn)$
+			\item
+			      $n$: summa lunghezze $|s_{1}| + \cdots + |s_{k}|$
+		\end{enumerate}
+	\end{block}
 \end{frame}
 
 
 \begin{frame}[fragile]
-\frametitle{Lowest common ancestor (lca)}
-\begin{block}{Dati albero $T$ e 2 foglie $x$, $y$}
-\begin{itemize}
-\item
-$z$ è antenato comune di $x$, $y$ se
-$z$ è antenato di entrambi $x$ e $y$
-\item
-$z$ è lca di $x$, $y$ se:
-\begin{enumerate}
-\item
-$z$ è antenato comune di $x$ e $y$
-\item
-nessun discendente di $z$ è antenato comune di $x$ e $y$
-\end{enumerate}
-\end{itemize}
-\end{block}
-\begin{block}{Proprietà}
-\begin{itemize}
-\item
-Preprocessing di $T$ in tempo $O(n)$
-\item
-Calcolo lca$(x,y)$ in tempo $O(1)$
-\item
-Algoritmo complesso, ma pratico
-\end{itemize}
-\end{block}
+	\frametitle{Lowest common ancestor (lca)}
+	\begin{block}{Dati albero $T$ e 2 foglie $x$, $y$}
+		\begin{itemize}
+			\item
+			      $z$ è antenato comune di $x$, $y$ se
+			      $z$ è antenato di entrambi $x$ e $y$
+			\item
+			      $z$ è lca di $x$, $y$ se:
+			      \begin{enumerate}
+				      \item
+				            $z$ è antenato comune di $x$ e $y$
+				      \item
+				            nessun discendente di $z$ è antenato comune di $x$ e $y$
+			      \end{enumerate}
+		\end{itemize}
+	\end{block}
+	\begin{block}{Proprietà}
+		\begin{itemize}
+			\item
+			      Preprocessing di $T$ in tempo $O(n)$
+			\item
+			      Calcolo lca$(x,y)$ in tempo $O(1)$
+			\item
+			      Algoritmo complesso, ma pratico
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
 
 \begin{frame}[fragile]
-\frametitle{Sottostringa comune più lunga di $k$ stringhe}
-\begin{block}{Arricchimento $ST$}
-\begin{enumerate}[<+->]
-\item
-$N_{x}[i]$: numero foglie di $s_{i}$ discendenti di $x$
-\item
-$N_{x}[i]=0$ o $1$ per ogni foglia
-\item
-$N_{x}[i]=$ somma dei figli
-\item
-$D_{x}[i]$: numero di consecutive di foglie di $s_{i}$, ordinate secondo visita depth-first, discendenti di $x$
-\item
-$N_{x}[i]=0 \Rightarrow D_{x}[i]=0$
-\item
-$N_{x}[i]=1 \Rightarrow D_{x}[i]=0$
-\item
-$N_{x}[i]\ge 1 \Rightarrow D_{x}[i]=N_{x}[i]-1$
-\item
-$N_{x}[i] - D_{x}[i] =$ \uncover<2->{$C_{x}[i]$}
-\end{enumerate}
-\end{block}
+	\frametitle{Sottostringa comune più lunga di $k$ stringhe}
+	\begin{block}{Arricchimento $ST$}
+		\begin{enumerate}[<+->]
+			\item
+			      $N_{x}[i]$: numero foglie di $s_{i}$ discendenti di $x$
+			\item
+			      $N_{x}[i]=0$ o $1$ per ogni foglia
+			\item
+			      $N_{x}[i]=$ somma dei figli
+			\item
+			      $D_{x}[i]$: numero di consecutive di foglie di $s_{i}$, ordinate secondo visita depth-first, discendenti di $x$
+			\item
+			      $N_{x}[i]=0 \Rightarrow D_{x}[i]=0$
+			\item
+			      $N_{x}[i]=1 \Rightarrow D_{x}[i]=0$
+			\item
+			      $N_{x}[i]\ge 1 \Rightarrow D_{x}[i]=N_{x}[i]-1$
+			\item
+			      $N_{x}[i] - D_{x}[i] =$ \uncover<2->{$C_{x}[i]$}
+		\end{enumerate}
+	\end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Sottostringa comune più lunga di $k$ stringhe}
-\begin{block}{Gestione $ST$}
-\begin{itemize}
-\item
-Visita depth-first di $ST$
-\item
-$L_{i}$: lista ordinata delle foglie di $s_{i}$
-\item
-Per ogni coppia $x,y$ consecutiva in $L_{i}$
-\begin{enumerate}
-\item
-$z\gets lca(x,y)$
-\item
-$D_{z}[i]=$
-\item
-Aggiorna $C_{z}$
-\end{enumerate}
-\end{itemize}
-\end{block}
+	\frametitle{Sottostringa comune più lunga di $k$ stringhe}
+	\begin{block}{Gestione $ST$}
+		\begin{itemize}
+			\item
+			      Visita depth-first di $ST$
+			\item
+			      $L_{i}$: lista ordinata delle foglie di $s_{i}$
+			\item
+			      Per ogni coppia $x,y$ consecutiva in $L_{i}$
+			      \begin{enumerate}
+				      \item
+				            $z\gets lca(x,y)$
+				      \item
+				            $D_{z}[i]=$
+				      \item
+				            Aggiorna $C_{z}$
+			      \end{enumerate}
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
 \begin{frame}[containsverbatim]\frametitle{Licenza d'uso}
-  \small
+	\small
 
-  Quest'opera {\`e} soggetta alla licenza Creative Commons:
-Attribuzione-Condividi allo stesso modo 4.0.
-  (\verb+https://creativecommons.org/licenses/by-sa/4.0/+).
+	Quest'opera {\`e} soggetta alla licenza Creative Commons:
+	Attribuzione-Condividi allo stesso modo 4.0.
+	(\verb+https://creativecommons.org/licenses/by-sa/4.0/+).
 
-Sei libero di riprodurre, distribuire, comunicare al pubblico, esporre
-in pubblico, rappresentare, eseguire, recitare e modificare quest'opera
-alle seguenti condizioni:
-\begin{itemize}
-\item
-Attribuzione — Devi attribuire la paternit{\`a} dell'opera nei modi
-indicati dall'autore o da chi ti ha dato l'opera in licenza e in modo tale da
-non suggerire che essi avallino te o il modo in cui tu usi l'opera.
-\item
-Condividi allo stesso modo — Se alteri o trasformi quest'opera, o se
-la usi per crearne un'altra, puoi distribuire l'opera risultante solo con
-una licenza identica o equivalente a  questa.
-\end{itemize}
-%  \vspace*{1cm}
+	Sei libero di riprodurre, distribuire, comunicare al pubblico, esporre
+	in pubblico, rappresentare, eseguire, recitare e modificare quest'opera
+	alle seguenti condizioni:
+	\begin{itemize}
+		\item
+		      Attribuzione — Devi attribuire la paternit{\`a} dell'opera nei modi
+		      indicati dall'autore o da chi ti ha dato l'opera in licenza e in modo tale da
+		      non suggerire che essi avallino te o il modo in cui tu usi l'opera.
+		\item
+		      Condividi allo stesso modo — Se alteri o trasformi quest'opera, o se
+		      la usi per crearne un'altra, puoi distribuire l'opera risultante solo con
+		      una licenza identica o equivalente a  questa.
+	\end{itemize}
+	%  \vspace*{1cm}
 \end{frame}
 
 \end{document}
