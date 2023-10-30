@@ -194,13 +194,16 @@
 
 \begin{frame}
 	\frametitle{Costruzione suffix array: ricorsione}
-	\begin{enumerate}
+	\begin{itemize}
 		\item
 		      Ricorsione su $T_{0}T_{1}$
-		\item
-		      suffissi$(T_{0}T_{1})$ $\Leftrightarrow$ suffissi$(T_{0})$, suffissi$(T_{1})$
-		\item
-		      suffissi$(T_{0}T_{1})$  $\Leftrightarrow$ suffissi$(T_{2})$
+		\item<+->
+			suffissi$(T_{0}T_{1})$ $\Leftrightarrow$ suffissi$(T_{0})$,
+			suffissi$(T_{1})$
+		\item<+->
+			suffissi$(T_{0}T_{1})$  $\Leftrightarrow$ suffissi$(T_{2})$
+	\end{itemize}
+	\begin{enumerate}[<+->]
 		\item
 		      $T_{2}[i:] \approx T[3i+2:]$
 		\item
