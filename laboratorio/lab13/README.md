@@ -1,3 +1,17 @@
+# Install mamba
+
+```bash
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh
+```
+
+# Create env
+
+```bash
+mamba create -n eb samtools bcftools bwa snakemake htslib gsl -c bioconda -c conda-forge
+mamba activate eb
+```
+
 # Align + SNP call
 
 Index the reference
