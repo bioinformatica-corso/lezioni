@@ -36,5 +36,5 @@ samtools view reads.aln.bam | less
 Bcftools
 
 ```bash
-bcftools mpileup -Ou -f chr21.100k.fa reads.aln.bam | bcftools call -mv > snp.call.vcf
+bcftools mpileup -Ou -f ref.fa reads.aln.bam | bcftools call -mv > snp.call.vcf
 ```
