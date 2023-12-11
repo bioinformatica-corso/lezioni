@@ -457,12 +457,13 @@ $S(x)= S(f_{l}) \cup S(f_{r})$, dove $f_{l}$ e $f_{r}$ sono i figli di $x$ in $T
 se $S(f_{l}) \cap S(f_{r}) = \emptyset$
 \end{itemize}
 \end{block}
-\begin{block}{Unificazione}
+\onslide<2->{\begin{block}{Unificazione}
 $B(x)$: insieme degli stati $z$ tali che $P[x,z]$ è minimo.
-\onslide<2->{ \alert{$B(x) = S(x)$}}
-\end{block}
-\onslide<3>{Come estendere Fitch ad albero generico (sempre caso non pesato)?}
+\onslide<3->{ \alert{$B(x) = S(x)$}}
+\end{block}}
+\onslide<4>{Come estendere Fitch ad albero generico (sempre caso non pesato)?}
 \end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{Approcci basati su distanze.}
@@ -479,6 +480,36 @@ $d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
 \end{block}
 \end{frame}
 
+
+
+\begin{frame}
+\frametitle{Approcci basati su distanze.}
+\begin{columns}
+  \begin{column}{0.48\textwidth}
+{    \scriptsize
+ \begin{tabular}{l|cccccc}
+        & Sc & A & To & Sa & Ta & L\\ \hline
+        Scorpione& - & & & & &\\
+        Anguilla& 3 & - & & & &\\
+        Tonno& 2 & 1 & - &  & &\\
+        Salamandra& 1 & 2 & 1 & - & &\\
+        Tartaruga& 3 & 1 & 4 & 1 & -&\\
+        Leopardo& 1 & 1 & 1 & 1 & 1 & -
+ \end{tabular}
+}
+\end{column}
+  \begin{column}{0.48\textwidth}
+\begin{block}{Problema}
+  \begin{itemize}
+    \item
+  Input: matrice $M$ di distanze stimate
+    \item
+      Output: un albero con le stesse distanze di $M$, se esiste
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{UPGMA}
