@@ -41,20 +41,7 @@ Input example:
 ```txt
 chr10:1819916-1836627
 chr16:2227361-2239388
-chr22:6451132-6456071usage: classifier_1.py [-h] --ref REF -i INPUT [--seed SEED] -o OUTPUT
-
-Argument Parser Example
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --ref REF             Reference
-  -i INPUT, --input INPUT
-                        Input
-  --seed SEED           An integer seed value
-  -o OUTPUT, --output OUTPUT
-                        Output file path
-chr15:1711192-1733668
-chr14:8037790-8046729
+chr22:6451132-6456071
 ```
 
 Output example:
