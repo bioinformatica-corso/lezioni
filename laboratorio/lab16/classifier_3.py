@@ -26,6 +26,7 @@ def main(args):
             continue
         line = line.strip()
         r, cov = line.split(",")
+        cov = int(cov)
 
         pred = "X"
         if args.ignore_cov:
