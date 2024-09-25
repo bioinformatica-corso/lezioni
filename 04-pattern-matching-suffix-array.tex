@@ -194,13 +194,16 @@
 
 \begin{frame}
 	\frametitle{Costruzione suffix array: ricorsione}
-	\begin{enumerate}
+	\begin{itemize}
 		\item
 		      Ricorsione su $T_{0}T_{1}$
-		\item
-		      suffissi$(T_{0}T_{1})$ $\Leftrightarrow$ suffissi$(T_{0})$, suffissi$(T_{1})$
-		\item
-		      suffissi$(T_{0}T_{1})$  $\Leftrightarrow$ suffissi$(T_{2})$
+		\item<+->
+			suffissi$(T_{0}T_{1})$ $\Leftrightarrow$ suffissi$(T_{0})$,
+			suffissi$(T_{1})$
+		\item<+->
+			suffissi$(T_{0}T_{1})$  $\Leftrightarrow$ suffissi$(T_{2})$
+	\end{itemize}
+	\begin{enumerate}[<+->]
 		\item
 		      $T_{2}[i:] \approx T[3i+2:]$
 		\item
@@ -268,105 +271,105 @@
 \end{frame}
 
 
-\begin{frame}[fragile]
-	\frametitle{Sottostringa comune più lunga}
-	\begin{block}{$k$ stringhe $\{s_{1}, \ldots , s_{k}\}$}
-		\begin{enumerate}[<+->]
-			\item
-			      Suffix tree generalizzato
-			\item
-			      Vettore $C_{x}[1:k]$ per ogni nodo $x$
-			\item
-			      $C_{x}[i]$: sottoalbero con radice $x$ ha una foglia di $s_{i}$
-			\item
-			      $C_{x} = \bigvee C$ sui figli di $C$
-			\item
-			      Nodo $z$, $C_{z}=$ tutti ${1}$
-			\item
-			      Tempo $O(kn)$
-			\item
-			      $n$: summa lunghezze $|s_{1}| + \cdots + |s_{k}|$
-		\end{enumerate}
-	\end{block}
-\end{frame}
+% \begin{frame}[fragile]
+% 	\frametitle{Sottostringa comune più lunga}
+% 	\begin{block}{$k$ stringhe $\{s_{1}, \ldots , s_{k}\}$}
+% 		\begin{enumerate}[<+->]
+% 			\item
+% 			      Suffix tree generalizzato
+% 			\item
+% 			      Vettore $C_{x}[1:k]$ per ogni nodo $x$
+% 			\item
+% 			      $C_{x}[i]$: sottoalbero con radice $x$ ha una foglia di $s_{i}$
+% 			\item
+% 			      $C_{x} = \bigvee C$ sui figli di $C$
+% 			\item
+% 			      Nodo $z$, $C_{z}=$ tutti ${1}$
+% 			\item
+% 			      Tempo $O(kn)$
+% 			\item
+% 			      $n$: summa lunghezze $|s_{1}| + \cdots + |s_{k}|$
+% 		\end{enumerate}
+% 	\end{block}
+% \end{frame}
 
 
-\begin{frame}[fragile]
-	\frametitle{Lowest common ancestor (lca)}
-	\begin{block}{Dati albero $T$ e 2 foglie $x$, $y$}
-		\begin{itemize}
-			\item
-			      $z$ è antenato comune di $x$, $y$ se
-			      $z$ è antenato di entrambi $x$ e $y$
-			\item
-			      $z$ è lca di $x$, $y$ se:
-			      \begin{enumerate}
-				      \item
-				            $z$ è antenato comune di $x$ e $y$
-				      \item
-				            nessun discendente di $z$ è antenato comune di $x$ e $y$
-			      \end{enumerate}
-		\end{itemize}
-	\end{block}
-	\begin{block}{Proprietà}
-		\begin{itemize}
-			\item
-			      Preprocessing di $T$ in tempo $O(n)$
-			\item
-			      Calcolo lca$(x,y)$ in tempo $O(1)$
-			\item
-			      Algoritmo complesso, ma pratico
-		\end{itemize}
-	\end{block}
-\end{frame}
+% \begin{frame}[fragile]
+% 	\frametitle{Lowest common ancestor (lca)}
+% 	\begin{block}{Dati albero $T$ e 2 foglie $x$, $y$}
+% 		\begin{itemize}
+% 			\item
+% 			      $z$ è antenato comune di $x$, $y$ se
+% 			      $z$ è antenato di entrambi $x$ e $y$
+% 			\item
+% 			      $z$ è lca di $x$, $y$ se:
+% 			      \begin{enumerate}
+% 				      \item
+% 				            $z$ è antenato comune di $x$ e $y$
+% 				      \item
+% 				            nessun discendente di $z$ è antenato comune di $x$ e $y$
+% 			      \end{enumerate}
+% 		\end{itemize}
+% 	\end{block}
+% 	\begin{block}{Proprietà}
+% 		\begin{itemize}
+% 			\item
+% 			      Preprocessing di $T$ in tempo $O(n)$
+% 			\item
+% 			      Calcolo lca$(x,y)$ in tempo $O(1)$
+% 			\item
+% 			      Algoritmo complesso, ma pratico
+% 		\end{itemize}
+% 	\end{block}
+% \end{frame}
 
 
 
-\begin{frame}[fragile]
-	\frametitle{Sottostringa comune più lunga di $k$ stringhe}
-	\begin{block}{Arricchimento $ST$}
-		\begin{enumerate}[<+->]
-			\item
-			      $N_{x}[i]$: numero foglie di $s_{i}$ discendenti di $x$
-			\item
-			      $N_{x}[i]=0$ o $1$ per ogni foglia
-			\item
-			      $N_{x}[i]=$ somma dei figli
-			\item
-			      $D_{x}[i]$: numero di consecutive di foglie di $s_{i}$, ordinate secondo visita depth-first, discendenti di $x$
-			\item
-			      $N_{x}[i]=0 \Rightarrow D_{x}[i]=0$
-			\item
-			      $N_{x}[i]=1 \Rightarrow D_{x}[i]=0$
-			\item
-			      $N_{x}[i]\ge 1 \Rightarrow D_{x}[i]=N_{x}[i]-1$
-			\item
-			      $N_{x}[i] - D_{x}[i] =$ \uncover<2->{$C_{x}[i]$}
-		\end{enumerate}
-	\end{block}
-\end{frame}
+% \begin{frame}[fragile]
+% 	\frametitle{Sottostringa comune più lunga di $k$ stringhe}
+% 	\begin{block}{Arricchimento $ST$}
+% 		\begin{enumerate}[<+->]
+% 			\item
+% 			      $N_{x}[i]$: numero foglie di $s_{i}$ discendenti di $x$
+% 			\item
+% 			      $N_{x}[i]=0$ o $1$ per ogni foglia
+% 			\item
+% 			      $N_{x}[i]=$ somma dei figli
+% 			\item
+% 			      $D_{x}[i]$: numero di consecutive di foglie di $s_{i}$, ordinate secondo visita depth-first, discendenti di $x$
+% 			\item
+% 			      $N_{x}[i]=0 \Rightarrow D_{x}[i]=0$
+% 			\item
+% 			      $N_{x}[i]=1 \Rightarrow D_{x}[i]=0$
+% 			\item
+% 			      $N_{x}[i]\ge 1 \Rightarrow D_{x}[i]=N_{x}[i]-1$
+% 			\item
+% 			      $N_{x}[i] - D_{x}[i] =$ \uncover<2->{$C_{x}[i]$}
+% 		\end{enumerate}
+% 	\end{block}
+% \end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Sottostringa comune più lunga di $k$ stringhe}
-	\begin{block}{Gestione $ST$}
-		\begin{itemize}
-			\item
-			      Visita depth-first di $ST$
-			\item
-			      $L_{i}$: lista ordinata delle foglie di $s_{i}$
-			\item
-			      Per ogni coppia $x,y$ consecutiva in $L_{i}$
-			      \begin{enumerate}
-				      \item
-				            $z\gets lca(x,y)$
-				      \item
-				            $D_{z}[i]=$
-				      \item
-				            Aggiorna $C_{z}$
-			      \end{enumerate}
-		\end{itemize}
-	\end{block}
-\end{frame}
+% \begin{frame}[fragile]
+% 	\frametitle{Sottostringa comune più lunga di $k$ stringhe}
+% 	\begin{block}{Gestione $ST$}
+% 		\begin{itemize}
+% 			\item
+% 			      Visita depth-first di $ST$
+% 			\item
+% 			      $L_{i}$: lista ordinata delle foglie di $s_{i}$
+% 			\item
+% 			      Per ogni coppia $x,y$ consecutiva in $L_{i}$
+% 			      \begin{enumerate}
+% 				      \item
+% 				            $z\gets lca(x,y)$
+% 				      \item
+% 				            $D_{z}[i]=$
+% 				      \item
+% 				            Aggiorna $C_{z}$
+% 			      \end{enumerate}
+% 		\end{itemize}
+% 	\end{block}
+% \end{frame}
 
 
 \begin{frame}[containsverbatim]\frametitle{Licenza d'uso}
