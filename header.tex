@@ -1,5 +1,6 @@
-\documentclass[12pt,aspectratio=169]{beamer}
-\usepackage{pxfonts}
+\documentclass[12pt,aspectratio=169,professionalfont,serif]{beamer}
+\usepackage[osf,p]{newpxtext}
+\usepackage{newpxmath}
 
 \usepackage{fancyvrb}
 \fvset{%frame=single,
@@ -12,8 +13,6 @@ fontsize=\normalsize
 \usepackage{listings}
 \lstset{commentstyle=\color{orange}, keywordstyle=\color{yellow} }
 
-\usepackage{newpxtext}
-\usepackage{eulerpx}
 
 \usetheme{Boadilla}
 \useoutertheme{split}
@@ -25,25 +24,28 @@ fontsize=\normalsize
 %\beamerdefaultoverlayspecification{<+->}
 
 
-\setbeamercolor*{structure}{fg=green!75!black,bg=blue!70!white}
-\setbeamercolor*{normal text}{fg=green!65!black,bg=blue!80!black}
-\setbeamercolor{palette primary}{use={structure,normal text},fg=green,bg=structure.bg!75!black}
-\setbeamercolor{palette secondary}{use={structure,normal text},fg=structure.fg,bg=structure.bg!60!black}
-\setbeamercolor{palette tertiary}{use={structure,normal text},fg=structure.fg,bg=structure.bg!45!black}
-\setbeamercolor{palette quaternary}{use={structure,normal text},fg=green,bg=structure.bg!75!black}
-\setbeamercolor*{example text}{fg=green!65!black}
-\setbeamercolor*{block body}{bg=structure.bg!90!black}
-\setbeamercolor*{block body alerted}{bg=structure.bg!90!black}
-\setbeamercolor*{block body example}{bg=structure.bg!90!black}
-\setbeamercolor*{block title}{parent=structure,bg=structure.bg!75!black}
-\setbeamercolor*{block title alerted}{use={structure,alerted text},fg=alerted text.fg!75!structure.fg,bg=structure.bg!75!black}
+\setbeamercolor*{structure}{fg=green!60!black,bg=black}
+\setbeamercolor*{normal text}{fg=green!60!black,bg=black}
+\setbeamercolor{palette primary}{use={structure,normal text},fg=green,bg=structure.bg}
+\setbeamercolor{palette secondary}{use={structure,normal text},fg=structure.fg,bg=structure.bg}
+\setbeamercolor{palette tertiary}{use={structure,normal text},fg=structure.fg,bg=structure.bg}
+\setbeamercolor{palette quaternary}{use={structure,normal text},fg=white,bg=green!30!black}
+\setbeamercolor{palette sidebar quaternary}{use={structure,normal text},fg=white,bg=green!30!black}
+\setbeamercolor{title in head/foot}{use={structure,normal text},fg=white,bg=green!30!black}
+
+\setbeamercolor*{example text}{use={structure},fg=green!60!black}
+\setbeamercolor*{block body}{use={structure},bg=structure.bg}
+\setbeamercolor*{block body alerted}{use={structure},bg=structure.bg}
+\setbeamercolor*{block body example}{use={structure},bg=structure.bg}
+\setbeamercolor*{block title}{parent=structure,bg=structure.bg}
+\setbeamercolor*{block title alerted}{use={structure,alerted text},fg=alerted text.fg,bg=structure.bg}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{items}[square]
 \setbeamercolor{item projected}{fg=white}
-\setbeamercolor*{normal text}{fg=white!90!blue,bg=blue!70!black}
+\setbeamercolor*{normal text}{use={structure},fg=white!90!blue,bg=structure.bg}
 \setbeamercolor*{separation line}{}
 \setbeamercolor*{fine separation line}{}
-\setbeamercolor{alerted text}{fg=green}
+\setbeamercolor{alerted text}{use={structure},fg=structure.fg}
 
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
@@ -52,52 +54,41 @@ fontsize=\normalsize
 \usepackage{inconsolata}
 \usepackage{listings}
 \lstset{language=C, frame=single,
-  basicstyle=\ttfamily,
-  numbers=left, numberstyle=\tiny\color{gray},
-  numbersep=5pt, fancyvrb=true
+	basicstyle=\ttfamily,
+	numbers=left, numberstyle=\tiny\color{gray},
+	numbersep=5pt, fancyvrb=true
 }
-
-\usefonttheme{professionalfonts} % using non standard fonts for beamer
-\usefonttheme{serif} % default family is serif
-% \usepackage{fontspec}
-% \setmainfont{Palatino}
 
 \usepackage{pgf}
 \usepackage{tikz}
 \usepackage{graphicx}
 \usetikzlibrary{%
-  arrows,
-  arrows.meta,
-  positioning,
-  calc,
-  backgrounds,
-  chains,
-  matrix,
-  patterns,
-  automata,
-  fit,
-  graphs,
-  decorations,
-  decorations.pathmorphing,
-  decorations.pathreplacing,
-  decorations.markings,
+	arrows,
+	arrows.meta,
+	positioning,
+	calc,
+	backgrounds,
+	chains,
+	matrix,
+	patterns,
+	automata,
+	fit,
+	graphs,
+	decorations,
+	decorations.pathmorphing,
+	decorations.pathreplacing,
+	decorations.markings,
 }
 
 \usepgflibrary{shapes,shapes.geometric}
 
 
 \usepackage{url}
-\usepackage{xmpmulti}
-% \usepackage{euler}
-%\usepackage[T1]{fontenc}
-\pdfpagebox5
-% \immediate\write18{sh ./vc}
-% \input{vc}
 
 \author{Gianluca Della Vedova}
 \title{Elementi di Bioinformatica}
 \institute{Univ. Milano--Bicocca\\
-  \texttt{https://gianluca.dellavedova.org}}
+	\texttt{https://gianluca.dellavedova.org}}
 \date{\today}
 %\pgfdeclareimage[height=1cm]{university-logo}{logounimib}
 %\logo{\pgfuseimage{university-logo}}
