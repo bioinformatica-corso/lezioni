@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="0 240 1860 1010"
+   width="1860"
+   height="1010"
+   font-family="Arial"
+   font-style="normal"
+   font-variant="normal"
+   font-size="36px"
+   font-weight="bold"
+   font-stretch="normal"
+   writing-mode="lr-tb"
+   text-anchor="middle">
+  <metadata
+     id="metadata1329">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:source>NASA Astrobiology Institute</dc:source>
+        <dc:description>The phylogenetic tree of life as proposed by Carl Woese</dc:description>
+        <dc:title>Phylogenetic tree of life</dc:title>
+        <dc:date>22/09/2006</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Eric Gaba</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Reproduction of: http://nai.arc.nasa.gov/library/images/news_articles/big_274_3.jpg from http://nai.arc.nasa.gov/news_stories/news_detail.cfm?ID=274</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+
+  <title>Phylogenetic tree of life</title>
+  <desc>Translations are included for Catalan, Croatian, English, French, Galician, German, Hungarian, Italian, Khmer, Latvian, Portuguese, Russian, Sinhala, Spanish, Ukrainian. Other languages can easily be added.</desc>
+
+  <g id="Bacteria" style="fill:#5028fa;text-align:center">
+    <switch transform="translate(750 475)">
+      <text systemLanguage="ca" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="de" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="en" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="es" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="fr" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="gl" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="hr" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="hu" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="it" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="km" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="lv" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="pt" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="ru" font-style="italic">Chloroflexi</text>
+      <text systemLanguage="si" font-style="italic">ක්ලෝරොෆ්ලෙක්සි</text>
+      <text systemLanguage="uk" font-style="italic">Chloroflexi</text>
+      <text font-style="italic">Chloroflexi</text>
+    </switch>
+    <switch transform="translate(358 475)">
+      <text systemLanguage="ca">Espiroquetes</text>
+      <text systemLanguage="de">Spirochäten</text>
+      <text systemLanguage="en">Spirochetes</text>
+      <text systemLanguage="es">Spirochaetes</text>
+      <text systemLanguage="fr">Spirochètes</text>
+      <text systemLanguage="gl">Spirochetes</text>
+      <text systemLanguage="hr">Spirochaetae</text>
+      <text systemLanguage="hu">spirochaeták</text>
+      <text systemLanguage="it">Spirochetes</text>
+      <text systemLanguage="km">ពួកឆេតរមួល</text>
+      <text systemLanguage="lv" font-style="italic">Spirochetes</text>
+      <text systemLanguage="pt">Spirochetes</text>
+      <text systemLanguage="ru">Спирохеты</text>
+      <text systemLanguage="si">ස්පයිරෝකීට්ස්</text>
+      <text systemLanguage="uk">Спірохети</text>
+      <text>Spirochetes</text>
+    </switch>
+    <switch transform="translate(558 536)">
+      <text systemLanguage="ca">Gram-<tspan x="0" y="40">positius</tspan></text>
+      <text systemLanguage="de">Gram-<tspan x="0" y="40">positive</tspan></text>
+      <text systemLanguage="en">Gram-<tspan x="0" y="40">positives</tspan></text>
+      <text systemLanguage="es">Gram<tspan x="0" y="40">positiva</tspan></text>
+      <text systemLanguage="fr">Gram<tspan x="0" y="40">positives</tspan></text>
+      <text systemLanguage="gl">Gram<tspan x="0" y="40">positivas</tspan></text>
+      <text systemLanguage="hr">gram-poz.<tspan x="0" y="40">bakterije</tspan></text>
+      <text systemLanguage="hu">Gram-<tspan x="0" y="40">pozitívok</tspan></text>
+      <text systemLanguage="it">Gram<tspan x="0" y="40">positives</tspan></text>
+      <text systemLanguage="km">ពួកក្រាម<tspan x="0" y="40">វិជ្ជមាន</tspan></text>
+      <text systemLanguage="lv">Gram<tspan x="0" y="40">positives</tspan></text>
+      <text systemLanguage="pt">Gram<tspan x="0" y="40">positivas</tspan></text>
+      <text systemLanguage="ru" x="0" y="-90">Грам-<tspan x="0" y="-50">положи-</tspan><tspan x="0" y="-10">тельные</tspan><tspan x="0" y="30">бактерии</tspan></text>
+      <text systemLanguage="si">ග්‍රෑම්<tspan x="0" y="40">පොසිටිව්ස්</tspan></text>
+      <text systemLanguage="uk" x="0" y="-50">Грам-<tspan x="0" y="-10">позитивні</tspan><tspan x="0" y="30">бактерії</tspan></text>
+      <text>Gram-<tspan x="0" y="40">positives</tspan></text>
+    </switch>
+    <switch transform="translate(306 618)">
+      <text systemLanguage="ca">Proteobacteris</text>
+      <text systemLanguage="de">Proteobakterien</text>
+      <text systemLanguage="en">Proteobacteria</text>
+      <text systemLanguage="es">Proteobacteria</text>
+      <text systemLanguage="fr">Protéobactéries</text>
+      <text systemLanguage="gl">Proteobacteria</text>
+      <text systemLanguage="hr">Proteobacteria</text>
+      <text systemLanguage="hu" x="-30">proteobaktériumok</text>
+      <text systemLanguage="it">Proteobacteria</text>
+      <text systemLanguage="km">បុរេវេត្រាណុ</text>
+      <text systemLanguage="lv" font-style="italic">Proteobacteria</text>
+      <text systemLanguage="pt">Proteobacteria</text>
+      <text systemLanguage="ru">Протеобактерии</text>
+      <text systemLanguage="si" x="-20">ප්‍රෝටියෝබැක්ටීරියා</text>
+      <text systemLanguage="uk">Протеобактерії</text>
+      <text>Proteobacteria</text>
+    </switch>
+    <switch transform="translate(168 676)">
+      <text systemLanguage="ca">Cianobacteris</text>
+      <text systemLanguage="de">Cyanobakterien</text>
+      <text systemLanguage="en">Cyanobacteria</text>
+      <text systemLanguage="es">Cyanobacteria</text>
+      <text systemLanguage="fr">Cyanobactéries</text>
+      <text systemLanguage="gl">Cyanobacteria</text>
+      <text systemLanguage="hr">Cyanobacteria</text>
+      <text systemLanguage="hu">cianobaktériumok</text>
+      <text systemLanguage="it">Cyanobacteria</text>
+      <text systemLanguage="km">និលវេត្រាណូ</text>
+      <text systemLanguage="lv">Zilaļģes</text>
+      <text systemLanguage="pt">Cyanobacteria</text>
+      <text systemLanguage="ru">Цианобактерии</text>
+      <text systemLanguage="si">සයැනෝබැක්ටීරියා</text>
+      <text systemLanguage="uk">Ціанобактерії</text>
+      <text>Cyanobacteria</text>
+    </switch>
+    <switch transform="translate(148 745)">
+      <text systemLanguage="ca" font-style="italic">Planctomyces</text>
+      <text systemLanguage="de" font-style="italic">Planctomyceten</text>
+      <text systemLanguage="en" font-style="italic">Planctomyces</text>
+      <text systemLanguage="es" font-style="italic">Planctomyces</text>
+      <text systemLanguage="fr" font-style="italic">Planctomyces</text>
+      <text systemLanguage="gl" font-style="italic">Planctomyces</text>
+      <text systemLanguage="hr" font-style="italic">Planctomyces</text>
+      <text systemLanguage="hu" font-style="italic">Planctomyces</text>
+      <text systemLanguage="it" font-style="italic">Planctomyces</text>
+      <text systemLanguage="km" font-style="italic">ពួកប្លង់តូកពក</text>
+      <text systemLanguage="lv" font-style="italic">Planctomyces</text>
+      <text systemLanguage="pt" font-style="italic">Planctomyces</text>
+      <text systemLanguage="ru" font-style="italic">Planctomyces</text>
+      <text systemLanguage="si" font-style="italic" x="15">ප්ලෙන්ක්ටොමයිසිස්</text>
+      <text systemLanguage="uk" font-style="italic">Planctomyces</text>
+      <text font-style="italic">Planctomyces</text>
+    </switch>
+    <switch transform="translate(132 850)">
+      <text systemLanguage="ca" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="de" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="en" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="es" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="fr" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="gl" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="hr" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="hu" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="it" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="km" font-style="italic">វេត្រាណូសាទិស<tspan x="0" y="40">កោសិកាភក្សាក</tspan></text>
+      <text systemLanguage="lv" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="pt" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="ru" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text systemLanguage="si" font-style="italic">බැක්ටරොයිඩිස්<tspan x="0" y="40">සයිටෝෆගා</tspan></text>
+      <text systemLanguage="uk" font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+      <text font-style="italic">Bacteroides<tspan x="0" y="40">Cytophaga</tspan></text>
+    </switch>
+    <switch transform="translate(134 972)">
+      <text systemLanguage="ca" font-style="italic">Thermotoga</text>
+      <text systemLanguage="de" font-style="italic">Thermotogae</text>
+      <text systemLanguage="en" font-style="italic">Thermotoga</text>
+      <text systemLanguage="es" font-style="italic">Thermotoga</text>
+      <text systemLanguage="fr" font-style="italic">Thermotoga</text>
+      <text systemLanguage="gl" font-style="italic">Thermotoga</text>
+      <text systemLanguage="hr" font-style="italic">Thermotoga</text>
+      <text systemLanguage="hu" font-style="italic">Thermotoga</text>
+      <text systemLanguage="it" font-style="italic">Thermotoga</text>
+      <text systemLanguage="km" font-style="italic">ឧណ្ឌាវរណៈ</text>
+      <text systemLanguage="lv" font-style="italic">Thermotoga</text>
+      <text systemLanguage="pt" font-style="italic">Thermotoga</text>
+      <text systemLanguage="ru" font-style="italic">Thermotoga</text>
+      <text systemLanguage="si" font-style="italic">තර්මටෝගා</text>
+      <text systemLanguage="uk" font-style="italic">Thermotoga</text>
+      <text font-style="italic">Thermotoga</text>
+    </switch>
+    <switch transform="translate(102 1052)">
+      <text systemLanguage="ca" font-style="italic">Aquifex</text>
+      <text systemLanguage="de" font-style="italic">Aquifex</text>
+      <text systemLanguage="en" font-style="italic">Aquifex</text>
+      <text systemLanguage="es" font-style="italic">Aquifex</text>
+      <text systemLanguage="fr" font-style="italic">Aquifex</text>
+      <text systemLanguage="gl" font-style="italic">Aquifex</text>
+      <text systemLanguage="hr" font-style="italic">Aquifex</text>
+      <text systemLanguage="hu" font-style="italic">Aquifex</text>
+      <text systemLanguage="it" font-style="italic">Aquifex</text>
+      <text systemLanguage="km" font-style="italic">កំណទឹក</text>
+      <text systemLanguage="lv" font-style="italic">Aquifex</text>
+      <text systemLanguage="pt" font-style="italic">Aquifex</text>
+      <text systemLanguage="ru" font-style="italic">Aquifex</text>
+      <text systemLanguage="si" font-style="italic" y="20">ඇක්විෆෙක්ස්</text>
+      <text systemLanguage="uk" font-style="italic">Aquifex</text>
+      <text font-style="italic">Aquifex</text>
+    </switch>
+  </g>
+  <g id="Archaea" style="fill:#f03232;text-align:center">
+    <switch transform="translate(1198 590)">
+      <text systemLanguage="ca">Haloarchaea</text>
+      <text systemLanguage="de">Haloarchaea</text>
+      <text systemLanguage="en">Haloarchaea</text>
+      <text systemLanguage="es">Haloarchaea</text>
+      <text systemLanguage="fr" font-style="italic">Haloarchaea</text>
+      <text systemLanguage="gl">Haloarchaea</text>
+      <text systemLanguage="hr">Haloarchaea</text>
+      <text systemLanguage="hu">Haloarchaea</text>
+      <text systemLanguage="it">Haloarchaea</text>
+      <text systemLanguage="km">Haloarchaea</text>
+      <text systemLanguage="lv">Haloarchaea</text>
+      <text systemLanguage="pt">Haloarchaea</text>
+      <text systemLanguage="ru">Галобактерии</text>
+      <text systemLanguage="si">හැලොආකියා</text>
+      <text systemLanguage="uk">Haloarchaea</text>
+      <text>Haloarchaea</text>
+    </switch>
+    <switch transform="translate(966 538)">
+      <text systemLanguage="ca" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="de" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="en" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="es" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="fr" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="gl" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="hr" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="hu" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="it" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="km" font-style="italic">មេតាណូថវិកា</text>
+      <text systemLanguage="lv" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="pt" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="ru" font-style="italic">Methanosarcina</text>
+      <text systemLanguage="si" font-style="italic">මෙතනොසාර්සිනා</text>
+      <text systemLanguage="uk" font-style="italic">Methanosarcina</text>
+      <text font-style="italic">Methanosarcina</text>
+    </switch>
+    <switch transform="translate(860 582)">
+      <text systemLanguage="ca" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="de" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="en" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="es" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="fr" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="gl" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="hr" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="hu" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="it" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="km" font-style="italic">មេតាណូវេត្រាណូ</text>
+      <text systemLanguage="lv" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="pt" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="ru" font-style="italic">Methanobacterium</text>
+      <text systemLanguage="si" font-style="italic">මෙතනොබැක්ටීරියම්</text>
+      <text systemLanguage="uk" font-style="italic">Methanobacterium</text>
+      <text font-style="italic">Methanobacterium</text>
+    </switch>
+    <switch transform="translate(850 635)">
+      <text systemLanguage="ca" font-style="italic">Methanococcus</text>
+      <text systemLanguage="de" font-style="italic">Methanococcus</text>
+      <text systemLanguage="en" font-style="italic">Methanococcus</text>
+      <text systemLanguage="es" font-style="italic">Methanococcus</text>
+      <text systemLanguage="fr" font-style="italic">Methanococcus</text>
+      <text systemLanguage="gl" font-style="italic">Methanococcus</text>
+      <text systemLanguage="hr" font-style="italic">Methanococcus</text>
+      <text systemLanguage="hu" font-style="italic">Methanococcus</text>
+      <text systemLanguage="it" font-style="italic">Methanococcus</text>
+      <text systemLanguage="km" font-style="italic">មេតាណូធញ្ញ</text>
+      <text systemLanguage="lv" font-style="italic">Methanococcus</text>
+      <text systemLanguage="pt" font-style="italic">Methanococcus</text>
+      <text systemLanguage="ru" font-style="italic">Methanococcus</text>
+      <text systemLanguage="si" font-style="italic">මෙතනොකොකස්</text>
+      <text systemLanguage="uk" font-style="italic">Methanococcus</text>
+      <text font-style="italic">Methanococcus</text>
+    </switch>
+    <switch transform="translate(820 685)">
+      <text systemLanguage="ca" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="de" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="en" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="es" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="fr" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="gl" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="hr" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="hu" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="it" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="km" font-style="italic" y="10">ឧ.សមោចនា</text>
+      <text systemLanguage="lv" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="pt" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="ru" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text systemLanguage="si" font-style="italic">තර්මොකොකස්<tspan x="-40" y="30">චෙලර්</tspan></text>
+      <text systemLanguage="uk" font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+      <text font-style="italic">Thermococcus<tspan x="-40" y="30">celer</tspan></text>
+    </switch>
+    <switch transform="translate(795 758)">
+      <text systemLanguage="ca" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="de" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="en" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="es" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="fr" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="gl" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="hr" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="hu" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="it" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="km" font-style="italic" x="50" y="-10">ឧណ្ឌបុរេ</text>
+      <text systemLanguage="lv" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="pt" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="ru" font-style="italic">Thermoproteus</text>
+      <text systemLanguage="si" font-style="italic">තර්මොප්‍රෝටියස්</text>
+      <text systemLanguage="uk" font-style="italic">Thermoproteus</text>
+      <text font-style="italic">Thermoproteus</text>
+    </switch>
+    <switch transform="translate(768 798)">
+      <text systemLanguage="ca" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="de" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="en" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="es" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="fr" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="gl" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="hr" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="hu" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="it" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="km" font-style="italic">អគ្គីឌីកទីកុម</text>
+      <text systemLanguage="lv" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="pt" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="ru" font-style="italic">Pyrodicticum</text>
+      <text systemLanguage="si" font-style="italic">පයිරොඩික්ටිකම්</text>
+      <text systemLanguage="uk" font-style="italic">Pyrodicticum</text>
+      <text font-style="italic">Pyrodicticum</text>
+    </switch>
+  </g>
+  <g id="Eukaryota" style="fill:#96503c;text-align:center">
+    <switch transform="translate(1170 471)">
+      <text systemLanguage="ca">Entamoebae</text>
+      <text systemLanguage="de">Entamoebae</text>
+      <text systemLanguage="en">Entamoebae</text>
+      <text systemLanguage="es">Entamoebae</text>
+      <text systemLanguage="fr">Entamibes</text>
+      <text systemLanguage="gl">Entamoeba</text>
+      <text systemLanguage="hr" font-style="italic">Entamoeba</text>
+      <text systemLanguage="hu" font-style="italic">Entamoeba</text>
+      <text systemLanguage="it">Entamoebae</text>
+      <text systemLanguage="km">វិការប្រាណក្នុង</text>
+      <text systemLanguage="lv" font-style="italic">Entamoebae</text>
+      <text systemLanguage="pt">Entamoebidea</text>
+      <text systemLanguage="ru">Энтамёбы</text>
+      <text systemLanguage="si">එන්ටමීබා</text>
+      <text systemLanguage="uk">Ентамеби</text>
+      <text>Entamoebae</text>
+    </switch>
+    <switch transform="translate(1400 482)">
+      <text systemLanguage="ca">Mixomicets</text>
+      <text systemLanguage="de" y="-25">Schleim-<tspan x="0" y="15">pilze</tspan></text>
+      <text systemLanguage="en" y="-25">Slime<tspan x="0" y="15">molds</tspan></text>
+      <text systemLanguage="es" font-style="italic">Myxomycota</text>
+      <text systemLanguage="fr">Myxomycètes</text>
+      <text systemLanguage="gl">Myxomycota</text>
+      <text systemLanguage="hr">sluznjače</text>
+      <text systemLanguage="hu" y="-25">nyálka-<tspan x="0" y="15">gombák</tspan></text>
+      <text systemLanguage="it">Myxomycota</text>
+      <text systemLanguage="km" y="-25">ពួកផ្សិតផ្អួរ<tspan x="0" y="15">ស្អិត</tspan></text>
+      <text systemLanguage="lv" y="-25">Gļot-<tspan x="0" y="15">sēnes</tspan></text>
+      <text systemLanguage="pt">Mycetozoa</text>
+      <text systemLanguage="ru">Слизевики</text>
+      <text systemLanguage="si" y="-30">සෙවෙල<tspan x="0" y="10">දිලීර සූත්‍රිකා</tspan></text>
+      <text systemLanguage="uk">Слизовики</text>
+      <text y="-25">Slime<tspan x="0" y="15">molds</tspan></text>
+    </switch>
+    <switch transform="translate(1530 475)" text-anchor="start">
+      <text systemLanguage="ca">Animals</text>
+      <text systemLanguage="de">Tiere</text>
+      <text systemLanguage="en">Animals</text>
+      <text systemLanguage="es">Animales</text>
+      <text systemLanguage="fr" font-style="italic">Animalia</text>
+      <text systemLanguage="gl">Animais</text>
+      <text systemLanguage="hr">životinje</text>
+      <text systemLanguage="hu">állatok</text>
+      <text systemLanguage="it">Animalia</text>
+      <text systemLanguage="km">ពួកសត្វ</text>
+      <text systemLanguage="lv">Dzīvnieki</text>
+      <text systemLanguage="pt">Animais</text>
+      <text systemLanguage="ru">Животные</text>
+      <text systemLanguage="si">සත්ත්වයෝ</text>
+      <text systemLanguage="uk">Тварини</text>
+      <text>Animals</text>
+    </switch>
+    <switch transform="translate(1585 532)" text-anchor="start">
+      <text systemLanguage="ca">Fongs</text>
+      <text systemLanguage="de">Pilze</text>
+      <text systemLanguage="en">Fungi</text>
+      <text systemLanguage="es">Fungi</text>
+      <text systemLanguage="fr" font-style="italic" x="-10">Fungi</text>
+      <text systemLanguage="gl">Fungos</text>
+      <text systemLanguage="hr">gljive</text>
+      <text systemLanguage="hu">gombák</text>
+      <text systemLanguage="it">Fungi</text>
+      <text systemLanguage="km">ពួកផ្សិត</text>
+      <text systemLanguage="lv">Sēnes</text>
+      <text systemLanguage="pt">Fungos</text>
+      <text systemLanguage="ru">Грибы</text>
+      <text systemLanguage="si">දිලීර</text>
+      <text systemLanguage="uk">Гриби</text>
+      <text>Fungi</text>
+    </switch>
+    <switch transform="translate(1585 618)" text-anchor="start">
+      <text systemLanguage="ca">Plantes</text>
+      <text systemLanguage="de">Pflanzen</text>
+      <text systemLanguage="en">Plants</text>
+      <text systemLanguage="es">Plantas</text>
+      <text systemLanguage="fr" font-style="italic">Plantae</text>
+      <text systemLanguage="gl">Plantas</text>
+      <text systemLanguage="hr">biljke</text>
+      <text systemLanguage="hu">növények</text>
+      <text systemLanguage="it">Plantae</text>
+      <text systemLanguage="km">ពួករុក្ខជាតិ</text>
+      <text systemLanguage="lv">Augi</text>
+      <text systemLanguage="pt">Plantas</text>
+      <text systemLanguage="ru">Растения</text>
+      <text systemLanguage="si">ශාක</text>
+      <text systemLanguage="uk">Рослини</text>
+      <text>Plants</text>
+    </switch>
+    <switch transform="translate(1580 680)" text-anchor="start">
+      <text systemLanguage="ca">Ciliats</text>
+      <text systemLanguage="de" x="-30" y="15">Wimperntierchen</text>
+      <text systemLanguage="en">Ciliates</text>
+      <text systemLanguage="es" font-style="italic">Ciliophora</text>
+      <text systemLanguage="fr">Ciliés</text>
+      <text systemLanguage="gl">Ciliados</text>
+      <text systemLanguage="hr">trepetljikaši</text>
+      <text systemLanguage="hu">csillósok</text>
+      <text systemLanguage="it">Ciliates</text>
+      <text systemLanguage="km">ពួកលោមប្រាណ</text>
+      <text systemLanguage="lv">Skropstaiņi</text>
+      <text systemLanguage="pt">Ciliados</text>
+      <text systemLanguage="ru">Инфузории</text>
+      <text systemLanguage="si">සිලියට්ස්</text>
+      <text systemLanguage="uk">Інфузорії</text>
+      <text>Ciliates</text>
+    </switch>
+    <switch transform="translate(1575 768)" text-anchor="start">
+      <text systemLanguage="ca">Flagel·lats</text>
+      <text systemLanguage="de">Flagellaten</text>
+      <text systemLanguage="en">Flagellates</text>
+      <text systemLanguage="es">Flagelados</text>
+      <text systemLanguage="fr">Flagellés</text>
+      <text systemLanguage="gl">Flaxelados</text>
+      <text systemLanguage="hr">bičaši</text>
+      <text systemLanguage="hu">ostorosok</text>
+      <text systemLanguage="it">Flagellates</text>
+      <text systemLanguage="km">កសាប្រាណ</text>
+      <text systemLanguage="lv" font-style="italic">Flagellates</text>
+      <text systemLanguage="pt">Flagelados</text>
+      <text systemLanguage="ru">Жгутиковые</text>
+      <text systemLanguage="si">ෆ්ලෑජුලෙට්ස්</text>
+      <text systemLanguage="uk">Джгутикові</text>
+      <text>Flagellates</text>
+    </switch>
+    <switch transform="translate(1570 854)" text-anchor="start">
+      <text systemLanguage="ca" font-style="italic">Trichomonadida</text>
+      <text systemLanguage="de">Trichomonaden</text>
+      <text systemLanguage="en">Trichomonads</text>
+      <text systemLanguage="es">Tricomonadas</text>
+      <text systemLanguage="fr">Trichomonades</text>
+      <text systemLanguage="gl">Tricomónadas</text>
+      <text systemLanguage="hr">trihomonade</text>
+      <text systemLanguage="hu">Trichomonadida</text>
+      <text systemLanguage="it">Trichomonads</text>
+      <text systemLanguage="km">កេសេកាប្ប</text>
+      <text systemLanguage="lv" font-style="italic">Trichomonads</text>
+      <text systemLanguage="pt">Trichomonadida</text>
+      <text systemLanguage="ru">Трихомонады</text>
+      <text systemLanguage="si">ට්‍රිකොමෝනැඩ්ස්</text>
+      <text systemLanguage="uk">Трихомонади</text>
+      <text>Trichomonads</text>
+    </switch>
+    <switch transform="translate(1555 945)" text-anchor="start">
+      <text systemLanguage="ca">Microsporidis</text>
+      <text systemLanguage="de">Microsporidien</text>
+      <text systemLanguage="en">Microsporidia</text>
+      <text systemLanguage="es">Microsporidias</text>
+      <text systemLanguage="fr">Microsporides</text>
+      <text systemLanguage="gl">Microsporidios</text>
+      <text systemLanguage="hr">Microsporidia</text>
+      <text systemLanguage="hu">Microsporidia</text>
+      <text systemLanguage="it">Microsporidia</text>
+      <text systemLanguage="km">អតិសុខុមពីជសាខា</text>
+      <text systemLanguage="lv">Sīksporaiņi</text>
+      <text systemLanguage="pt">Microsporidia</text>
+      <text systemLanguage="ru">Микроспоридии</text>
+      <text systemLanguage="si" x="-20" y="20">මයික්‍රොස්පොරීඩියා</text>
+      <text systemLanguage="uk">Мікроспоридії</text>
+      <text>Microsporidia</text>
+    </switch>
+    <switch transform="translate(1545 1036)" text-anchor="start">
+      <text systemLanguage="ca">Diplomònads</text>
+      <text systemLanguage="de">Diplomonaden</text>
+      <text systemLanguage="en">Diplomonads</text>
+      <text systemLanguage="es">Diplomonadas</text>
+      <text systemLanguage="fr">Diplomonades</text>
+      <text systemLanguage="gl">Diplomónadas</text>
+      <text systemLanguage="hr">diplomonade</text>
+      <text systemLanguage="hu">Diplomonadida</text>
+      <text systemLanguage="it">Diplomonads</text>
+      <text systemLanguage="km">ទ្វេកាប្ប</text>
+      <text systemLanguage="lv" font-style="italic">Diplomonads</text>
+      <text systemLanguage="pt">Diplomonadida</text>
+      <text systemLanguage="ru">Дипломонады</text>
+      <text systemLanguage="si">ඩිප්ලෝමොනෑඩ්ස්</text>
+      <text systemLanguage="uk">Дипломонади</text>
+      <text>Diplomonads</text>
+    </switch>
+  </g>
+  <switch transform="translate(382 298)" style="fill:#5028fa;font-size:64px;text-align:center">
+    <text systemLanguage="ca">Bacteris</text>
+    <text systemLanguage="de">Bakterien</text>
+    <text systemLanguage="en">Bacteria</text>
+    <text systemLanguage="es">Bacteria</text>
+    <text systemLanguage="fr">Bactéries</text>
+    <text systemLanguage="gl">Bacteria</text>
+    <text systemLanguage="hr">Bacteria</text>
+    <text systemLanguage="hu">baktériumok</text>
+    <text systemLanguage="it">Bacteria</text>
+    <text systemLanguage="km">វេត្រាណូ</text>
+    <text systemLanguage="lv">Baktērijas</text>
+    <text systemLanguage="pt">Bacteria</text>
+    <text systemLanguage="ru">Бактерии</text>
+    <text systemLanguage="si">බැක්ටීරියා</text>
+    <text systemLanguage="uk">Бактерії</text>
+    <text>Bacteria</text>
+  </switch>
+  <switch transform="translate(952 298)" style="fill:#f03232;font-size:64px;text-align:center">
+    <text systemLanguage="ca">Arqueobacteris</text>
+    <text systemLanguage="de">Archaeen</text>
+    <text systemLanguage="en">Archaea</text>
+    <text systemLanguage="es">Archaea</text>
+    <text systemLanguage="fr">Archées</text>
+    <text systemLanguage="gl">Archaea</text>
+    <text systemLanguage="hr">Archaea</text>
+    <text systemLanguage="hu">archeák</text>
+    <text systemLanguage="it">Archaea</text>
+    <text systemLanguage="km">បោរាណាណូ</text>
+    <text systemLanguage="lv">Arheji</text>
+    <text systemLanguage="pt">Archaea</text>
+    <text systemLanguage="ru">Археи</text>
+    <text systemLanguage="si">ආකියා</text>
+    <text systemLanguage="uk">Археї</text>
+    <text>Archaea</text>
+  </switch>
+  <switch transform="translate(1460 298)" style="fill:#96503c;font-size:64px;text-align:center">
+    <text systemLanguage="ca">Eucariotes</text>
+    <text systemLanguage="de">Eukarya</text>
+    <text systemLanguage="en">Eukarya</text>
+    <text systemLanguage="es">Eukarya</text>
+    <text systemLanguage="fr">Eucaryotes</text>
+    <text systemLanguage="gl">Eucarya</text>
+    <text systemLanguage="hr">Eukarya</text>
+    <text systemLanguage="hu">eukarióták</text>
+    <text systemLanguage="it">Eucarya</text>
+    <text systemLanguage="km">សុធញ្ញ</text>
+    <text systemLanguage="lv">Eikarioti</text>
+    <text systemLanguage="pt">Eukaria</text>
+    <text systemLanguage="ru">Эукариоты</text>
+    <text systemLanguage="si">යුකේරියෝටා</text>
+    <text systemLanguage="uk">Еукаріоти</text>
+    <text>Eukarya</text>
+  </switch>
+  <g style="fill:none;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none">
+    <path
+       d="M 427.5,490.5 541,827 m 15,-241.5 24.5,302 M 304,683 566.5,867 M 278,751 574,878.5 M 244,847.5 599,917 M 176.5,1037 659,979 m -408.5,-18 370,-11.5 58.6648,-459.0479 M 796,1080 621,950 410,626"
+       id="path2333"
+       stroke="#5028fa"/>
+    <path
+       d="M 930,986.5 1370.5,674 1559.5,519.9521 M 1531.835,1012.761 1266.5,747.5 M 1539.739,926.2605 1291,730.5 m 268.5,103 -250,-116.5 M 1560,746.5 1370,674 M 1556.5,657 1456,601.5 m 103.5,1 -84.5,-16 44.761,-92.0958 M 1414.5,637 1403.904,502.5 m -3.904,146 -133,-163"
+       id="path2358"
+       stroke="#96503c"/>
+    <path
+       d="M 797.5,1080.5 929.7944,986.7835 929.8454,877.0012 1163.5,603.5 M 929.8454,877.0012 869.1603,805.874 M 910.8167,853.6666 906.7,765.6318 M 975.1002,823.261 923.835,710.8311 m 79.196,79.9031 -46.3155,-138.9465 M 1031.669,757.1465 998.0812,594.512 m 49.8508,143.5427 2.475,-185.6155"
+       id="path2376"
+       stroke="#f03232"/>
+    <path
+       d="m 796.5,1080.5 0,145.5"
+       id="path2408"
+       stroke="#000000"/>
+  </g>
+</svg>
