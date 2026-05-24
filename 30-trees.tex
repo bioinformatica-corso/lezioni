@@ -749,6 +749,8 @@ $B(x)$: insieme degli stati $z$ tali che $P[x,z]$ è minimo.
 \end{frame}
 
 
+
+
 \begin{frame}
         \frametitle{Approcci basati su distanze.}
         \begin{columns}
@@ -763,10 +765,6 @@ $B(x)$: insieme degli stati $z$ tali che $P[x,z]$ è minimo.
                                         Gatto & - & - & - & - & 0
                                 \end{tabular}
                         }
-                \end{column}
-                \begin{column}{0.48\textwidth}
-                        %\def\svgwidth{\columnwidth}
-                        \input{figures/phylogeny-5.pdf_tex}
                 \end{column}
         \end{columns}
 \end{frame}
@@ -878,6 +876,127 @@ $B(x)$: insieme degli stati $z$ tali che $P[x,z]$ è minimo.
     \end{block}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Ultrametrica}
+\begin{block}{definizione}
+$d: S \times S \mapsto \mathbb{R}^{+}$ tale che:
+\begin{enumerate}
+\item
+$d(a,b) = 0 \Leftrightarrow a=b$, $\forall a,b\in S$
+\item
+$d(a,b) = d(b,a)$, $\forall a,b\in S$ (simmetria)
+\item
+$d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
+\item
+$\max\{d(a,b), d(a,c), d(c,b) \}$ ottenuto da almeno 2 casi, $\forall a,b,c\in S$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ultrametrica e orologio molecolare.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Alberi e distanze additive.}
+\begin{block}{Proprietà}
+Sia $T$ un albero binario senza radice e sia $D$ la matrice delle distanze associata a $T$.
+Allora $D$ soddisfa la condizione dei 4 punti.
+\end{block}
+\begin{block}{Condizione dei 4 punti}
+Si consideri:
+\begin{enumerate}
+\item
+$D[v,w] + D[x,y]$
+\item
+$D[v,x] + D[w,y]$
+\item
+$D[v,y] + D[w,x]$
+\end{enumerate}
+Il massimo dei tre valori è ottenuto da esattamente due dei 3 casi sopra
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Algoritmo per matrice di distanze additive.}
+\begin{block}{Tripla degenere}
+Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
+Allora la tripla $(x,y,z)$ è \alert{degenere} se $D[x,y] + D[x,z] = D[y,z]$.
+\end{block}
+
+\begin{block}{Sbilancio}
+Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
+Allora lo sbilancio di $x$ rispetto a $(y,z)$ è $S(x, y, z) = D[x,y] + D[x,z] - D[y,z]$.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distanze additive: Esempio}
+\begin{columns}
+\begin{column}{0.48\textwidth}
+{
+  \begin{tabular}{l|cccccc}
+      & A & B & C & D & E \\ \hline
+    A & 0 & 8 & 7 & 4 & 10 \\
+    B & - & 0 & 10 & 8 & 4 \\
+    C & - & - & 0 & 9 & 7 \\
+    D & - & - & - & 0 & 12 \\
+    E & - & - & - & - & 0
+  \end{tabular}
+}
+\end{column}
+\begin{column}{0.48\textwidth}
+    \centering
+    \onslide<2->{%
+\begin{tikzpicture}[
+    % Define styles for the nodes
+    cnode/.style={circle, draw, minimum size=0.5cm, inner sep=0pt},
+    snode/.style={rectangle, draw, minimum size=0.6cm, inner sep=0pt, thick}
+]
+
+% 1. Bottom Row: Square Nodes (Leaves)
+\node[snode, label=below:A] (A) at (0, 0) {};
+\node[snode, label=below:D] (B) at (1.5, 0) {};
+\node[snode, label=below:C] (C) at (3, 0) {};
+\node[snode, label=below:B] (D) at (4.5, 0) {};
+\node[snode, label=below:E] (E) at (6, 0) {};
+
+% 2. Middle Row: Circle Nodes
+% N1 is centered above A and B
+\node[cnode] (N1) at (0.75, 2) {};
+% N2 is directly above C
+\node[cnode] (N2) at (3, 3) {};
+
+% 3. Top Row: Root Node
+% R is centered above D
+\node[cnode] (R) at (4.5, 4) {};
+
+% 4. Draw Edges with Labels
+% From Left Circle (N1)
+\draw (N1) -- (A) node[midway, left] {1};
+\draw (N1) -- (B) node[midway, right] {3};
+
+% Horizontal connection between circles
+\draw (N1) -- (N2) node[midway, above] {4};
+
+% From Middle Circle (N2)
+\draw (N2) -- (C) node[midway, left] {2};
+
+% From Root (R)
+\draw (R) -- (N2) node[midway, above left] {2};
+\draw (R) -- (D) node[midway, left] {1};
+\draw (R) -- (E) node[midway, right] {3};
+
+\end{tikzpicture}}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
 \begin{frame}[fragile]
         \frametitle{UPGMA}
         \begin{itemize}
@@ -937,151 +1056,6 @@ $B(x)$: insieme degli stati $z$ tali che $P[x,z]$ è minimo.
           \end{enumerate}
 \end{enumerate}
 \end{block}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Approcci basati su distanze.}
-\begin{block}{Distanza}
-$d: S \times S \mapsto \mathbb{R}^{+}$ tale che:
-\begin{enumerate}
-\item
-$d(a,b) = 0 \Leftrightarrow a=b$, $\forall a,b\in S$
-\item
-$d(a,b) = d(b,a)$, $\forall a,b\in S$ (simmetria)
-\item
-$d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
-\end{enumerate}
-\end{block}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Approcci basati su distanze.}
-\begin{columns}
-  \begin{column}{0.48\textwidth}
-{    \scriptsize
- \begin{tabular}{l|cccccc}
-        & Sc & A & To & Sa & Ta & L\\ \hline
-        Scorpione& - & & & & &\\
-        Anguilla& 3 & - & & & &\\
-        Tonno& 2 & 1 & - &  & &\\
-        Salamandra& 1 & 2 & 1 & - & &\\
-        Tartaruga& 3 & 1 & 4 & 1 & -&\\
-        Leopardo& 1 & 1 & 1 & 1 & 1 & -
- \end{tabular}
-}
-\end{column}
-  \begin{column}{0.48\textwidth}
-\begin{block}{Problema}
-  \begin{itemize}
-    \item
-  Input: matrice $M$ di distanze stimate
-    \item
-      Output: un albero con le stesse distanze di $M$, se esiste
-\end{itemize}
-\end{block}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{UPGMA}
-\begin{itemize}
-\item
-  Unweighted Pair Group with Arithmetic Mean
-\item
-  $D(C_{1}, C_{2}) \gets \frac{1}{|C_{1}||C_{2}|}\sum_{i\in C_{1}}\sum_{j\in C_{2}} D(i,j)$
-\item
-  All'inizio $h=0$ per ogni cluster/specie
-\item
-Fondi i due cluster $C_{1}$, $C_{2}$ con minimo $D(\cdot, \cdot)$, ottenendo $C$
-\item
-  Per ogni cluster $C^{*}\neq C$, $D(C, C^{*}) = \frac{1}{|C||C^{*}|}\sum_{i\in C}\sum_{j\in C^{*}} D(i,j)$
-\item
-  $h(C)\gets \frac{1}{2}D(C_{1}, C_{2})$
-\item
-  $h(C) - h(C_{1})$ etichetta $(C, C_{1})$; $h(C) - h(C_{2})$ etichetta $(C, C_{2})$
-\item
-  UPGMA produce ultrametrica
-\end{itemize}
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{Ultrametrica}
-\begin{block}{definizione}
-$d: S \times S \mapsto \mathbb{R}^{+}$ tale che:
-\begin{enumerate}
-\item
-$d(a,b) = 0 \Leftrightarrow a=b$, $\forall a,b\in S$
-\item
-$d(a,b) = d(b,a)$, $\forall a,b\in S$ (simmetria)
-\item
-$d(a,b) \le d(a,c) + d(c,b)$, $\forall a,b,c\in S$ (disuguaglianza triangolare)
-\item
-$\max\{d(a,b), d(a,c), d(c,b) \}$ ottenuto da almeno 2 casi, $\forall a,b,c\in S$
-\end{enumerate}
-\end{block}
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{Ultrametrica e orologio molecolare.}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Alberi e distanze additive.}
-\begin{block}{Proprietà}
-Sia $T$ un albero binario senza radice e sia $D$ la matrice delle distanze associata a $T$.
-Allora $D$ soddisfa la condizione dei 4 punti.
-\end{block}
-\begin{block}{Condizione dei 4 punti}
-Si consideri:
-\begin{enumerate}
-\item
-$D[v,w] + D[x,y]$
-\item
-$D[v,x] + D[w,y]$
-\item
-$D[v,y] + D[w,x]$
-\end{enumerate}
-Il massimo dei tre valori è ottenuto da esattamente due dei 3 casi sopra
-\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Algoritmo per matrice di distanze additive.}
-\begin{block}{Tripla degenere}
-Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
-Allora la tripla $(x,y,z)$ è \alert{degenere} se $D[x,y] + D[x,z] = D[y,z]$.
-\end{block}
-
-\begin{block}{Sbilancio}
-Siano $x$, $y$, $z$ tre specie e sia $D$ la matrice di distanza.
-Allora lo sbilancio di $x$ rispetto a $(y,z)$ è $S(x, y, z) = D[x,y] + D[x,z] - D[y,z]$.
-\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Neighbor Joining.}
-\begin{itemize}
-\item
-  $D(C_{1}, C_{2}) \gets \frac{1}{|C_{1}||C_{2}|}\sum_{i\in C_{1}}\sum_{j\in C_{2}} D(i,j)$
-\item
-  $u(C) \gets \frac{1}{\text{num. cluster} - 2} \sum_{C_{3}} D(C,C_{3})$
-\item
-  Fondi i due cluster $C_{1}$, $C_{2}$ con minimo $D(C_{1}, C_{2}) - u(C_{1}) -u(C_{2})$, ottenendo $C$
-\item
-  Per ogni cluster $C^{*}\neq C$, $D(C, C^{*}) = \frac{1}{|C||C^{*}|}\sum_{i\in C}\sum_{j\in C^{*}} D(i,j)$
-\item
-  $\frac{1}{2}\left(D(C_{1}, C_{2}) + u(C_{1}) - u(C_{2})\right)$ etichetta $(C, C_{1})$
-\item
-  $\frac{1}{2}\left(D(C_{1}, C_{2}) + u(C_{2}) - u(C_{1})\right)$ etichetta $(C, C_{2})$
-\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
